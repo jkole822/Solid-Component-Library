@@ -1,6 +1,6 @@
 {
-  "name": "solid-component-library",
-  "version": "0.0.0",
+  "name": "@jkole822/solid-component-library",
+  "version": "1.0.0",
   "description": "",
   "type": "module",
   "scripts": {
