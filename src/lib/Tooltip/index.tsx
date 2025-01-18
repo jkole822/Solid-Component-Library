@@ -24,8 +24,8 @@ export default function Tooltip({
         {children}
       </KobalteTooltip.Trigger>
       <KobalteTooltip.Portal>
-        <KobalteTooltip.Arrow />
         <KobalteTooltip.Content class={`${className} ${TooltipStyles}`}>
+          <KobalteTooltip.Arrow />
           <p class={TextStyles}>{text}</p>
         </KobalteTooltip.Content>
       </KobalteTooltip.Portal>
