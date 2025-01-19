@@ -38,7 +38,7 @@ pl-8
 pr-4
 py-1
 relative
-rounded-md
+rounded-lg
 select-item
 text-slate-300
               
@@ -70,9 +70,9 @@ max-h-72
 outline-none
 overflow-y-auto
 p-1
-rounded-md
+rounded-lg
 select-menu
-shadow-md
+shadow-lg
 z-10
 
 focus:!ring-0
@@ -91,7 +91,7 @@ py-7
 relative
 ring-2
 ring-slate-200
-rounded-md
+rounded-lg
 select-trigger
 text-slate-200
 transition-shadow
