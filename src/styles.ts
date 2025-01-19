@@ -15,7 +15,14 @@ fa-ghost
 `;
 
 export const PararaphStyles = oneLine`
-mb-1.5
-mt-5
+mt-2
 text-slate-100
+`;
+
+export const SubHeadingStyles = oneLine`
+font-bold
+mt-4
+text-blue-500
+tracking-wide
+uppercase
 `;

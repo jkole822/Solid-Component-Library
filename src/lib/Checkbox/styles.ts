@@ -43,7 +43,7 @@ cursor-pointer
 duration-300
 ml-1.5
 relative
-text-slate-300
+text-slate-200
 transition-all
 
 after:-bottom-0.5
@@ -56,8 +56,6 @@ after:left-0
 after:pointer-events-none
 after:transition-all
 after:w-0
-
-group-hover:text-slate-50
 `;
 
 export const PathStyles = oneLine`
@@ -72,7 +70,7 @@ origin-center
 path
 scale-50
 stroke-[6]
-stroke-slate-100
+stroke-slate-200
 `;
 
 export const VectorStyles = oneLine`

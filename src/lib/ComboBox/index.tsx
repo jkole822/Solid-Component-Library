@@ -1,5 +1,6 @@
 // Packages
 import { Combobox } from "@kobalte/core/combobox";
+import { createSignal } from "solid-js";
 
 // Styles
 import {
@@ -7,7 +8,6 @@ import {
   ListItemStyles,
   ListItemValueStyles,
   ListStyles,
-  NoResultsStyles,
   ScrollContainerStyles,
   TriggerStyles,
   VectorContainerStyles,
@@ -17,7 +17,6 @@ import { ContainerStyles, InputStyles, LabelStyles } from "../Input/styles";
 // Types
 import { InputTypeEnum } from "../Input/types";
 import type { Props } from "./types";
-import { createSignal } from "solid-js";
 
 export default function ComboBox({
   className = "",
@@ -26,6 +25,7 @@ export default function ComboBox({
   inputClass = "",
   name,
   onChange,
+  onClear,
   options,
   placeholder,
   required,
@@ -33,6 +33,14 @@ export default function ComboBox({
   type = InputTypeEnum.text,
 }: Props) {
   const [inputValue, setInputValue] = createSignal("");
+  const [receivedFocus, setReceivedFocus] = createSignal(false);
+
+  const handleInput = ({
+    target: { value },
+  }: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement }) => {
+    setInputValue(value);
+    if (!value) onClear();
+  };
 
   return (
     <Combobox
@@ -58,11 +66,12 @@ export default function ComboBox({
         aria-label={name}
       >
         <Combobox.Input
-          class={`${inputClass} ${InputStyles({ hasValue: !!inputValue() || !!value() })}`}
+          class={`${inputClass} ${InputStyles({ hasValue: !!inputValue() || !!value(), receivedFocus: receivedFocus() })}`}
           id={id}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={handleInput}
+          onFocus={() => setReceivedFocus(true)}
           type={type}
-          value={value()}
+          value={value() ?? ""}
         />
         <label class={LabelStyles} for={id}>
           {name}

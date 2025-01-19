@@ -29,7 +29,7 @@ relative
 select-none
 slider-root
 touch-none
-w-52
+w-full
 `;
 
 export const ThumbStyles = oneLine`

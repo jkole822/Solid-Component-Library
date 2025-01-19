@@ -1,9 +1,9 @@
 import { oneLine } from "common-tags";
 
 export const CheckContainerStyles = ({
-	isSelected
+  isSelected,
 }: {
-	isSelected: boolean;
+  isSelected: boolean;
 }) => oneLine`
 ${isSelected ? "block" : "hidden"}
 
@@ -95,6 +95,7 @@ rounded-md
 select-trigger
 text-slate-200
 transition-shadow
+w-full
 
 disabled:cursor-not-allowed
 disabled:ring-slate-600
@@ -105,20 +106,26 @@ disabled:text-slate-600
 focus:ring-blue-500
 
 hover:ring-blue-500
+
+[&_>_span[data-placeholder-shown]]:text-slate-500
 `;
 
 export const VectorContainerStyles = ({
-	isOpen
+  isOpen,
 }: {
-	isOpen: boolean;
+  isOpen: boolean;
 }) => oneLine`
-${isOpen ? `
+${
+  isOpen
+    ? `
 rotate-0
 text-blue-500
-` : `
+`
+    : `
 rotate-180
 text-slate-200
-`}
+`
+}
 
 -translate-y-1/2
 absolute

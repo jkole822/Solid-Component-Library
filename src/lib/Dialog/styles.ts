@@ -7,8 +7,8 @@ flex-col
 gap-2.5
 justify-end
 mt-8
-sm:flex-row
-sm:gap-4
+xs:flex-row
+xs:gap-4
 `;
 
 export const CancelButtonStyles = oneLine`

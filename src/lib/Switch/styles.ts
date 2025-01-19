@@ -1,7 +1,7 @@
 import { oneLine } from "common-tags";
 
 export const ContainerStyles = oneLine`
-gap-10
+gap-8
 flex
 items-center
 switch-container
@@ -18,7 +18,7 @@ w-fit
 [&[data-disabled]]:cursor-not-allowed
 
 [&[data-disabled]_.switch-label]:cursor-not-allowed
-[&[data-disabled]_.switch-label]:text-slate-400
+[&[data-disabled]_.switch-label]:text-slate-600
 
 [&[data-disabled]_.switch-control]:bg-slate-600
 
@@ -72,10 +72,9 @@ switch-input
 export const LabelStyles = oneLine`
 cursor-pointer
 duration-300
-ml-10
 relative
 switch-label
-text-slate-300
+text-slate-200
 transition-all
 
 after:-bottom-0.5
@@ -88,8 +87,6 @@ after:left-0
 after:pointer-events-none
 after:transition-all
 after:w-0
-
-group-hover:text-slate-50
 `;
 
 export const SwitchContainerStyles = oneLine`

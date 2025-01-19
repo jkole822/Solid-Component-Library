@@ -53,13 +53,6 @@ overflow-hidden
 z-10
 `;
 
-export const NoResultsStyles = oneLine`
-combo-box-no-results
-opacity-75
-pl-4
-text-sm
-`;
-
 export const ScrollContainerStyles = oneLine`
 bg-zinc-900
 combo-box-scroll-container
@@ -85,7 +78,7 @@ right-0
 rounded-br-lg
 rounded-tr-lg
 size-14
-text-slate-600
+text-slate-800
 top-0
 transition-all
 

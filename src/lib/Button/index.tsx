@@ -1,6 +1,6 @@
 // Packages
 import { Button as KobalteButton } from "@kobalte/core/button";
-import { createEffect, For, Show } from "solid-js";
+import { For, Show } from "solid-js";
 
 // Components
 import StarVector from "./starVector";
@@ -69,11 +69,7 @@ export default function Button({
   });
 
   return (
-    <KobalteButton
-      {...props()}
-      as={href ? "a" : "button"}
-      class={`${className} ${variantStyles}`}
-    >
+    <KobalteButton {...props()} as={href ? "a" : "button"}>
       {children}
       <Show when={variant === ButtonVariantsEnum.fill}>
         <For each={[...Array(6).keys()]}>

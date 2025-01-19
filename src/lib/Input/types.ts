@@ -39,9 +39,10 @@ export interface Props {
   id: string;
   inputClass?: string;
   name: string;
-  onChange: Setter<string>;
+  onChange: Setter<string | null>;
+  onClear?: () => void;
   placeholder?: string;
   required?: boolean;
   type?: InputType;
-  value: Accessor<string>;
+  value: Accessor<string | null>;
 }

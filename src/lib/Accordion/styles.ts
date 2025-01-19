@@ -31,7 +31,6 @@ hover:bg-zinc-600
 export const ContainerStyles = oneLine`
 accordion-container
 bg-zinc-700
-mx-auto
 rounded-lg
 `;
 

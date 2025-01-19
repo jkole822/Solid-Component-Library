@@ -1,6 +1,7 @@
 import { oneLine } from "common-tags";
 
 const SharedStyles = oneLine`
+block
 border-[3px]
 capitalize
 duration-300
@@ -83,11 +84,11 @@ export const FillButtonStyles = oneLine`
 ${SharedStyles}
 ${SharedStarStyles}
 
-bg-blue-600
-border-blue-600
+bg-blue-500
+border-blue-500
 outline-none
 shadow-[0_0_0_rgb(var(--color-blue-500))]
-text-slate-100
+text-slate-50
 
 focus:bg-transparent
 focus:text-blue-500

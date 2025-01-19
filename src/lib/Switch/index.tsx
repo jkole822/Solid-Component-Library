@@ -28,13 +28,13 @@ export default function Switch({
       disabled={disabled}
       onChange={onChange}
     >
-      <KobalteSwitch.Label class={LabelStyles}>{label}</KobalteSwitch.Label>
       <div class={SwitchContainerStyles}>
         <KobalteSwitch.Input class={InputStyles} />
         <KobalteSwitch.Control class={ControlStyles}>
           <KobalteSwitch.Thumb class={ThumbStyles} />
         </KobalteSwitch.Control>
       </div>
+      <KobalteSwitch.Label class={LabelStyles}>{label}</KobalteSwitch.Label>
     </KobalteSwitch>
   );
 }
