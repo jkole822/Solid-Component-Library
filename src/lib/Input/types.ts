@@ -39,10 +39,12 @@ export interface Props {
   id: string;
   inputClass?: string;
   name: string;
-  onChange: Setter<string | null>;
+  max?: number;
+  min?: number;
+  onChange: Setter<number | string | null>;
   onClear?: () => void;
   placeholder?: string;
   required?: boolean;
   type?: InputType;
-  value: Accessor<string | null>;
+  value: Accessor<number | string | null>;
 }
