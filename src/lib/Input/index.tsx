@@ -4,9 +4,9 @@ import { createSignal } from "solid-js";
 // Styles
 import { ContainerStyles, InputStyles, LabelStyles } from "./styles";
 
+import type { Props } from "./types";
 // Types
 import { InputTypeEnum } from "./types";
-import type { Props } from "./types";
 
 export default function Input({
   className = "",
@@ -14,8 +14,8 @@ export default function Input({
   inputClass = "",
   name,
   onChange,
-  value,
   type = InputTypeEnum.text,
+  value,
   ...rest
 }: Props) {
   const [receivedFocus, setReceivedFocus] = createSignal(false);
@@ -24,13 +24,13 @@ export default function Input({
     <div class={`${className} ${ContainerStyles}`}>
       <input
         {...rest}
-        class={`${inputClass} ${InputStyles({ hasValue: !!String(value()), receivedFocus: receivedFocus() })}`}
+        class={`${inputClass} ${InputStyles({ hasValue: !!value() || value() === 0, receivedFocus: receivedFocus() })}`}
         id={id}
         name={name}
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setReceivedFocus(true)}
         type={type}
-        value={value() ?? ""}
+        value={value() ?? undefined}
       />
       <label class={LabelStyles} for={id}>
         {name}
