@@ -15,7 +15,7 @@ export default function ComboBoxStory({
   onChange: __,
   ...rest
 }: Props) {
-  const [value, setValue] = createSignal<string | null>(null);
+  const [value, setValue] = createSignal<number | string | null>(null);
 
   const handleClear = () => {
     setValue(null);
