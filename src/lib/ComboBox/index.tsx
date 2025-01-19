@@ -63,11 +63,13 @@ export default function ComboBox({
     >
       <Combobox.Control
         class={`${className} ${ContainerStyles}`}
-        aria-label={name}
       >
         <Combobox.Input
+          // TODO: Only show valid state when a value is selected, and not just when there is a value for the input.
+          // TODO: On blur, if a value is not selected, clear the input.
           class={`${inputClass} ${InputStyles({ hasValue: !!inputValue() || !!value(), receivedFocus: receivedFocus() })}`}
           id={id}
+          name={name}
           onChange={handleInput}
           onFocus={() => setReceivedFocus(true)}
           type={type}
