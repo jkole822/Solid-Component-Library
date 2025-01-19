@@ -23,7 +23,7 @@ pl-7
 pr-4
 py-2
 relative
-rounded-md
+rounded-lg
 scroll-my-2
 text-sm
 transition-all
@@ -54,6 +54,7 @@ z-10
 `;
 
 export const ScrollContainerStyles = oneLine`
+animate-selectFadeOut
 bg-zinc-900
 combo-box-scroll-container
 flex
@@ -64,8 +65,10 @@ overflow-y-auto
 px-2
 py-2
 rounded-lg
-shadow-md
+shadow-lg
 text-slate-300
+
+data-[expanded]:animate-selectFadeIn
 `;
 
 export const TriggerStyles = oneLine`
