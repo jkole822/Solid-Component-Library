@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
 import Input from "./story";
-import { AutoCompleteEnum } from "../Input/types";
+import { AutoCompleteEnum, InputTypeEnum } from "../Input/types";
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
@@ -23,7 +23,21 @@ const meta = {
       ],
     },
     disabled: { control: "boolean" },
+    max: { control: "number" },
+    min: { control: "number" },
     required: { control: "boolean" },
+    type: {
+      control: {
+        type: "select",
+      },
+      options: [
+        InputTypeEnum.date,
+        InputTypeEnum.email,
+        InputTypeEnum.number,
+        InputTypeEnum.password,
+        InputTypeEnum.text,
+      ],
+    },
   },
 } satisfies Meta<typeof Input>;
 
@@ -33,19 +47,19 @@ type Story = StoryObj<typeof meta>;
 const args = {
   autoComplete: AutoCompleteEnum.off,
   id: uuid(),
-  label: faker.lorem.word(),
   name: faker.lorem.word(),
   placeholder: faker.lorem.words(2),
   required: true,
-}
+  type: InputTypeEnum.text,
+};
 
 export const Basic: Story = {
-  args
+  args,
 };
 
 export const WithClass: Story = {
   args: {
     ...args,
-    className: "sm:w-72"
-  }
-}
+    className: "sm:w-72",
+  },
+};
