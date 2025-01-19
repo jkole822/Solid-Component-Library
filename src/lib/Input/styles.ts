@@ -69,7 +69,7 @@ ${
     ? `
 invalid:!ring-red-400
 
-[&:invalid_~_label]:text-red-500
+[&:invalid_~_label]:text-red-400
 
 [&:invalid_~_.combo-box-trigger]:bg-red-400
 [&:invalid_~_.combo-box-trigger]:text-slate-50
