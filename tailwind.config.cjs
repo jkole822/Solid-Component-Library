@@ -97,26 +97,6 @@ export default {
           transform: "translateX(calc(100% + var(--viewport-padding)))",
         },
       },
-      tooltipScaleIn: {
-        from: {
-          transform: "scale(0)",
-          opacity: 0,
-        },
-        to: {
-          transform: "scale(1)",
-          opacity: 1,
-        },
-      },
-      tooltipScaleOut: {
-        from: {
-          transform: "scale(1)",
-          opacity: 1,
-        },
-        to: {
-          transform: "scale(0)",
-          opacity: 0,
-        },
-      },
     },
     animation: {
       accordionSlideUp: "accordionSlideUp 300ms cubic-bezier(0.76, 0, 0.24, 1)",
@@ -138,12 +118,6 @@ export default {
       toastFadeOut: "fadeOut 100ms ease-in",
       toastSlideIn: "toastSlideIn 150ms cubic-bezier(0.16, 1, 0.3, 1)",
       toastSwipeOut: "toastSwipeOut 100ms ease-out",
-
-      tooltipFadeIn: "fadeIn 500ms ease-in-out",
-      tooltipFadeOut: "fadeOut 500ms ease-in-out",
-
-      tooltipScaleIn: "tooltipScaleIn 500ms ease-out forwards",
-      tooltipScaleOut: "tooltipScaleOut 500ms ease-out forwards",
     },
   },
   plugins: [],
