@@ -37,5 +37,8 @@
     "common-tags": "^1.8.2",
     "solid-js": "^1.9.4",
     "uuid": "^11.0.5"
+  },
+  "engines": {
+    "node": 18
   }
 }
