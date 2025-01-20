@@ -35,6 +35,7 @@ export interface Props {
   href?: string;
   id?: number | string;
   onClick?: () => void;
+  showBottomGlow?: boolean;
   tabIndex?: number;
   target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
   type?: "button" | "submit" | "reset";

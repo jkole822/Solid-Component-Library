@@ -29,16 +29,17 @@ export default function Button({
   disabledAccessor,
   href,
   id,
+  showBottomGlow = false,
   target = "_self",
   type = "button",
   variant,
   ...rest
 }: Props) {
-  const variantStyles =
+  const variantStyles = () =>
     variant === ButtonVariantsEnum.fill
       ? FillButtonStyles
       : variant === ButtonVariantsEnum.outline
-        ? OutlineButtonStyles
+        ? OutlineButtonStyles({ showBottomGlow })
         : variant === ButtonVariantsEnum.lineOne
           ? LineOneButtonStyles
           : variant === ButtonVariantsEnum.lineTwo
@@ -64,7 +65,7 @@ export default function Button({
     ...(!!id ? { id: String(id) } : {}),
     "aria-hidden": ariaHidden,
     "aria-label": ariaLabel,
-    class: `${className} ${variantStyles}`,
+    class: `${className} ${variantStyles()}`,
     disabled: disabledAccessor !== undefined ? disabledAccessor() : disabled,
   });
 

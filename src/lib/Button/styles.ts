@@ -161,7 +161,11 @@ hover:shadow-[0_0_25px_rgb(var(--color-blue-500))]
 [&_.fil0]:fill-slate-100
 `;
 
-export const OutlineButtonStyles = oneLine`
+export const OutlineButtonStyles = ({
+  showBottomGlow,
+}: {
+  showBottomGlow: boolean;
+}) => oneLine`
 ${SharedStyles}
 
 [text-shadow:_0_0_.5em_rgb(var(--color-blue-300))]
@@ -181,6 +185,9 @@ hover:bg-blue-300
 hover:shadow-[0_0_1em_.25em_rgb(var(--color-blue-300)),_0_0_4em_2em_rgb(var(--color-blue-500)),_inset_0_0_.75em_.25em_rgb(var(--color-blue-300))]
 hover:text-blue-950
 
+${
+  showBottomGlow
+    ? `
 after:absolute
 after:bg-blue-500
 after:blur-lg
@@ -191,6 +198,9 @@ after:pointer-events-none
 after:top-[85%]
 after:[transform:perspective(1.5em)_rotateX(45deg)_scale(1,.55)]
 after:w-full
+`
+    : ``
+}
 
 data-[disabled]:after:content-none
 `;

@@ -52,6 +52,15 @@ export const Outline: Story = {
   },
 };
 
+export const OutlineWithGlow: Story = {
+  args: {
+    children: ButtonContent,
+    className: "mx-auto",
+    showBottomGlow: true,
+    variant: ButtonVariantsEnum.outline,
+  },
+};
+
 export const LineOne: Story = {
   args: {
     children: ButtonContent,
