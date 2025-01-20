@@ -9,7 +9,7 @@ tooltip-text
 export const TooltipStyles = oneLine`
 bg-blue-500
 max-w-40
-rounded-md
+rounded-lg
 text-slate-50
 tooltip-tooltip
 z-10
