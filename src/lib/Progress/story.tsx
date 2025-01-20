@@ -1,5 +1,5 @@
 // Packages
-import { createSignal } from "solid-js";
+import { createSignal, onCleanup, onMount } from "solid-js";
 
 // Components
 import Progress from ".";
@@ -7,17 +7,21 @@ import Progress from ".";
 // Types
 import type { Props } from "./types";
 
-export default function ProgressStory({
-  value: _,
-  ...rest
-}: Props) {
+export default function ProgressStory({ value: _, ...rest }: Props) {
   const [value, setValue] = createSignal(0);
 
-  const progress = (ms: number) =>
-      new Promise((resolve) => setTimeout(resolve, ms));
-  progress(1000).then(() => {
-    setValue(100);
+  let frame: number;
+  onMount(() => {
+    const updatePercentage = () => {
+      if (value() === 100) return;
+      setValue(value() + 1);
+      frame = requestAnimationFrame(updatePercentage);
+    };
+
+    frame = requestAnimationFrame(updatePercentage);
   });
+
+  onCleanup(() => cancelAnimationFrame(frame));
 
   return <Progress {...rest} value={value} />;
 }
