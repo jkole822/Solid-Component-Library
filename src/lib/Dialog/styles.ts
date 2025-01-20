@@ -21,7 +21,7 @@ items-center
 justify-center
 leading-none
 px-4
-rounded-md
+rounded-lg
 text-slate-700
 tracking-wide
 uppercase
@@ -112,7 +112,7 @@ items-center
 justify-center
 leading-none
 px-4
-rounded-md
+rounded-lg
 text-slate-100
 tracking-wide
 uppercase
