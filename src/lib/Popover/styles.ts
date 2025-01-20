@@ -21,8 +21,6 @@ tracking-wide
 `
 }
 
-[&_.trigger-content]:z-10
-
 bg-transparent
 duration-300
 ease-in-out
@@ -59,6 +57,7 @@ before:h-0
 before:left-0
 before:transition-all
 before:w-full
+before:-z-10
 
 focus-visible:before:h-full
 

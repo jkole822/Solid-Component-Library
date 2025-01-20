@@ -31,7 +31,7 @@ export default function Popover({
         class={`${className} ${ButtonStyles({ isIconButton })}`}
         disabled={disabled}
       >
-        <div class="trigger-content">{buttonContent}</div>
+        {buttonContent}
       </KobaltePopover.Trigger>
       <KobaltePopover.Portal>
         <KobaltePopover.Content class={ContentStyles}>
