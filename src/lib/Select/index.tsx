@@ -6,6 +6,7 @@ import { Select as KobalteSelect } from "@kobalte/core/select";
 import {
   CheckContainerStyles,
   ContainerStyles,
+  ContentStyles,
   ItemStyles,
   LabelStyles,
   MenuStyles,
@@ -54,7 +55,7 @@ export default function Select({
         </KobalteSelect.Item>
       )}
     >
-      <div class={triggerClass}>
+      <div class={`${triggerClass} ${ContainerStyles}`}>
         <Show when={name}>
           <label class={LabelStyles} for={id}>
             {name}
@@ -75,7 +76,7 @@ export default function Select({
         </KobalteSelect.Trigger>
       </div>
       <KobalteSelect.Portal>
-        <KobalteSelect.Content class={ContainerStyles}>
+        <KobalteSelect.Content class={ContentStyles}>
           <KobalteSelect.Listbox class={MenuStyles} />
         </KobalteSelect.Content>
       </KobalteSelect.Portal>

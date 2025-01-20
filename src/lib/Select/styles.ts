@@ -20,12 +20,16 @@ group-data-[highlighted]:text-blue-800
 `;
 
 export const ContainerStyles = oneLine`
-animate-selectFadeOut
 flex
 flex-col
 gap-1
-origin-[var(--kb-select-content-transform-origin)]
 select-container
+`;
+
+export const ContentStyles = oneLine`
+animate-selectFadeOut
+origin-[var(--kb-select-content-transform-origin)]
+select-content
 
 data-[expanded]:animate-selectFadeIn
 `;
@@ -81,13 +85,10 @@ focus:!ring-0
 export const TriggerStyles = oneLine`
 bg-transparent
 flex
-h-10
 items-center
 justify-between
-min-w-56
 outline-none
-px-5
-py-7
+p-4
 relative
 ring-2
 ring-slate-200
