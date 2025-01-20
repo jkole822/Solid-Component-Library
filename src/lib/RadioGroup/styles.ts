@@ -18,9 +18,16 @@ w-fit
 
 [&[aria-orientation="horizontal"]_.radio-group-glider]:[background:linear-gradient(90deg,_rgb(var(--color-zinc-900))_0%,_rgb(var(--color-blue-500))_50%,_rgb(var(--color-zinc-900))_100%)]
 
+[&[aria-orientation="horizontal"]_.radio-group-glider:after]:[background:linear-gradient(180deg,_rgba(var(--color-blue-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
 [&[aria-orientation="horizontal"]_.radio-group-glider:after]:h-16
 [&[aria-orientation="horizontal"]_.radio-group-glider:after]:w-full
-[&[aria-orientation="horizontal"]_.radio-group-glider:after]:[background:linear-gradient(180deg,_rgba(var(--color-blue-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
+
+[&[aria-orientation="horizontal"]_.radio-group-glider:before]:-translate-x-1/2
+[&[aria-orientation="horizontal"]_.radio-group-glider:before]:-translate-y-auto
+[&[aria-orientation="horizontal"]_.radio-group-glider:before]:h-2
+[&[aria-orientation="horizontal"]_.radio-group-glider:before]:left-1/2
+[&[aria-orientation="horizontal"]_.radio-group-glider:before]:top-1
+[&[aria-orientation="horizontal"]_.radio-group-glider:before]:w-full
 
 [&[aria-orientation="horizontal"]_.radio-group-item]:text-center
 
@@ -56,9 +63,9 @@ before:-translate-y-1/2
 before:absolute
 before:bg-blue-500
 before:blur-[10px]
-before:h-[60%]
+before:h-full
 before:top-1/2
-before:w-[300%]
+before:w-2
 `;
 
 export const InputStyles = oneLine`
