@@ -7,12 +7,29 @@ gap-2
 radio-group-container
 w-fit
 
+[&[aria-orientation="horizontal"]_.radio-group-glider-container]:[background:linear-gradient(90deg,_rgb(var(--color-zinc-900))_0%,_rgb(var(--color-zinc-700))_50%,_rgb(var(--color-zinc-900))_100%)]
+[&[aria-orientation="horizontal"]_.radio-group-glider-container]:h-px
+[&[aria-orientation="horizontal"]_.radio-group-glider-container]:w-full
+
+[&[aria-orientation="horizontal"]_.radio-group-option-container]:pl-0
+[&[aria-orientation="horizontal"]_.radio-group-option-container]:pt-1
+
+[&[aria-orientation="horizontal"]_.radio-group-option-container_[role="presentation"]]:grid
+
+[&[aria-orientation="horizontal"]_.radio-group-glider]:[background:linear-gradient(90deg,_rgb(var(--color-zinc-900))_0%,_rgb(var(--color-blue-500))_50%,_rgb(var(--color-zinc-900))_100%)]
+
+[&[aria-orientation="horizontal"]_.radio-group-glider:after]:h-16
+[&[aria-orientation="horizontal"]_.radio-group-glider:after]:w-full
+[&[aria-orientation="horizontal"]_.radio-group-glider:after]:[background:linear-gradient(180deg,_rgba(var(--color-blue-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
+
+[&[aria-orientation="horizontal"]_.radio-group-item]:text-center
+
 [&:focus-within_.radio-group-label]:text-blue-300
 `;
 
 export const GliderContainerStyles = oneLine`
 absolute
-[background:linear-gradient(0deg,_rgba(0,0,0,0)_0%,_rgb(27,27,27)_50%,_rgba(0,0,0,0)_100%)]
+[background:linear-gradient(0deg,_rgb(var(--color-zinc-900))_0%,_rgb(var(--color-zinc-700))_50%,_rgb(var(--color-zinc-900))_100%)]
 bottom-0
 left-0
 radio-group-glider-container
@@ -58,10 +75,10 @@ p-3
 `;
 
 export const ItemLabelStyles = oneLine`
+block
 cursor-pointer
 duration-300
 ease-in-out
-p-3
 radio-group-item-label
 relative
 text-slate-400

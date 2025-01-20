@@ -16,12 +16,14 @@ import {
 
 // Types
 import type { Props } from "./types";
+import { RadioGroupOrientationEnum } from "./types";
 
 export default function RadioGroup({
   className = "",
   items,
   label,
   onChange,
+  orientation = RadioGroupOrientationEnum.Vertical,
   value,
 }: Props) {
   const [valueIndex, setValueIndex] = createSignal<number | undefined>();
@@ -34,13 +36,24 @@ export default function RadioGroup({
     <KobalteRadioGroup
       class={`${className} ${ContainerStyles}`}
       onChange={onChange}
+      orientation={orientation}
       value={value()}
     >
       <KobalteRadioGroup.Label class={LabelStyles}>
         {label}
       </KobalteRadioGroup.Label>
       <div class={OptionContainerStyles}>
-        <div role="presentation">
+        <div
+          role="presentation"
+          style={
+            RadioGroupOrientationEnum.Horizontal
+              ? {
+                  height: "100%",
+                  "grid-template-columns": items.map((_) => "1fr").join(" "),
+                }
+              : {}
+          }
+        >
           <For each={items}>
             {(item) => (
               <KobalteRadioGroup.Item value={item} class={ItemStyles}>
@@ -60,11 +73,18 @@ export default function RadioGroup({
             <div
               class={GliderStyles}
               style={{
-                height: `${100 / items.length}%`,
+                height:
+                  orientation === RadioGroupOrientationEnum.Vertical
+                    ? `${100 / items.length}%`
+                    : "100%",
                 transform:
                   valueIndex() || valueIndex() === 0
-                    ? `translateY(${valueIndex()! * 100}%)`
+                    ? `translate${orientation === RadioGroupOrientationEnum.Horizontal ? "X" : "Y"}(${valueIndex()! * 100}%)`
                     : "",
+                width:
+                  orientation === RadioGroupOrientationEnum.Horizontal
+                    ? `${100 / items.length}%`
+                    : "100%",
               }}
             ></div>
           </Show>
