@@ -28,8 +28,6 @@ scroll-my-2
 text-sm
 transition-all
 
-hover:bg-blue-100
-
 data-[disabled]:cursor-not-allowed
 data-[disabled]:opacity-50
 
