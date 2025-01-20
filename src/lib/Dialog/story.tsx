@@ -19,9 +19,9 @@ export default function DialogStory({
   onOpenChange: __,
   ...rest
 }: Props) {
-  const [name, setName] = createSignal<string | null>("");
+  const [name, setName] = createSignal<number | string | null>("");
   const [open, setOpen] = createSignal(false);
-  const [username, setUsername] = createSignal<string | null>("");
+  const [username, setUsername] = createSignal<number | string | null>("");
 
   const handleSubmit = () => {
     console.log("Dialog Submit");
