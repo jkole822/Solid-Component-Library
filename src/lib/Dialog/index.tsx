@@ -19,9 +19,9 @@ import type { Props } from "./types";
 
 export default function Dialog({
   cancelButtonText,
+  children,
   className = "",
   description,
-  dialogContent,
   id,
   open,
   onOpenChange,
@@ -50,7 +50,7 @@ export default function Dialog({
             <KobalteDialog.Description class={DescriptionStyles}>
               {description}
             </KobalteDialog.Description>
-            {dialogContent}
+            {children}
             <div class={ButtonContainerStyles}>
               <Show when={cancelButtonText}>
                 <button class={CancelButtonStyles} onclick={handleClose}>
