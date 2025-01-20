@@ -12,7 +12,7 @@ pagination-button
 px-3
 ring-2
 ring-zinc-600
-rounded-md
+rounded-lg
 shadow-sm
 text-slate-200
 text-sm
