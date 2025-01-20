@@ -1,6 +1,6 @@
 // Packages
 import { Combobox } from "@kobalte/core/combobox";
-import { createSignal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 
 // Styles
 import {
@@ -25,22 +25,22 @@ export default function ComboBox({
   inputClass = "",
   name,
   onChange,
-  onClear,
   options,
   placeholder,
   required,
   value,
   type = InputTypeEnum.text,
 }: Props) {
-  const [inputValue, setInputValue] = createSignal("");
+  const [inputValue, setInputValue] = createSignal<number | string | null>("");
   const [receivedFocus, setReceivedFocus] = createSignal(false);
 
-  const handleInput = ({
-    target: { value },
-  }: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement }) => {
-    setInputValue(value);
-    if (!value) onClear();
+  const handleBlur = () => {
+    setInputValue(value());
   };
+
+  createEffect(() => {
+    setInputValue(value());
+  });
 
   return (
     <Combobox
@@ -61,19 +61,16 @@ export default function ComboBox({
         </Combobox.Item>
       )}
     >
-      <Combobox.Control
-        class={`${className} ${ContainerStyles}`}
-      >
+      <Combobox.Control class={`${className} ${ContainerStyles}`}>
         <Combobox.Input
-          // TODO: Only show valid state when a value is selected, and not just when there is a value for the input.
-          // TODO: On blur, if a value is not selected, clear the input.
           class={`${inputClass} ${InputStyles({ hasValue: !!inputValue() || !!value(), receivedFocus: receivedFocus() })}`}
           id={id}
           name={name}
-          onChange={handleInput}
+          onChange={(e) => setInputValue(e.target.value)}
           onFocus={() => setReceivedFocus(true)}
+          onBlur={handleBlur}
           type={type}
-          value={value() ?? ""}
+          value={inputValue() ?? undefined}
         />
         <label class={LabelStyles} for={id}>
           {name}
