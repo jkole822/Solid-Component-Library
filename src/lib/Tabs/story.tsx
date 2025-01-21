@@ -8,6 +8,9 @@ import Button from "../Button";
 import Input from "../Input";
 import Tabs from ".";
 
+// Styles
+import { PararaphStyles, SubHeadingStyles } from "../../styles";
+
 // Types
 import type { Props } from "./types";
 import type { Accessor, Setter } from "solid-js";
@@ -47,26 +50,34 @@ export default function TabsStory({ items: _, ...rest }: Props) {
   );
 
   return (
-    <Tabs
-      {...rest}
-      defaultValue={defaultTabId}
-      items={[
-        {
-          children: <TabContent onChange={setValueOne} value={valueOne} />,
-          id: uuid(),
-          label: faker.lorem.word(),
-        },
-        {
-          children: <TabContent onChange={setValueTwo} value={valueTwo} />,
-          id: defaultTabId,
-          label: faker.lorem.word(),
-        },
-        {
-          children: <TabContent onChange={setValueThree} value={valueThree} />,
-          id: uuid(),
-          label: faker.lorem.word(),
-        },
-      ]}
-    />
+    <>
+      <Tabs
+        {...rest}
+        defaultValue={defaultTabId}
+        items={[
+          {
+            children: <TabContent onChange={setValueOne} value={valueOne} />,
+            id: uuid(),
+            label: faker.lorem.word(),
+          },
+          {
+            children: <TabContent onChange={setValueTwo} value={valueTwo} />,
+            id: defaultTabId,
+            label: faker.lorem.word(),
+          },
+          {
+            children: (
+              <TabContent onChange={setValueThree} value={valueThree} />
+            ),
+            id: uuid(),
+            label: faker.lorem.word(),
+          },
+        ]}
+      />
+      <p class={SubHeadingStyles}>Binding Check</p>
+      <p class={PararaphStyles}>Value One: {valueOne()}</p>
+      <p class={PararaphStyles}>Value Two: {valueTwo()}</p>
+      <p class={PararaphStyles}>Value Three: {valueThree()}</p>
+    </>
   );
 }
