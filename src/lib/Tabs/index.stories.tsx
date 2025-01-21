@@ -15,24 +15,30 @@ type Story = StoryObj<typeof meta>;
 
 const args = {
   ariaLabel: faker.lorem.word(),
-  className: "mx-auto overflow-hidden rounded-md sm:w-[500px]",
 };
 
-export const Horizontal: Story = {};
+export const Horizontal: Story = {
+  args,
+};
 
 export const Vertical: Story = {
   args: {
+    ...args,
     orientation: TabsOrientationEnum.Vertical,
   },
 };
 
 export const HorizontalWithClass: Story = {
-  args,
+  args: {
+    ...args,
+    className: "mx-auto overflow-hidden rounded-md sm:w-[500px]",
+  },
 };
 
 export const VerticalWithClass: Story = {
   args: {
     ...args,
+    className: "mx-auto overflow-hidden rounded-md sm:w-[500px]",
     orientation: TabsOrientationEnum.Vertical,
   },
 };
