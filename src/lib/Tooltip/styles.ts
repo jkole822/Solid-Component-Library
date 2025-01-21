@@ -7,10 +7,10 @@ tooltip-text
 `;
 
 export const TooltipStyles = oneLine`
-bg-blue-500
+bg-primary-500
 max-w-40
 rounded-lg
-text-slate-50
+text-neutral-primary-50
 tooltip-tooltip
 z-10
 md:max-w-60

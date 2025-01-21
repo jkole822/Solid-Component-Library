@@ -11,12 +11,12 @@ absolute
 check
 select-check-container
 left-2
-text-blue-600
+text-primary-600
 translate-y-[calc(-50%+1px)]
 top-1/2
 z-10
 
-group-data-[highlighted]:text-blue-800
+group-data-[highlighted]:text-primary-800
 `;
 
 export const ContainerStyles = oneLine`
@@ -44,30 +44,30 @@ py-1
 relative
 rounded-lg
 select-item
-text-slate-300
+text-neutral-primary-300
               
-focus:text-blue-700
+focus:text-primary-700
 focus:z-10
 
-hover:bg-blue-100
+hover:bg-primary-100
 
 data-[disabled]:opacity-50
 
-data-[highlighted]:bg-blue-200
-data-[highlighted]:text-blue-800
+data-[highlighted]:bg-primary-200
+data-[highlighted]:text-primary-800
 `;
 
 export const LabelStyles = oneLine`
 font-bold
 select-label
-text-blue-400
+text-primary-400
 text-sm
 tracking-wide
 uppercase
 `;
 
 export const MenuStyles = oneLine`
-bg-zinc-900
+bg-neutral-secondary-900
 flex
 flex-col
 max-h-72
@@ -91,24 +91,24 @@ outline-none
 p-4
 relative
 ring-2
-ring-slate-200
+ring-neutral-primary-200
 rounded-lg
 select-trigger
-text-slate-200
+text-neutral-primary-200
 transition-shadow
 w-full
 
 disabled:cursor-not-allowed
-disabled:ring-slate-600
-disabled:text-slate-600
+disabled:ring-neutral-primary-600
+disabled:text-neutral-primary-600
 
-[&:disabled_.select-vector-container]:text-slate-600
+[&:disabled_.select-vector-container]:text-neutral-primary-600
 
-focus:ring-blue-500
+focus:ring-primary-500
 
-hover:ring-blue-500
+hover:ring-primary-500
 
-[&_>_span[data-placeholder-shown]]:text-slate-500
+[&_>_span[data-placeholder-shown]]:text-neutral-primary-500
 `;
 
 export const VectorContainerStyles = ({
@@ -120,11 +120,11 @@ ${
   isOpen
     ? `
 rotate-0
-text-blue-500
+text-primary-500
 `
     : `
 rotate-180
-text-slate-200
+text-neutral-primary-200
 `
 }
 

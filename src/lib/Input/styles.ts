@@ -20,46 +20,46 @@ input-input
 outline-none
 p-4
 ring-[1.5px]
-ring-slate-200
+ring-neutral-primary-200
 rounded-lg
-text-slate-200
+text-neutral-primary-200
 transition-all
 w-full
 
-disabled:ring-slate-600
+disabled:ring-neutral-primary-600
 disabled:cursor-not-allowed
 
-[&:disabled_~_label]:text-slate-600
+[&:disabled_~_label]:text-neutral-primary-600
 
-focus:ring-blue-500
+focus:ring-primary-500
 
-[&:focus_~_label]:bg-zinc-800
-[&:focus_~_label]:px-0.5
-[&:focus_~_label]:scale-[0.8]
-[&:focus_~_label]:text-blue-500
 [&:focus_~_label]:-translate-y-[55%]
+[&:focus_~_label]:bg-neutral-secondary-800
+[&:focus_~_label]:px-1
+[&:focus_~_label]:scale-[0.8]
+[&:focus_~_label]:text-primary-500
 
-[&:focus_~_.combo-box-trigger]:bg-blue-500
-[&:focus_~_.combo-box-trigger]:text-slate-100
+[&:focus_~_.combo-box-trigger]:bg-primary-500
+[&:focus_~_.combo-box-trigger]:text-neutral-primary-100
 
-focus:placeholder:text-slate-500
+focus:placeholder:text-neutral-primary-500
 
 placeholder:text-transparent
 
 ${
   hasValue
     ? `
-[&_~_label]:bg-zinc-800
-[&_~_label]:px-0.5
-[&_~_label]:ring-blue-500
-[&_~_label]:scale-[0.8]
-[&_~_label]:text-blue-500
 [&_~_label]:-translate-y-[55%]
+[&_~_label]:bg-neutral-secondary-800
+[&_~_label]:px-1
+[&_~_label]:ring-primary-500
+[&_~_label]:scale-[0.8]
+[&_~_label]:text-primary-500
 
-valid:ring-blue-500
+valid:ring-primary-500
 
-[&:valid_~_.combo-box-trigger]:bg-blue-500
-[&:valid_~_.combo-box-trigger]:text-slate-50
+[&:valid_~_.combo-box-trigger]:bg-primary-500
+[&:valid_~_.combo-box-trigger]:text-neutral-primary-50
 `
     : ``
 }
@@ -72,7 +72,7 @@ invalid:!ring-red-400
 [&:invalid_~_label]:text-red-400
 
 [&:invalid_~_.combo-box-trigger]:bg-red-400
-[&:invalid_~_.combo-box-trigger]:text-slate-50
+[&:invalid_~_.combo-box-trigger]:text-neutral-primary-50
 
 [&:focus:invalid_~_label]:text-red-400
 `
@@ -87,7 +87,7 @@ ease-[cubic-bezier(0.4,0,0.2,1)]
 input-label
 left-4
 pointer-events-none
-text-slate-500
+text-neutral-primary-500
 translate-y-4
 transition-all
 `;

@@ -1,7 +1,7 @@
 import { oneLine } from "common-tags";
 
 export const ButtonStyles = oneLine`
-bg-zinc-700
+bg-neutral-secondary-700
 duration-200
 ease-in-out
 grid
@@ -11,25 +11,25 @@ outline-none
 pagination-button
 px-3
 ring-2
-ring-zinc-600
+ring-neutral-secondary-600
 rounded-lg
 shadow-sm
-text-slate-200
+text-neutral-primary-200
 text-sm
 transition-all
 
 disabled:cursor-not-allowed
 disabled:!opacity-25
 
-[&[aria-current="page"]]:bg-blue-500
-[&[aria-current="page"]]:text-slate-100
+[&[aria-current="page"]]:bg-primary-500
+[&[aria-current="page"]]:text-neutral-primary-100
 
-[&[aria-current="page"]:hover:not(.pagination-ellipsis)]:bg-blue-400
+[&[aria-current="page"]:hover:not(.pagination-ellipsis)]:bg-primary-400
 
 focus:ring-2
-focus:ring-blue-200
+focus:ring-primary-200
 
-[&:hover:not(.pagination-ellipsis)]:bg-zinc-600
+[&:hover:not(.pagination-ellipsis)]:bg-neutral-secondary-600
 `;
 
 export const ContainerStyles = oneLine`

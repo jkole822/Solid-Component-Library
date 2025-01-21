@@ -32,7 +32,7 @@ export default function Button({
   showBottomGlow = false,
   target = "_self",
   type = "button",
-  variant,
+  variant = ButtonVariantsEnum.fill,
   ...rest
 }: Props) {
   const variantStyles = () =>

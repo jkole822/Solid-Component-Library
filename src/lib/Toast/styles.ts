@@ -12,16 +12,16 @@ justify-center
 outline-none
 p-2
 right-2
-ring-blue-400
+ring-primary-400
 rounded-full
-text-blue-600
+text-primary-600
 top-2
 transition-all
 w-6
 
 focus:ring-2
 
-hover:bg-blue-100 
+hover:bg-primary-100 
 `;
 
 export const ContentStyles = oneLine`
@@ -32,7 +32,7 @@ w-full
 `;
 
 export const DescriptionStyles = oneLine`
-text-slate-400
+text-neutral-primary-400
 text-sm
 toast-description
 `;
@@ -56,7 +56,7 @@ z-100
 `;
 
 export const ProgressFillStyles = oneLine`
-bg-blue-500
+bg-primary-500
 duration-300
 h-full
 rounded-lg
@@ -66,7 +66,7 @@ w-[var(--kb-toast-progress-fill-width)]
 `;
 
 export const ProgressTrackStyles = oneLine`
-bg-zinc-700
+bg-neutral-secondary-700
 h-2
 rounded-lg
 toast-progress-track
@@ -75,14 +75,14 @@ w-full
 
 export const TitleStyles = oneLine`
 font-medium
-text-slate-50
+text-neutral-primary-50
 toast-title
 `;
 
 export const ToastStyles = oneLine`
-bg-zinc-900
+bg-neutral-secondary-900
 border-[1px]
-border-zinc-600
+border-neutral-secondary-600
 flex
 flex-col
 gap-2

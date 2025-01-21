@@ -32,24 +32,24 @@ overflow-hidden
 popover-button
 relative
 ring-2
-ring-blue-500
-text-blue-500
+ring-primary-500
+text-primary-500
 tooltip-button
 transition-all
 
 data-[disabled]:bg-transparent
-data-[disabled]:ring-slate-600
+data-[disabled]:ring-neutral-primary-600
 data-[disabled]:cursor-not-allowed
-data-[disabled]:text-slate-600
+data-[disabled]:text-neutral-primary-600
 
 [&:disabled:hover:before]:h-0
 
-focus-visible:text-slate-50
+focus-visible:text-neutral-primary-50
 
-hover:text-slate-50
+hover:text-neutral-primary-50
 
 before:absolute
-before:bg-blue-500
+before:bg-primary-500
 before:bottom-0
 before:duration-300
 before:ease-in-out
@@ -77,22 +77,22 @@ outline-none
 p-1
 popover-close-button
 right-4
-ring-blue-400
+ring-primary-400
 rounded-full
-text-blue-600
+text-primary-600
 top-4
 transition-all
 w-6
 
 focus:ring-2
 
-hover:bg-blue-100 
+hover:bg-primary-100 
 `;
 
 export const ContentStyles = oneLine`
 animate-popoverFadeOut
 duration-200
-bg-zinc-900
+bg-neutral-secondary-900
 p-5
 popover-content
 relative
@@ -105,13 +105,13 @@ z-10
 `;
 
 export const DescriptionStyles = oneLine`
-text-slate-400
+text-neutral-primary-400
 text-sm
 `;
 
 export const TitleStyles = oneLine`
 mb-6
 font-bold
-text-slate-200
+text-neutral-primary-200
 w-[85%]
 `;

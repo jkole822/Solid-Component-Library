@@ -2,7 +2,7 @@ import { oneLine } from "common-tags";
 
 export const ButtonStyles = `
 accordion-button
-bg-zinc-700
+bg-neutral-secondary-700
 cursor-pointer
 flex
 flex-grow
@@ -14,12 +14,12 @@ outline-none
 px-5
 py-5
 text-left
-text-slate-200
+text-neutral-primary-200
 transition-colors
 
-focus-visible:text-blue-400
+focus-visible:text-primary-400
 
-hover:bg-zinc-600
+hover:bg-neutral-secondary-600
 
 [&_.accordion-trigger-icon]:ease-[cubic-bezier(0.87,0,0.13,1)]
 [&_.accordion-trigger-icon]:duration-300
@@ -30,18 +30,18 @@ hover:bg-zinc-600
 
 export const ContainerStyles = oneLine`
 accordion-container
-bg-zinc-700
+bg-neutral-secondary-700
 rounded-lg
 `;
 
 export const ContentStyles = oneLine`
 accordion-content
 animate-accordionSlideUp
-bg-blue-200
+bg-primary-200
 overflow-hidden
-shadow-[inset_0px_1px_0px_rgb(var(--color-slate-400))]
+shadow-[inset_0px_1px_0px_rgb(var(--color-neutral-primary-400))]
 text-sm
-text-zinc-700
+text-neutral-secondary-700
 
 [&[data-expanded]]:animate-accordionSlideDown
 `;

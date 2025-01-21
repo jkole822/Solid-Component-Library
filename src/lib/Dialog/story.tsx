@@ -48,7 +48,7 @@ export default function DialogStory({
             autoComplete={AutoCompleteEnum.name}
             className="mt-8"
             id="name"
-            inputClass="[&_~_label]:!bg-zinc-900"
+            inputClass="[&_~_label]:!bg-neutral-secondary-900"
             name="Name"
             onChange={setName}
             required
@@ -58,7 +58,7 @@ export default function DialogStory({
             autoComplete={AutoCompleteEnum.username}
             className="mt-6"
             id="username"
-            inputClass="[&_~_label]:!bg-zinc-900"
+            inputClass="[&_~_label]:!bg-neutral-secondary-900"
             name="Username"
             onChange={setUsername}
             required

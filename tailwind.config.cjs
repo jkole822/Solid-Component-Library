@@ -3,6 +3,49 @@ export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        neutral: {
+          primary: {
+            50: "rgb(var(--color-neutral-primary-50))",
+            100: "rgb(var(--color-neutral-primary-100))",
+            200: "rgb(var(--color-neutral-primary-200))",
+            300: "rgb(var(--color-neutral-primary-300))",
+            400: "rgb(var(--color-neutral-primary-400))",
+            500: "rgb(var(--color-neutral-primary-500))",
+            600: "rgb(var(--color-neutral-primary-600))",
+            700: "rgb(var(--color-neutral-primary-700))",
+            800: "rgb(var(--color-neutral-primary-800))",
+            900: "rgb(var(--color-neutral-primary-900))",
+            950: "rgb(var(--color-neutral-primary-950))",
+          },
+          secondary: {
+            50: "rgb(var(--color-neutral-secondary-50))",
+            100: "rgb(var(--color-neutral-secondary-100))",
+            200: "rgb(var(--color-neutral-secondary-200))",
+            300: "rgb(var(--color-neutral-secondary-300))",
+            400: "rgb(var(--color-neutral-secondary-400))",
+            500: "rgb(var(--color-neutral-secondary-500))",
+            600: "rgb(var(--color-neutral-secondary-600))",
+            700: "rgb(var(--color-neutral-secondary-700))",
+            800: "rgb(var(--color-neutral-secondary-800))",
+            900: "rgb(var(--color-neutral-secondary-900))",
+            950: "rgb(var(--color-neutral-secondary-950))",
+          }
+        },
+        primary: {
+          50: "rgb(var(--color-primary-50))",
+          100: "rgb(var(--color-primary-100))",
+          200: "rgb(var(--color-primary-200))",
+          300: "rgb(var(--color-primary-300))",
+          400: "rgb(var(--color-primary-400))",
+          500: "rgb(var(--color-primary-500))",
+          600: "rgb(var(--color-primary-600))",
+          700: "rgb(var(--color-primary-700))",
+          800: "rgb(var(--color-primary-800))",
+          900: "rgb(var(--color-primary-900))",
+          950: "rgb(var(--color-primary-950))",
+        }
+      },
       screens: {
         "2xs": "384px",
         xs: "512px",

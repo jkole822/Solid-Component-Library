@@ -5,12 +5,12 @@ absolute
 check
 combo-box-check-container
 left-2
-text-blue-600
+text-primary-600
 translate-y-[calc(-50%+1px)]
 top-1/2
 z-10
 
-group-data-[highlighted]:text-blue-800
+group-data-[highlighted]:text-primary-800
 `;
 
 export const ListItemStyles = oneLine`
@@ -31,8 +31,8 @@ transition-all
 data-[disabled]:cursor-not-allowed
 data-[disabled]:opacity-50
 
-data-[highlighted]:bg-blue-200
-data-[highlighted]:text-blue-800
+data-[highlighted]:bg-primary-200
+data-[highlighted]:text-primary-800
 `;
 
 export const ListItemValueStyles = oneLine`
@@ -53,7 +53,7 @@ z-10
 
 export const ScrollContainerStyles = oneLine`
 animate-selectFadeOut
-bg-zinc-900
+bg-neutral-secondary-900
 combo-box-scroll-container
 flex
 flex-col
@@ -64,14 +64,14 @@ px-2
 py-2
 rounded-lg
 shadow-lg
-text-slate-300
+text-neutral-primary-300
 
 data-[expanded]:animate-selectFadeIn
 `;
 
 export const TriggerStyles = oneLine`
 absolute
-bg-slate-200
+bg-neutral-primary-200
 combo-box-trigger
 duration-150
 ease-in-out
@@ -79,14 +79,14 @@ right-0
 rounded-br-lg
 rounded-tr-lg
 size-14
-text-slate-800
+text-neutral-primary-800
 top-0
 transition-all
 
 disabled:hidden
 
-hover:bg-blue-500
-hover:text-slate-100
+hover:bg-primary-500
+hover:text-neutral-primary-100
 `;
 
 export const VectorContainerStyles = oneLine`

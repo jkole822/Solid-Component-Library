@@ -7,7 +7,7 @@ gap-2
 radio-group-container
 w-fit
 
-[&[aria-orientation="horizontal"]_.radio-group-glider-container]:[background:linear-gradient(90deg,_rgb(var(--color-zinc-900))_0%,_rgb(var(--color-zinc-700))_50%,_rgb(var(--color-zinc-900))_100%)]
+[&[aria-orientation="horizontal"]_.radio-group-glider-container]:[background:linear-gradient(90deg,_rgb(var(--color-neutral-secondary-900))_0%,_rgb(var(--color-neutral-secondary-700))_50%,_rgb(var(--color-neutral-secondary-900))_100%)]
 [&[aria-orientation="horizontal"]_.radio-group-glider-container]:h-px
 [&[aria-orientation="horizontal"]_.radio-group-glider-container]:w-full
 
@@ -16,9 +16,9 @@ w-fit
 
 [&[aria-orientation="horizontal"]_.radio-group-option-container_[role="presentation"]]:grid
 
-[&[aria-orientation="horizontal"]_.radio-group-glider]:[background:linear-gradient(90deg,_rgb(var(--color-zinc-900))_0%,_rgb(var(--color-blue-500))_50%,_rgb(var(--color-zinc-900))_100%)]
+[&[aria-orientation="horizontal"]_.radio-group-glider]:[background:linear-gradient(90deg,_rgb(var(--color-neutral-secondary-900))_0%,_rgb(var(--color-primary-500))_50%,_rgb(var(--color-neutral-secondary-900))_100%)]
 
-[&[aria-orientation="horizontal"]_.radio-group-glider:after]:[background:linear-gradient(180deg,_rgba(var(--color-blue-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
+[&[aria-orientation="horizontal"]_.radio-group-glider:after]:[background:linear-gradient(180deg,_rgba(var(--color-primary-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
 [&[aria-orientation="horizontal"]_.radio-group-glider:after]:h-16
 [&[aria-orientation="horizontal"]_.radio-group-glider:after]:w-full
 
@@ -31,12 +31,12 @@ w-fit
 
 [&[aria-orientation="horizontal"]_.radio-group-item]:text-center
 
-[&:focus-within_.radio-group-label]:text-blue-300
+[&:focus-within_.radio-group-label]:text-primary-300
 `;
 
 export const GliderContainerStyles = oneLine`
 absolute
-[background:linear-gradient(0deg,_rgb(var(--color-zinc-900))_0%,_rgb(var(--color-zinc-700))_50%,_rgb(var(--color-zinc-900))_100%)]
+[background:linear-gradient(0deg,_rgb(var(--color-neutral-secondary-900))_0%,_rgb(var(--color-neutral-secondary-700))_50%,_rgb(var(--color-neutral-secondary-900))_100%)]
 bottom-0
 left-0
 radio-group-glider-container
@@ -45,7 +45,7 @@ w-px
 `;
 
 export const GliderStyles = oneLine`
-[background:linear-gradient(0deg,_rgba(0,0,0,0)_0%,_rgb(var(--color-blue-500))_50%,_rgba(0,0,0,0)_100%)]
+[background:linear-gradient(0deg,_rgba(0,0,0,0)_0%,_rgb(var(--color-primary-500))_50%,_rgba(0,0,0,0)_100%)]
 [transition-timing-function:cubic-bezier(0.37,1.95,0.66,0.56)]
 duration-500
 radio-group-glider
@@ -53,7 +53,7 @@ relative
 transition-all
 w-full
 
-after:[background:linear-gradient(90deg,_rgba(var(--color-blue-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
+after:[background:linear-gradient(90deg,_rgba(var(--color-primary-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
 after:absolute
 after:h-full
 after:left-0
@@ -61,7 +61,7 @@ after:w-40
 
 before:-translate-y-1/2
 before:absolute
-before:bg-blue-500
+before:bg-primary-500
 before:blur-[10px]
 before:h-full
 before:top-1/2
@@ -73,7 +73,7 @@ appearance-none
 cursor-pointer
 radio-group-input
 
-[&[data-checked]_~_label]:text-blue-500
+[&[data-checked]_~_label]:text-primary-500
 `;
 
 export const ItemStyles = oneLine`
@@ -88,7 +88,7 @@ duration-300
 ease-in-out
 radio-group-item-label
 relative
-text-slate-400
+text-neutral-primary-400
 transition-all
 `;
 
