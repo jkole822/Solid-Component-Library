@@ -17,18 +17,24 @@ import { Props } from "./types";
 
 export default function Accordion({
   className = "",
-  defaultValue,
   headingLevel,
   items,
+  value,
+  ...rest
 }: Props) {
   return (
     <KobalteAccordion
+      {...rest}
+      {...(value ? { value: value() } : {})}
       class={`${className} ${ContainerStyles}`}
-      defaultValue={[defaultValue]}
     >
       <For each={items}>
         {(item) => (
-          <KobalteAccordion.Item class={SectionStyles} value={String(item.id)}>
+          <KobalteAccordion.Item
+            class={SectionStyles}
+            disabled={item.disabled}
+            value={item.id}
+          >
             <KobalteAccordion.Header as={headingLevel} class={HeadingStyles}>
               <KobalteAccordion.Trigger class={ButtonStyles}>
                 <span>{item.title}</span>

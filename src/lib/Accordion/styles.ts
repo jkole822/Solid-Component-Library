@@ -2,7 +2,7 @@ import { oneLine } from "common-tags";
 
 export const ButtonStyles = `
 accordion-button
-bg-neutral-secondary-700
+bg-neutral-secondary-900
 cursor-pointer
 flex
 flex-grow
@@ -11,15 +11,19 @@ items-center
 justify-between
 leading-none
 outline-none
-px-5
-py-5
+p-5
 text-left
 text-neutral-primary-200
 transition-colors
 
-focus-visible:text-primary-400
+disabled:opacity-25
+disabled:cursor-not-allowed
+disabled:text-neutral-primary-200
 
-hover:bg-neutral-secondary-600
+focus-visible:text-primary-500
+
+hover:bg-neutral-secondary-900/50
+hover:text-primary-400
 
 [&_.accordion-trigger-icon]:ease-[cubic-bezier(0.87,0,0.13,1)]
 [&_.accordion-trigger-icon]:duration-300
@@ -30,18 +34,17 @@ hover:bg-neutral-secondary-600
 
 export const ContainerStyles = oneLine`
 accordion-container
-bg-neutral-secondary-700
+bg-neutral-secondary-800
 rounded-lg
 `;
 
 export const ContentStyles = oneLine`
 accordion-content
 animate-accordionSlideUp
-bg-primary-200
+bg-neutral-secondary-900/25
 overflow-hidden
-shadow-[inset_0px_1px_0px_rgb(var(--color-neutral-primary-400))]
 text-sm
-text-neutral-secondary-700
+text-neutral-secondary-200
 
 [&[data-expanded]]:animate-accordionSlideDown
 `;

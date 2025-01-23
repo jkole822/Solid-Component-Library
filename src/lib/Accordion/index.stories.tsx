@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import Accordion from ".";
+import Accordion from "./story";
 import { HeadingLevelEnum } from "../../types";
 import type { Meta, StoryObj } from "storybook-solidjs";
 
@@ -27,29 +27,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const accordionItems = [
-  {
-    id: "item-1",
+const generateItems = (length: number) =>
+  Array.from({ length }).map((_, index) => ({
+    id: `item-${index + 1}`,
     title: faker.lorem.words(3),
     description: faker.lorem.sentence(),
-  },
-  {
-    id: "item-2",
-    title: faker.lorem.words(2),
-    description: faker.lorem.sentence(),
-  },
-  {
-    id: "item-3",
-    title: faker.lorem.words(4),
-    description: faker.lorem.sentence(),
-  },
-];
+    disabled: index === 2,
+  }));
 
 const args = {
-  defaultValue: "item-1",
+  collapsible: false,
+  defaultValue: ["item-1"],
   headingLevel: HeadingLevelEnum.Three,
-  items: accordionItems,
-}
+  items: generateItems(5),
+  shouldFocusWrap: false,
+};
 
 export const Basic: Story = {
   args,
@@ -58,6 +50,6 @@ export const Basic: Story = {
 export const WithClass: Story = {
   args: {
     ...args,
-    className: "sm:w-72"
-  }
-}
+    className: "sm:w-72",
+  },
+};
