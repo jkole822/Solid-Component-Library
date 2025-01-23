@@ -68,6 +68,22 @@ export default {
           height: "var(--kb-accordion-content-height)",
         },
       },
+      collapsibleSlideUp: {
+        from: {
+          height: "var(--kb-collapsible-content-height)",
+        },
+        to: {
+          height: 0,
+        }
+      },
+      collapsibleSlideDown: {
+        from: {
+          height: 0,
+        },
+        to: {
+          height: "var(--kb-collapsible-content-height)",
+        }
+      },
       dialogScaleIn: {
         from: {
           transform: "scale(0) translate(-50%, -50%)",
@@ -145,6 +161,9 @@ export default {
       accordionSlideUp: "accordionSlideUp 300ms cubic-bezier(0.76, 0, 0.24, 1)",
       accordionSlideDown:
         "accordionSlideDown 300ms cubic-bezier(0.76, 0, 0.24, 1)",
+
+      collapsibleSlideUp: "collapsibleSlideUp 300ms cubic-bezier(0.76, 0, 0.24, 1)",
+      collapsibleSlideDown: "collapsibleSlideDown 300ms cubic-bezier(0.76, 0, 0.24, 1)",
 
       dialogScaleIn: "dialogScaleIn 300ms cubic-bezier(0.45, 0, 0.55, 1)",
       dialogScaleOut: "dialogScaleOut 300ms cubic-bezier(0.45, 0, 0.55, 1)",
