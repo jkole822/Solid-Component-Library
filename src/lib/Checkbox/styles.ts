@@ -1,18 +1,33 @@
 import { oneLine } from "common-tags";
 
-export const ContainerStyles = ({
-  disabled,
-}: {
-  disabled?: boolean;
-}) => oneLine`
-${disabled ? "cursor-not-allowed" : "cursor-pointer"}
-
+export const ContainerStyles = oneLine`
 checkbox-container
 cursor-pointer
-flex
 group
-items-center
+
+data-[disabled]:cursor-not-allowed
 `;
+
+export const DescriptionStyles = oneLine`
+checkbox-description
+ml-[38px]
+text-neutral-primary-400
+text-sm
+`
+
+export const ErrorMessageStyles = oneLine`
+checkbox-error-message
+font-medium
+ml-[38px]
+text-red-400
+text-sm
+`
+
+export const FlexContainerStyles = oneLine`
+checkbox-flex-container
+flex
+items-center
+`
 
 export const InputStyles = oneLine`
 checkbox-input
