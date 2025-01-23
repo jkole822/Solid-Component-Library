@@ -4,9 +4,11 @@ import { createSignal } from "solid-js";
 // Components
 import Checkbox from ".";
 
+// Styles
+import { PararaphStyles, SubHeadingStyles } from "../../styles";
+
 // Types
 import type { Props } from "./types";
-import { PararaphStyles, SubHeadingStyles } from "../../styles";
 
 export default function CheckboxStory({
   checked: _,
