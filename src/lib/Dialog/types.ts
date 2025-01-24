@@ -4,11 +4,15 @@ export interface Props {
   cancelButtonText?: string;
   children: JSX.Element;
   className?: string;
+  defaultOpen?: boolean;
   description?: string;
-  id: number | string;
+  forceMount?: boolean;
+  id: string;
   onOpenChange: Setter<boolean>;
   onSubmit?: () => void;
+  modal?: boolean;
   open: Accessor<boolean>;
+  preventScroll?: boolean;
   submitButtonText?: string;
   title?: string;
   trigger?: JSX.Element;

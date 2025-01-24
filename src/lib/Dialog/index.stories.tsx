@@ -17,7 +17,11 @@ export const Basic: Story = {
     cancelButtonText: "Cancel",
     description:
       "Make changes to your profile here. Click save when you're done.",
+    defaultOpen: false,
+    forceMount: false,
     id: uuid(),
+    modal: true,
+    preventScroll: true,
     submitButtonText: "Save Changes",
     title: "Edit profile",
   },

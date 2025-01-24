@@ -22,13 +22,13 @@ export default function Dialog({
   children,
   className = "",
   description,
-  id,
   open,
   onOpenChange,
   onSubmit,
   submitButtonText,
   title,
   trigger,
+    ...rest
 }: Props) {
   const handleClose = () => {
     onOpenChange(false);
@@ -37,12 +37,11 @@ export default function Dialog({
   return (
     <>
       <Show when={trigger}>{trigger}</Show>
-      <KobalteDialog open={open()} onOpenChange={onOpenChange}>
+      <KobalteDialog {...rest} open={open()} onOpenChange={onOpenChange}>
         <KobalteDialog.Portal>
           <KobalteDialog.Overlay class={OverlayStyles} />
           <KobalteDialog.Content
             class={`${className} ${ContentStyles}`}
-            id={String(id)}
           >
             <KobalteDialog.Title class={HeadingStyles}>
               {title}
