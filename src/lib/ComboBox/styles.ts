@@ -30,19 +30,6 @@ z-10
 group-data-[highlighted]:text-primary-800
 `;
 
-export const DescriptionStyles = oneLine`
-combo-box-description
-text-neutral-primary-400
-text-sm
-`;
-
-export const ErrorMessageStyles = oneLine`
-combo-box-error-message
-font-medium
-text-red-400
-text-sm
-`;
-
 export const ListItemStyles = oneLine`
 combo-box-list-item
 cursor-pointer

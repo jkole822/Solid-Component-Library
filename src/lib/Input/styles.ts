@@ -75,7 +75,6 @@ ${
         [&_label]:-translate-y-[55%]
         [&_label]:bg-neutral-secondary-800
         [&_label]:px-1
-        [&_label]:ring-primary-500
         [&_label]:scale-[0.8]
         [&_label]:text-primary-500
         [&_label]:top-0
@@ -129,6 +128,19 @@ ${
     `
     : ``
 }
+`;
+
+export const DescriptionStyles = oneLine`
+combo-box-description
+text-neutral-primary-400
+text-sm
+`;
+
+export const ErrorMessageStyles = oneLine`
+combo-box-error-message
+font-medium
+text-red-400
+text-sm
 `;
 
 export const InputStyles = ({
@@ -191,13 +203,51 @@ ${
     [&:focus_~_.combo-box-trigger]:bg-primary-500
     [&:focus_~_.combo-box-trigger]:text-neutral-primary-100
     
+    [&[type=date]_~_label]:-translate-y-[55%]
+    [&[type=date]_~_label]:bg-neutral-secondary-800
+    [&[type=date]_~_label]:px-1
+    [&[type=date]_~_label]:ring-primary-500
+    [&[type=date]_~_label]:scale-[0.8]
+    [&[type=date]_~_label]:text-neutral-primary-200
+    
+    [&[type=date]:focus_~_label]:text-primary-500
+    
+    [&::-webkit-calendar-picker-indicator]:[filter:invert(100%)_sepia(16%)_saturate(716%)_hue-rotate(181deg)_brightness(96%)_contrast(88%)]
+    [&::-webkit-calendar-picker-indicator]:cursor-pointer
+    [&::-webkit-calendar-picker-indicator]:outline-offset-2
+    [&::-webkit-calendar-picker-indicator]:rounded
+    
+    [&::-webkit-datetime-edit-day-field]:cursor-pointer
+    [&::-webkit-datetime-edit-day-field]:rounded   
+     
+    [&::-webkit-datetime-edit-day-field:focus]:bg-transparent
+    [&::-webkit-datetime-edit-day-field:focus]:ring-2
+    [&::-webkit-datetime-edit-day-field:focus]:ring-primary-500
+    [&::-webkit-datetime-edit-day-field:focus]:text-neutral-primary-200
+    
+    [&::-webkit-datetime-edit-month-field]:cursor-pointer
+    [&::-webkit-datetime-edit-month-field]:ml-0.5
+    [&::-webkit-datetime-edit-month-field]:rounded
+    
+    [&::-webkit-datetime-edit-month-field:focus]:bg-transparent
+    [&::-webkit-datetime-edit-month-field:focus]:ring-2
+    [&::-webkit-datetime-edit-month-field:focus]:ring-primary-500
+    [&::-webkit-datetime-edit-month-field:focus]:text-neutral-primary-200
+    [&::-webkit-datetime-edit-month-field]:cursor-pointer
+    
+    [&::-webkit-datetime-edit-year-field]:cursor-pointer
+    [&::-webkit-datetime-edit-year-field]:rounded
+    
+    [&::-webkit-datetime-edit-year-field:focus]:bg-transparent
+    [&::-webkit-datetime-edit-year-field:focus]:ring-2
+    [&::-webkit-datetime-edit-year-field:focus]:ring-primary-500
+    [&::-webkit-datetime-edit-year-field:focus]:text-neutral-primary-200
   ${
     hasValue
       ? `
       [&_~_label]:-translate-y-[55%]
       [&_~_label]:bg-neutral-secondary-800
       [&_~_label]:px-1
-      [&_~_label]:ring-primary-500
       [&_~_label]:scale-[0.8]
       [&_~_label]:text-primary-500
   

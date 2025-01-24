@@ -32,16 +32,30 @@ export type InputType =
   | InputTypeEnum.password
   | InputTypeEnum.text;
 
+export enum InputValidationStateEnum {
+  Valid = "valid",
+  Invalid = "invalid",
+}
+
+export type InputValidationState =
+    | InputValidationStateEnum.Invalid
+    | InputValidationStateEnum.Valid;
+
 export interface Props {
   autoComplete?: AutoCompleteType;
   className?: string;
+  description?: string;
   disabled?: boolean;
+  errorMessage?: string;
   id: string;
   inputClass?: string;
   name: string;
   max?: number;
+  maxLength?: number;
   min?: number;
+  minLength?: number;
   onChange: Setter<number | string | null>;
+  pattern?: string;
   placeholder?: string;
   required?: boolean;
   type?: InputType;

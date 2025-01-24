@@ -22,10 +22,8 @@ const meta = {
         AutoCompleteEnum.username,
       ],
     },
-    disabled: { control: "boolean" },
     max: { control: "number" },
     min: { control: "number" },
-    required: { control: "boolean" },
     type: {
       control: {
         type: "select",
@@ -46,6 +44,8 @@ type Story = StoryObj<typeof meta>;
 
 const args = {
   autoComplete: AutoCompleteEnum.off,
+  description: faker.lorem.sentence(),
+  errorMessage: faker.lorem.sentence(),
   id: uuid(),
   name: faker.lorem.word(),
   placeholder: faker.lorem.words(2),
@@ -56,6 +56,41 @@ const args = {
 export const Basic: Story = {
   args,
 };
+
+export const DateField: Story = {
+  args: {
+    ...args,
+    type: InputTypeEnum.date
+  }
+}
+
+export const EmailField: Story = {
+  args: {
+    ...args,
+    autoComplete: AutoCompleteEnum.email,
+    pattern: '^\[a-zA-Z0-9._%+\\-\]+@\[a-zA-Z0-9.\\-\]+\\.\[a-zA-Z\]\{2,\}$',
+    type: InputTypeEnum.email
+  }
+}
+
+export const NumberField: Story = {
+  args: {
+    ...args,
+    min: 0,
+    max: 100,
+    type: InputTypeEnum.number
+  }
+}
+
+export const PasswordField: Story = {
+  args: {
+    ...args,
+    autoComplete: AutoCompleteEnum.newPassword,
+    minLength: 8,
+    maxLength: 16,
+    type: InputTypeEnum.password
+  }
+}
 
 export const WithClass: Story = {
   args: {

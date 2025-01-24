@@ -11,7 +11,7 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 import type { Props } from "./types";
 
 export default function InputStory({ value: _, onChange: __, ...rest }: Props) {
-  const [value, setValue] = createSignal<string | null>("");
+  const [value, setValue] = createSignal<number | string | null>("");
 
   return (
     <>

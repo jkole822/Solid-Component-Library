@@ -5,8 +5,6 @@ import { createEffect, createSignal, For, Show } from "solid-js";
 // Styles
 import {
   CheckContainerStyles,
-  DescriptionStyles,
-  ErrorMessageStyles,
   ListItemDescriptionStyles,
   ListItemLabelStyles,
   ListItemStyles,
@@ -18,7 +16,13 @@ import {
   TriggerStyles,
   VectorContainerStyles,
 } from "./styles";
-import { ContainerStyles, InputStyles, LabelStyles } from "../Input/styles";
+import {
+  ContainerStyles,
+  DescriptionStyles,
+  ErrorMessageStyles,
+  InputStyles,
+  LabelStyles,
+} from "../Input/styles";
 
 // Types
 import {
@@ -84,7 +88,7 @@ export default function ComboBox({
     }
   });
 
-  createEffect(() => console.log(value()))
+  createEffect(() => console.log(value()));
 
   const ComboBoxControlContents = () => (
     <>
