@@ -54,7 +54,6 @@ export default function Checkbox({
             {name}
           </KobalteCheckbox.Label>
         </div>
-
         <Show when={description}>
           <KobalteCheckbox.Description class={DescriptionStyles}>
             {description}

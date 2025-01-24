@@ -21,7 +21,7 @@ export default function Input({
   const [receivedFocus, setReceivedFocus] = createSignal(false);
 
   return (
-    <div class={`${className} ${ContainerStyles}`}>
+    <div class={`${className} ${ContainerStyles({})}`}>
       <input
         {...rest}
         class={`${inputClass} ${InputStyles({ hasValue: !!value() || value() === 0, receivedFocus: receivedFocus() })}`}

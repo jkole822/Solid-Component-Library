@@ -13,7 +13,7 @@ checkbox-description
 ml-[38px]
 text-neutral-primary-400
 text-sm
-`
+`;
 
 export const ErrorMessageStyles = oneLine`
 checkbox-error-message
@@ -21,13 +21,13 @@ font-medium
 ml-[38px]
 text-red-400
 text-sm
-`
+`;
 
 export const FlexContainerStyles = oneLine`
 checkbox-flex-container
 flex
 items-center
-`
+`;
 
 export const InputStyles = oneLine`
 checkbox-input

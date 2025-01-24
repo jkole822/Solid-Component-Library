@@ -1,7 +1,10 @@
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
 import ComboBox from "./story";
-import { AutoCompleteEnum } from "../Input/types";
+import {
+  ComboBoxSelectionBehaviorEnum,
+  ComboBoxTriggerModeEnum,
+} from "./types";
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
@@ -9,47 +12,71 @@ const meta = {
   component: ComboBox,
   tags: ["autodocs"],
   argTypes: {
-    autoComplete: {
-      control: {
-        type: "select",
-      },
+    selectionBehavior: {
+      control: "select",
       options: [
-        AutoCompleteEnum.currentPassword,
-        AutoCompleteEnum.email,
-        AutoCompleteEnum.name,
-        AutoCompleteEnum.newPassword,
-        AutoCompleteEnum.off,
-        AutoCompleteEnum.username,
+        ComboBoxSelectionBehaviorEnum.Toggle,
+        ComboBoxSelectionBehaviorEnum.Replace,
       ],
     },
-    disabled: { control: "boolean" },
-    required: { control: "boolean" },
+    triggerMode: {
+      control: "select",
+      options: [
+        ComboBoxTriggerModeEnum.Focus,
+        ComboBoxTriggerModeEnum.Manual,
+        ComboBoxTriggerModeEnum.Input,
+      ],
+    },
   },
 } satisfies Meta<typeof ComboBox>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const options = [
-  faker.lorem.word(),
-  faker.lorem.words(2),
-  faker.lorem.word(),
-  faker.lorem.words(3),
-  faker.lorem.word(),
-];
+const generateItems = (length: number) =>
+  Array.from({ length }).map((_, index) => ({
+    id: uuid(),
+    label: faker.lorem.words(2),
+    description: faker.lorem.sentence(),
+    disabled: index === 2,
+  }));
 
 const args = {
-  autoComplete: AutoCompleteEnum.off,
+  allowDuplicateSelectionEvents: false,
+  allowsEmptyCollection: false,
+  closeOnSelection: true,
+  description: faker.lorem.sentence(),
+  disabled: false,
+  disallowEmptySelection: false,
+  errorMessage: faker.lorem.sentence(),
+  forceMount: false,
   id: uuid(),
-  label: faker.lorem.word(),
+  modal: false,
+  multiple: false,
   name: faker.lorem.word(),
-  options,
+  noResetInputOnBlur: false,
+  options: generateItems(10),
   placeholder: faker.lorem.words(2),
+  preventScroll: false,
+  readOnly: false,
+  removeOnBackspace: false,
   required: true,
+  selectionBehavior: ComboBoxSelectionBehaviorEnum.Toggle,
+  triggerMode: ComboBoxTriggerModeEnum.Manual,
+  virtualized: false,
 };
 
 export const Basic: Story = {
   args,
+};
+
+export const Multiple: Story = {
+  args: {
+    ...args,
+    closeOnSelection: false,
+    multiple: true,
+    triggerMode: ComboBoxTriggerModeEnum.Input,
+  },
 };
 
 export const WithClass: Story = {

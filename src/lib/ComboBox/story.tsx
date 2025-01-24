@@ -1,5 +1,5 @@
 // Packages
-import { createSignal } from "solid-js";
+import { createSignal, For, Show } from "solid-js";
 
 // Components
 import ComboBox from ".";
@@ -8,29 +8,46 @@ import ComboBox from ".";
 import { PararaphStyles, SubHeadingStyles } from "../../styles";
 
 // Types
-import type { Props } from "./types";
+import type { ComboBoxItem, Props } from "./types";
 
 export default function ComboBoxStory({
   value: _,
   onChange: __,
   ...rest
 }: Props) {
-  const [value, setValue] = createSignal<number | string | null>(null);
+  const [value, setValue] = createSignal<
+    ComboBoxItem | ComboBoxItem[] | undefined
+  >();
 
-  const handleClear = () => {
-    setValue(null);
-  };
+  const BindingCheck = ({
+    label,
+    description,
+  }: {
+    label?: string;
+    description?: string;
+  }) => (
+    <>
+      {/*@ts-ignore*/}
+      <p class={PararaphStyles}>Label: {label ?? value()?.label ?? ""}</p>
+      <p class={PararaphStyles}>
+        {/*@ts-ignore*/}
+        Description: {description ?? value()?.description ?? ""}
+      </p>
+    </>
+  );
 
   return (
     <>
-      <ComboBox
-        {...rest}
-        onChange={setValue}
-        onClear={handleClear}
-        value={value}
-      />
+      <ComboBox {...rest} onChange={setValue} value={value} />
       <p class={SubHeadingStyles}>Binding Check</p>
-      <p class={PararaphStyles}>{value()}</p>
+      <Show when={Array.isArray(value())} fallback={<BindingCheck />}>
+        {/*@ts-ignore*/}
+        <For each={value()}>
+          {(item) => (
+            <BindingCheck label={item.label} description={item.description} />
+          )}
+        </For>
+      </Show>
     </>
   );
 }

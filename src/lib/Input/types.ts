@@ -42,7 +42,6 @@ export interface Props {
   max?: number;
   min?: number;
   onChange: Setter<number | string | null>;
-  onClear?: () => void;
   placeholder?: string;
   required?: boolean;
   type?: InputType;
