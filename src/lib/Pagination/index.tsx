@@ -1,5 +1,6 @@
 // Packages
 import { Pagination as KobaltePagination } from "@kobalte/core/pagination";
+import { Show } from "solid-js";
 
 // Styles
 import { ButtonStyles, ContainerStyles } from "./styles";
@@ -11,6 +12,8 @@ export default function Pagination({
   ariaLabel,
   className = "",
   ellipsis,
+  hideNextButton,
+  hidePreviousButton,
   page,
   ...rest
 }: Props) {
@@ -20,24 +23,34 @@ export default function Pagination({
       aria-label={ariaLabel}
       class={`${className} ${ContainerStyles}`}
       page={page()}
-      itemComponent={(props) => (
-        <KobaltePagination.Item class={ButtonStyles} page={props.page}>
-          {props.page}
+      itemComponent={({ page }) => (
+        <KobaltePagination.Item class={ButtonStyles} page={page}>
+          {page}
         </KobaltePagination.Item>
       )}
-      ellipsisComponent={() => (
-        <KobaltePagination.Ellipsis
-          class={`pagination-ellipsis ${ButtonStyles}`}
-        >
-          {ellipsis}
-        </KobaltePagination.Ellipsis>
-      )}
+      ellipsisComponent={() =>
+        !!ellipsis ? (
+          <KobaltePagination.Ellipsis
+            class={`pagination-ellipsis ${ButtonStyles}`}
+          >
+            {ellipsis}
+          </KobaltePagination.Ellipsis>
+        ) : (
+          <></>
+        )
+      }
     >
-      <KobaltePagination.Previous class={ButtonStyles}>
-        Previous
-      </KobaltePagination.Previous>
+      <Show when={!hidePreviousButton}>
+        <KobaltePagination.Previous class={ButtonStyles}>
+          Previous
+        </KobaltePagination.Previous>
+      </Show>
       <KobaltePagination.Items />
-      <KobaltePagination.Next class={ButtonStyles}>Next</KobaltePagination.Next>
+      <Show when={!hideNextButton}>
+        <KobaltePagination.Next class={ButtonStyles}>
+          Next
+        </KobaltePagination.Next>
+      </Show>
     </KobaltePagination>
   );
 }
