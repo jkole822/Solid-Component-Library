@@ -23,9 +23,10 @@ export default function Popover({
   disabled,
   isIconButton,
   title,
+  ...rest
 }: Props) {
   return (
-    <KobaltePopover>
+    <KobaltePopover {...rest}>
       <KobaltePopover.Trigger
         aria-label={ariaLabel}
         class={`${className} ${ButtonStyles({ isIconButton })}`}
