@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import { v4 as uuid } from "uuid";
 import { fn } from "@storybook/test";
 import Button from ".";
 import { ButtonVariantsEnum } from "./types";
@@ -10,7 +11,39 @@ const meta = {
   component: Button,
   tags: ["autodocs"],
   argTypes: {
-    disabled: { control: "boolean" },
+    ariaControls: { control: "text" },
+    ariaExpanded: { control: "boolean" },
+    ariaHasPopup: {
+      control: "select",
+      options: [
+        undefined,
+        true,
+        false,
+        "dialog",
+        "menu",
+        "grid",
+        "listbox",
+        "tree",
+        "false",
+        "true",
+      ],
+    },
+    ariaHidden: { control: "boolean" },
+    ariaLabel: { control: "text" },
+    href: { control: "text" },
+    showBottomGlow: { control: "boolean" },
+    tabIndex: {
+      control: "select",
+      options: [undefined, 0, -1],
+    },
+    target: {
+      control: "select",
+      options: ["_blank", "_self", "_parent", "_top", "framename"],
+    },
+    type: {
+      control: "select",
+      options: ["button", "submit", "reset"],
+    },
     variant: {
       control: {
         type: "select",
@@ -38,23 +71,27 @@ const ButtonContent = () => (
   </>
 );
 
+const args = {
+  children: ButtonContent,
+  disabled: false,
+  id: uuid(),
+  variant: ButtonVariantsEnum.fill,
+};
+
 export const Fill: Story = {
-  args: {
-    children: ButtonContent,
-    variant: ButtonVariantsEnum.fill,
-  },
+  args,
 };
 
 export const Outline: Story = {
   args: {
-    children: ButtonContent,
+    ...args,
     variant: ButtonVariantsEnum.outline,
   },
 };
 
 export const OutlineWithGlow: Story = {
   args: {
-    children: ButtonContent,
+    ...args,
     className: "mx-auto",
     showBottomGlow: true,
     variant: ButtonVariantsEnum.outline,
@@ -63,14 +100,18 @@ export const OutlineWithGlow: Story = {
 
 export const LineOne: Story = {
   args: {
-    children: ButtonContent,
+    ...args,
+    href: "https://www.solidjs.com/",
+    target: "_blank",
     variant: ButtonVariantsEnum.lineOne,
   },
 };
 
 export const LineTwo: Story = {
   args: {
-    children: ButtonContent,
+    ...args,
+    href: "https://www.solidjs.com/",
+    target: "_blank",
     variant: ButtonVariantsEnum.lineTwo,
   },
 };
