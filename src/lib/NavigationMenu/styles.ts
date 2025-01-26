@@ -64,7 +64,7 @@ export const IconStyles = oneLine`
 navigation-menu-icon
 rounded-full
 size-20
-`
+`;
 
 export const ItemCalloutStyles = oneLine`
 bg-[linear-gradient(135deg,_rgb(var(--color-primary-400))_0%,_rgb(var(--color-primary-600))_100%)]
@@ -242,7 +242,7 @@ rounded-lg
 focus:ring-2
 
 [&:hover_.navigation-menu-title]:text-primary-500
-`
+`;
 
 export const TitleStyles = oneLine`
 capitalize
@@ -253,7 +253,7 @@ text-2xl
 text-neutral-primary-50
 tracking-wide
 transition-all
-`
+`;
 
 export const TriggerIndicatorStyles = oneLine`
 -mx-[7.5px]
