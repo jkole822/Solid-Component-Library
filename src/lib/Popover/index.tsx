@@ -19,14 +19,24 @@ export default function Popover({
   buttonContent,
   children,
   className = "",
+  contentClass = "",
+  contentProps = {},
   description,
   disabled,
   isIconButton,
+  onOpenChange,
+  open,
   title,
   ...rest
 }: Props) {
   return (
-    <KobaltePopover {...rest}>
+    <KobaltePopover
+      {...rest}
+      {...contentProps}
+      {...(!!onOpenChange && open !== undefined
+        ? { onOpenChange, open: open() }
+        : {})}
+    >
       <KobaltePopover.Trigger
         aria-label={ariaLabel}
         class={`${className} ${ButtonStyles({ isIconButton })}`}
@@ -35,8 +45,8 @@ export default function Popover({
         {buttonContent}
       </KobaltePopover.Trigger>
       <KobaltePopover.Portal>
-        <KobaltePopover.Content class={ContentStyles}>
-          <KobaltePopover.Arrow />
+        <KobaltePopover.Content class={`${contentClass} ${ContentStyles}`}>
+          <KobaltePopover.Arrow class="popover-arrow" />
           <Show when={title}>
             <KobaltePopover.Title class={TitleStyles}>
               {title}

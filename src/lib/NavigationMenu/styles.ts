@@ -6,19 +6,22 @@ transition-transform
 `;
 
 const ContentStyles = oneLine`
-absolute
 box-border
-gap-x-2.5
+gap-y-2
 grid
-grid-flow-col
 grid-rows-3
-left-0
 m-0
 navigation-menu-content
 outline-none
 p-[22px]
-pointer-events-none
-top-0
+relative
+xs:grid-flow-col
+xs:gap-x-2.5
+xs:gap-y-0
+sm:absolute
+sm:left-0
+sm:pointer-events-none
+sm:top-0
 
 data-[expanded]:pointer-events-auto
 
@@ -41,17 +44,27 @@ data-[expanded]:pointer-events-auto
 
 export const ContentWithCallout = oneLine`
 ${ContentStyles}
-grid-cols-[0.75fr_1fr]
-w-[min(500px,_90dvw)]
+grid-cols-1
+w-full
+xs:grid-cols-[0.75fr_1fr]
+xs:w-[min(500px,_90dvw)]
 
 [&_>_li:first-child]:row-span-3
 `;
 
 export const ContentWithoutCallout = oneLine`
 ${ContentStyles}
-grid-cols-2
-w-[min(600px,_90dvw)]
+grid-cols-1
+w-full
+xs:grid-cols-2
+xs:w-[min(600px,_90dvw)]
 `;
+
+export const IconStyles = oneLine`
+navigation-menu-icon
+rounded-full
+size-20
+`
 
 export const ItemCalloutStyles = oneLine`
 bg-[linear-gradient(135deg,_rgb(var(--color-primary-400))_0%,_rgb(var(--color-primary-600))_100%)]
@@ -100,6 +113,7 @@ font-medium
 leading-[1.2]
 mb-2
 navigation-menu-item-label
+text-lg
 text-primary-500
 transition-colors
 `;
@@ -136,15 +150,110 @@ hover:bg-neutral-secondary-900
 [&:hover_.navigation-menu-item-label]:text-primary-400
 `;
 
+export const LineStyles = oneLine`
+[stroke-linecap:round]
+[stroke-linejoin:round]
+[transition:stroke-dasharray_600ms_cubic-bezier(0.4,_0,_0.2,_1),_stroke-dashoffset_600ms_cubic-bezier(0.4,_0,_0.2,_1)]
+cursor-pointer
+duration-300
+ease-in-out
+fill-none
+navigation-menu-line
+stroke-[3]
+stroke-neutral-primary-100
+transition-all
+`;
+
+export const LineTopBottomStyles = oneLine`
+${LineStyles}
+[stroke-dasharray:12_63]
+navigation-menu-line-top-bottom
+`;
+
+export const MobileMenuButtonStyles = ({ open }: { open: boolean }) => oneLine`
+cursor-pointer
+navigation-menu-mobile-menu-button
+
+[&_svg]:cursor-pointer
+[&_svg]:duration-[600ms]
+[&_svg]:ease-[cubic-bezier(0.4,0,0.2,1)]
+[&_svg]:h-8
+[&_svg]:transition-transform
+
+${
+  open
+    ? `
+    [&_svg]:-rotate-45
+    
+    [&_svg]:[stroke-dasharray:20_300]
+    
+    [&_svg_.navigation-menu-line-top-bottom]:[stroke-dasharray:20_300]
+    [&_svg_.navigation-menu-line-top-bottom]:[stroke-dashoffset:-32.42]
+`
+    : ``
+}
+`;
+
+export const MobilePopoverContentStyles = oneLine`
+!max-w-[unset]
+!rounded-none
+!w-[var(--kb-popper-content-available-width)]
+h-[var(--kb-popper-content-available-height)]
+outline-none
+
+[&_.popover-arrow]:hidden
+
+[&_.popover-close-button]:hidden
+`;
+
+export const MobilePopoverStyles = oneLine`
+duration-300
+ease-in-out
+!ring-0
+transition-all
+sm:hidden
+
+focus:!ring-2
+
+[&:hover_.navigation-menu-line]:stroke-primary-500
+`;
+
 export const RootStyles = oneLine`
-bg-neutral-secondary-950
-flex
+hidden
 items-center
 justify-center
 navigation-menu-root
+px-1
+w-max
+sm:flex
 
 [&[data-orientation=vertical]]:flex-col
 `;
+
+export const TitleContainerStyles = oneLine`
+flex
+gap-3
+items-center
+navigation-menu-title-container
+outline-none
+ring-blue-500
+rounded-lg
+
+focus:ring-2
+
+[&:hover_.navigation-menu-title]:text-primary-500
+`
+
+export const TitleStyles = oneLine`
+capitalize
+duration-300
+ease-in-out
+navigation-menu-title
+text-2xl
+text-neutral-primary-50
+tracking-wide
+transition-all
+`
 
 export const TriggerIndicatorStyles = oneLine`
 -mx-[7.5px]
@@ -177,7 +286,8 @@ leading-none
 navigation-menu-trigger
 no-underline
 outline-none
-p-4
+px-4
+py-5
 text-neutral-primary-300
 transition-colors
 w-auto

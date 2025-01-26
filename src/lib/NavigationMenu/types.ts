@@ -27,7 +27,7 @@ export interface NavigationMenuItem {
 
 export interface NavigationMenuMenu {
   disabled?: boolean;
-  href?: string
+  href?: string;
   items: NavigationMenuItem[];
   target?: "_blank" | "_self" | "_parent" | "_top" | "_unfencedTop";
   title: string;
@@ -63,7 +63,7 @@ interface MenuProps {
   onOpenChange?: (open: boolean) => void;
   overflowPadding?: number;
   overlap?: boolean;
-  placement?: string;
+  placement?: "top" | "right" | "bottom" | "left";
   preventScroll?: boolean;
   sameWidth?: boolean;
   shift?: number;
@@ -86,6 +86,8 @@ export interface Props {
   delayDuration?: number;
   focusOnAlt?: boolean;
   forceMount?: boolean;
+  homeHref?: string;
+  icon?: ImageProps;
   itemIndicatorProps: ItemIndicatorProps;
   items: NavigationMenuMenu[];
   loop?: boolean;
@@ -93,5 +95,6 @@ export interface Props {
   onValueChange?: (value: string | undefined | null) => void;
   orientation?: NavigationMenuOrientation;
   skipDelayDuration: number;
+  title?: string;
   viewportProps?: ViewportProps;
 }

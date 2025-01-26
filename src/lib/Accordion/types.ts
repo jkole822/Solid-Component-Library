@@ -1,9 +1,10 @@
 import type { HeadingLevels } from "../../types";
-import type {Accessor, Setter} from "solid-js";
+import type { Accessor, JSX, Setter } from "solid-js";
 
 export interface AccordionItem {
   id: string;
-  description: string;
+  content?: JSX.Element;
+  description?: string;
   disabled?: boolean;
   title: string;
 }

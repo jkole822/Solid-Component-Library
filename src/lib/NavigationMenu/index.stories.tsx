@@ -17,6 +17,9 @@ const meta = {
       ],
     },
   },
+  parameters: {
+    layout: "fullscreen",
+  },
 } satisfies Meta<typeof NavigationMenu>;
 
 export default meta;
@@ -40,7 +43,7 @@ const generateItems = (length: number, addImage?: boolean) =>
 
 const generateMenuItems = (length: number) =>
   Array.from({ length }).map((_, index) => ({
-      disabled: index === 0,
+    disabled: index === 1,
     href: index === length - 1 ? "https://www.solidjs.com/" : undefined,
     items:
       index === length - 1
@@ -53,13 +56,19 @@ const generateMenuItems = (length: number) =>
   }));
 
 const args = {
-  className: "p-1 rounded-lg w-max",
+  className: "bg-neutral-secondary-950 flex items-center justify-between p-2",
   delayDuration: 100,
   focusOnAlt: true,
   forceMount: false,
+  homeHref: "#",
+  icon: {
+    alt: faker.lorem.words(3),
+    src: faker.image.url(),
+  },
   items: generateMenuItems(5),
   loop: true,
   skipDelayDuration: 200,
+  title: faker.lorem.word(),
 };
 
 export const Horizontal: Story = {

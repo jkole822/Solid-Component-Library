@@ -1,6 +1,6 @@
 // Packages
 import { Accordion as KobalteAccordion } from "@kobalte/core/accordion";
-import { For } from "solid-js";
+import { For, Show } from "solid-js";
 
 // Styles
 import {
@@ -45,7 +45,10 @@ export default function Accordion({
               </KobalteAccordion.Trigger>
             </KobalteAccordion.Header>
             <KobalteAccordion.Content class={ContentStyles}>
-              <p class={DescriptionStyles}>{item.description}</p>
+              <Show when={item.description}>
+                <p class={DescriptionStyles}>{item.description}</p>
+              </Show>
+              <Show when={item.content}>{item.content}</Show>
             </KobalteAccordion.Content>
           </KobalteAccordion.Item>
         )}

@@ -91,14 +91,16 @@ hover:bg-primary-100
 
 export const ContentStyles = oneLine`
 animate-popoverFadeOut
-duration-200
 bg-neutral-secondary-900
+duration-200
+max-w-[min(calc(100vw-16px),_380px)]
+origin-[var(--kb-popover-content-transform-origin)]
 p-5
 popover-content
 relative
 rounded-lg
 shadow-xl
-w-60
+w-[calc(100vw-16px)]
 z-10
 
 [&[data-expanded]]:animate-popoverFadeIn
