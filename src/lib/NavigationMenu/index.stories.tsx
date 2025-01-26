@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 import NavigationMenu from ".";
 import { NavigationMenuOrientationEnum } from "./types";
+import type { Props } from "./types";
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
@@ -34,7 +35,7 @@ const generateItems = (length: number, addImage?: boolean) =>
       addImage && index === 0
         ? {
             alt: faker.lorem.words(3),
-            src: faker.image.url(),
+            src: faker.image.url({height: 48, width: 48}),
             title: faker.lorem.sentence(),
           }
         : undefined,
@@ -63,7 +64,7 @@ const args = {
   homeHref: "#",
   icon: {
     alt: faker.lorem.words(3),
-    src: faker.image.url(),
+    src: faker.image.url({ height: 80, width: 80 }),
   },
   items: generateMenuItems(5),
   loop: true,
