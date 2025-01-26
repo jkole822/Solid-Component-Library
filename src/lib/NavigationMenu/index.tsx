@@ -146,7 +146,12 @@ export default function NavigationMenu({
           class={TitleContainerStyles}
         >
           <Show when={icon}>
-            <img {...icon} class={IconStyles} />
+            <figure>
+              <img {...icon} class={IconStyles} />
+              <figcaption class="h-0 opacity-0 w-0">
+                Navigate to Home
+              </figcaption>
+            </figure>
           </Show>
           <Show when={title}>
             <h1 class={TitleStyles}>{title}</h1>
