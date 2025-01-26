@@ -120,6 +120,86 @@ export default {
           opacity: 0,
         },
       },
+      navigationMenuEnterFromRight: {
+        from: {
+          opacity: 0,
+          transform: "translateX(200px)"
+        },
+        to: {
+          opacity: 1,
+          transform: "translateX(0)"
+        }
+      },
+      navigationMenuEnterFromLeft: {
+        from: {
+          opacity: 0,
+          transform: "translateX(-200px)"
+        },
+        to: {
+          opacity: 1,
+          transform: "translateX(0)"
+        }
+      },
+      navigationMenuExitToRight: {
+        from: {
+          opacity: 1,
+          transform: "translateX(0)"
+        },
+        to: {
+          opacity: 0,
+          transform: "translateX(200px)"
+        }
+      },
+      navigationMenuExitToLeft: {
+        from: {
+          opacity: 1,
+          transform: "translateX(0)"
+        },
+        to: {
+          opacity: 0,
+          transform: "translateX(-200px)"
+        }
+      },
+      navigationMenuEnterFromBottom: {
+        from: {
+          opacity: 0,
+          transform: "translateY(200px)"
+        },
+        to: {
+          opacity: 1,
+          transform: "translateY(0)"
+        }
+      },
+      navigationMenuEnterFromTop: {
+        from: {
+          opacity: 0,
+          transform: "translateY(-200px)"
+        },
+        to: {
+          opacity: 1,
+          transform: "translateY(0)"
+        }
+      },
+      navigationMenuExitToBottom: {
+        from: {
+          opacity: 1,
+          transform: "translateY(0)"
+        },
+        to: {
+          opacity: 0,
+          transform: "translateY(200px)"
+        }
+      },
+      navigationMenuExitToTop: {
+        from: {
+          opacity: 1,
+          transform: "translateY(0)"
+        },
+        to: {
+          opacity: 0,
+          transform: "translateY(-200px)"
+        }
+      },
       selectFadeIn: {
         from: {
           opacity: 0,
@@ -156,6 +236,26 @@ export default {
           transform: "translateX(calc(100% + var(--viewport-padding)))",
         },
       },
+      viewportHide: {
+        from: {
+          opacity: 1,
+          transform: "rotateX(0deg) scale(1)"
+        },
+        to: {
+          opacity: 0,
+          transform: "rotateX(-10deg) scale(0.96)"
+        }
+      },
+      viewportShow: {
+        from: {
+          opacity: 0,
+          transform: "rotateX(-20deg) scale(0.96)"
+        },
+        to: {
+          opacity: 1,
+          transform: "rotateX(0deg) scale(1)"
+        }
+      }
     },
     animation: {
       accordionSlideUp: "accordionSlideUp 300ms cubic-bezier(0.76, 0, 0.24, 1)",
@@ -171,6 +271,15 @@ export default {
       overlayFadeIn: "fadeIn 400ms ease-in-out",
       overlayFadeOut: "fadeOut 400ms ease-in-out",
 
+      navigationMenuEnterFromRight: "navigationMenuEnterFromRight 300ms ease forwards",
+      navigationMenuEnterFromLeft: "navigationMenuEnterFromLeft 300ms ease forwards",
+      navigationMenuExitToRight: "navigationMenuExitToRight 300ms ease forwards",
+      navigationMenuExitToLeft: "navigationMenuExitToLeft 300ms ease forwards",
+      navigationMenuEnterFromBottom: "navigationMenuEnterFromBottom 300ms ease forwards",
+      navigationMenuEnterFromTop: "navigationMenuEnterFromTop 300ms ease forwards",
+      navigationMenuExitToBottom: "navigationMenuExitToBottom 300ms ease forwards",
+      navigationMenuExitToTop: "navigationMenuExitToTop 300ms ease forwards",
+
       popoverFadeIn: "fadeIn 200ms ease-in-out",
       popoverFadeOut: "fadeOut 200ms ease-in-out",
 
@@ -180,6 +289,9 @@ export default {
       toastFadeOut: "fadeOut 100ms ease-in",
       toastSlideIn: "toastSlideIn 150ms cubic-bezier(0.16, 1, 0.3, 1)",
       toastSwipeOut: "toastSwipeOut 100ms ease-out",
+
+      viewportHide: "viewportHide 300ms ease-in forwards",
+      viewportShow: "viewportShow 300ms ease-out"
     },
   },
   plugins: [],
