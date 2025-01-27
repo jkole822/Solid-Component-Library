@@ -35,7 +35,7 @@ const generateItems = (length: number, addImage?: boolean) =>
       addImage && index === 0
         ? {
             alt: faker.lorem.words(3),
-            src: faker.image.url({height: 48, width: 48}),
+            src: faker.image.url({ height: 48, width: 48 }),
             title: faker.lorem.sentence(),
           }
         : undefined,
@@ -72,8 +72,15 @@ const args = {
   title: faker.lorem.word(),
 };
 
+const render = (args: Props) => (
+  <div class="h-[200vh]">
+    <NavigationMenu {...args} />
+  </div>
+);
+
 export const Horizontal: Story = {
   args,
+  render,
 };
 
 export const Vertical: Story = {
@@ -81,4 +88,5 @@ export const Vertical: Story = {
     ...args,
     orientation: NavigationMenuOrientationEnum.Vertical,
   },
+  render,
 };

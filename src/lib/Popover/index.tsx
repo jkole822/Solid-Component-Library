@@ -21,6 +21,7 @@ export default function Popover({
   className = "",
   contentClass = "",
   contentProps = {},
+  contentStyles,
   description,
   disabled,
   isIconButton,
@@ -46,21 +47,23 @@ export default function Popover({
       </KobaltePopover.Trigger>
       <KobaltePopover.Portal>
         <KobaltePopover.Content class={`${contentClass} ${ContentStyles}`}>
-          <KobaltePopover.Arrow class="popover-arrow" />
-          <Show when={title}>
-            <KobaltePopover.Title class={TitleStyles}>
-              {title}
-            </KobaltePopover.Title>
-          </Show>
-          <Show when={description}>
-            <KobaltePopover.Description class={DescriptionStyles}>
-              {description}
-            </KobaltePopover.Description>
-          </Show>
-          <Show when={children}>{children}</Show>
-          <KobaltePopover.CloseButton class={CloseButtonStyles}>
-            <i aria-hidden="true" class="fa-solid fa-xmark"></i>
-          </KobaltePopover.CloseButton>
+          <div style={!!contentStyles ? contentStyles() : {}}>
+            <KobaltePopover.Arrow class="popover-arrow" />
+            <Show when={title}>
+              <KobaltePopover.Title class={TitleStyles}>
+                {title}
+              </KobaltePopover.Title>
+            </Show>
+            <Show when={description}>
+              <KobaltePopover.Description class={DescriptionStyles}>
+                {description}
+              </KobaltePopover.Description>
+            </Show>
+            <Show when={children}>{children}</Show>
+            <KobaltePopover.CloseButton class={CloseButtonStyles}>
+              <i aria-hidden="true" class="fa-solid fa-xmark"></i>
+            </KobaltePopover.CloseButton>
+          </div>
         </KobaltePopover.Content>
       </KobaltePopover.Portal>
     </KobaltePopover>

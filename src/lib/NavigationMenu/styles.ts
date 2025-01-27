@@ -198,7 +198,6 @@ export const MobilePopoverContentStyles = oneLine`
 !max-w-[unset]
 !rounded-none
 !w-[var(--kb-popper-content-available-width)]
-h-[var(--kb-popper-content-available-height)]
 outline-none
 
 [&_.popover-arrow]:hidden

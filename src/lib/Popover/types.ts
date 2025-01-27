@@ -1,19 +1,17 @@
 import type { Accessor, JSX, Setter } from "solid-js";
 
 interface ContentProps {
-  anchorRef?: Accessor<HTMLElement | undefined>
+  anchorRef?: Accessor<HTMLElement | undefined>;
   arrowPadding?: number;
   detachedPadding?: number;
   fitViewport?: boolean;
   flip?: boolean | string;
-  getAnchorRect?: (
-      anchor?: HTMLElement,
-  ) => DOMRect | undefined;
+  getAnchorRect?: (anchor?: HTMLElement) => DOMRect | undefined;
   gutter?: number;
   hideWhenDetached?: boolean;
   overflowPadding?: number;
   overlap?: boolean;
-  placement?: 'top' | 'right' | 'bottom' | 'left';
+  placement?: "top" | "right" | "bottom" | "left";
   sameWidth?: boolean;
   shift?: number;
   slide?: boolean;
@@ -26,6 +24,7 @@ export interface Props {
   className?: string;
   contentClass?: string;
   contentProps?: ContentProps;
+  contentStyles?: Accessor<JSX.CSSProperties>;
   defaultOpen?: boolean;
   description?: string;
   disabled?: boolean;

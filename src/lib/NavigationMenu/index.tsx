@@ -1,6 +1,6 @@
 // Packages
 import { createMediaQuery } from "@solid-primitives/media";
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, For, onCleanup, onMount, Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { NavigationMenu as KobalteNavigationMenu } from "@kobalte/core/navigation-menu";
 import { v4 as uuid } from "uuid";
@@ -33,6 +33,7 @@ import {
 } from "./styles";
 
 // Types
+import type { JSX } from "solid-js";
 import type { NavigationMenuItem, NavigationMenuMenu, Props } from "./types";
 import { HeadingLevelEnum } from "../../types";
 
@@ -51,9 +52,14 @@ export default function NavigationMenu({
 }: Props) {
   const isSmall = createMediaQuery("(min-width): 640px");
   const [mobileNavigationOpen, setMobileNavigationOpen] = createSignal(false);
+  const [contentStyles, setContentStyles] = createSignal<JSX.CSSProperties>({});
 
   const hasImage = (menuItems: NavigationMenuItem[]) =>
     menuItems.some((item) => !!item.image);
+
+  const updateHeight = () => {
+    setContentStyles({ height: `${document.documentElement.scrollHeight}px` });
+  };
 
   const Item = ({
     description,
@@ -137,6 +143,16 @@ export default function NavigationMenu({
         title: menuItem.title,
       }));
 
+  onMount(() => {
+    setContentStyles({ height: `${document.documentElement.scrollHeight}px` });
+
+    window.addEventListener("resize", updateHeight);
+  });
+
+  onCleanup(() => {
+    window.removeEventListener("resize", updateHeight);
+  });
+
   return (
     <div class={className}>
       <Show when={icon || title}>
@@ -208,6 +224,7 @@ export default function NavigationMenu({
           gutter: 24,
           overflowPadding: 0,
         }}
+        contentStyles={contentStyles}
         isIconButton
         open={mobileNavigationOpen}
         onOpenChange={setMobileNavigationOpen}
