@@ -33,7 +33,7 @@ export interface Props {
   disabled?: boolean;
   disabledAccessor?: Accessor<boolean>;
   href?: string;
-  id?: number | string;
+  id?: string;
   onClick?: () => void;
   showBottomGlow?: boolean;
   tabIndex?: number;

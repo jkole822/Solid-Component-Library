@@ -30,7 +30,7 @@ export default {
             800: "rgb(var(--color-neutral-secondary-800))",
             900: "rgb(var(--color-neutral-secondary-900))",
             950: "rgb(var(--color-neutral-secondary-950))",
-          }
+          },
         },
         primary: {
           50: "rgb(var(--color-primary-50))",
@@ -44,7 +44,7 @@ export default {
           800: "rgb(var(--color-primary-800))",
           900: "rgb(var(--color-primary-900))",
           950: "rgb(var(--color-primary-950))",
-        }
+        },
       },
       screens: {
         "2xs": "384px",
@@ -68,13 +68,23 @@ export default {
           height: "var(--kb-accordion-content-height)",
         },
       },
+      carouselShow: {
+        from: {
+          filter: "blur(5px)",
+          transform: "translateY(calc(-50% + 75px))",
+        },
+        to: {
+          opacity: 1,
+          filter: "blur(0)",
+        },
+      },
       collapsibleSlideUp: {
         from: {
           height: "var(--kb-collapsible-content-height)",
         },
         to: {
           height: 0,
-        }
+        },
       },
       collapsibleSlideDown: {
         from: {
@@ -82,7 +92,7 @@ export default {
         },
         to: {
           height: "var(--kb-collapsible-content-height)",
-        }
+        },
       },
       dialogScaleIn: {
         from: {
@@ -123,82 +133,82 @@ export default {
       navigationMenuEnterFromRight: {
         from: {
           opacity: 0,
-          transform: "translateX(200px)"
+          transform: "translateX(200px)",
         },
         to: {
           opacity: 1,
-          transform: "translateX(0)"
-        }
+          transform: "translateX(0)",
+        },
       },
       navigationMenuEnterFromLeft: {
         from: {
           opacity: 0,
-          transform: "translateX(-200px)"
+          transform: "translateX(-200px)",
         },
         to: {
           opacity: 1,
-          transform: "translateX(0)"
-        }
+          transform: "translateX(0)",
+        },
       },
       navigationMenuExitToRight: {
         from: {
           opacity: 1,
-          transform: "translateX(0)"
+          transform: "translateX(0)",
         },
         to: {
           opacity: 0,
-          transform: "translateX(200px)"
-        }
+          transform: "translateX(200px)",
+        },
       },
       navigationMenuExitToLeft: {
         from: {
           opacity: 1,
-          transform: "translateX(0)"
+          transform: "translateX(0)",
         },
         to: {
           opacity: 0,
-          transform: "translateX(-200px)"
-        }
+          transform: "translateX(-200px)",
+        },
       },
       navigationMenuEnterFromBottom: {
         from: {
           opacity: 0,
-          transform: "translateY(200px)"
+          transform: "translateY(200px)",
         },
         to: {
           opacity: 1,
-          transform: "translateY(0)"
-        }
+          transform: "translateY(0)",
+        },
       },
       navigationMenuEnterFromTop: {
         from: {
           opacity: 0,
-          transform: "translateY(-200px)"
+          transform: "translateY(-200px)",
         },
         to: {
           opacity: 1,
-          transform: "translateY(0)"
-        }
+          transform: "translateY(0)",
+        },
       },
       navigationMenuExitToBottom: {
         from: {
           opacity: 1,
-          transform: "translateY(0)"
+          transform: "translateY(0)",
         },
         to: {
           opacity: 0,
-          transform: "translateY(200px)"
-        }
+          transform: "translateY(200px)",
+        },
       },
       navigationMenuExitToTop: {
         from: {
           opacity: 1,
-          transform: "translateY(0)"
+          transform: "translateY(0)",
         },
         to: {
           opacity: 0,
-          transform: "translateY(-200px)"
-        }
+          transform: "translateY(-200px)",
+        },
       },
       selectFadeIn: {
         from: {
@@ -239,31 +249,35 @@ export default {
       viewportHide: {
         from: {
           opacity: 1,
-          transform: "rotateX(0deg) scale(1)"
+          transform: "rotateX(0deg) scale(1)",
         },
         to: {
           opacity: 0,
-          transform: "rotateX(-10deg) scale(0.96)"
-        }
+          transform: "rotateX(-10deg) scale(0.96)",
+        },
       },
       viewportShow: {
         from: {
           opacity: 0,
-          transform: "rotateX(-20deg) scale(0.96)"
+          transform: "rotateX(-20deg) scale(0.96)",
         },
         to: {
           opacity: 1,
-          transform: "rotateX(0deg) scale(1)"
-        }
-      }
+          transform: "rotateX(0deg) scale(1)",
+        },
+      },
     },
     animation: {
       accordionSlideUp: "accordionSlideUp 300ms cubic-bezier(0.76, 0, 0.24, 1)",
       accordionSlideDown:
         "accordionSlideDown 300ms cubic-bezier(0.76, 0, 0.24, 1)",
 
-      collapsibleSlideUp: "collapsibleSlideUp 300ms cubic-bezier(0.76, 0, 0.24, 1)",
-      collapsibleSlideDown: "collapsibleSlideDown 300ms cubic-bezier(0.76, 0, 0.24, 1)",
+      carouselShow: "carouselShow 750ms ease-in-out 300ms forwards",
+
+      collapsibleSlideUp:
+        "collapsibleSlideUp 300ms cubic-bezier(0.76, 0, 0.24, 1)",
+      collapsibleSlideDown:
+        "collapsibleSlideDown 300ms cubic-bezier(0.76, 0, 0.24, 1)",
 
       dialogScaleIn: "dialogScaleIn 300ms cubic-bezier(0.45, 0, 0.55, 1)",
       dialogScaleOut: "dialogScaleOut 300ms cubic-bezier(0.45, 0, 0.55, 1)",
@@ -271,13 +285,19 @@ export default {
       overlayFadeIn: "fadeIn 400ms ease-in-out",
       overlayFadeOut: "fadeOut 400ms ease-in-out",
 
-      navigationMenuEnterFromRight: "navigationMenuEnterFromRight 300ms ease forwards",
-      navigationMenuEnterFromLeft: "navigationMenuEnterFromLeft 300ms ease forwards",
-      navigationMenuExitToRight: "navigationMenuExitToRight 300ms ease forwards",
+      navigationMenuEnterFromRight:
+        "navigationMenuEnterFromRight 300ms ease forwards",
+      navigationMenuEnterFromLeft:
+        "navigationMenuEnterFromLeft 300ms ease forwards",
+      navigationMenuExitToRight:
+        "navigationMenuExitToRight 300ms ease forwards",
       navigationMenuExitToLeft: "navigationMenuExitToLeft 300ms ease forwards",
-      navigationMenuEnterFromBottom: "navigationMenuEnterFromBottom 300ms ease forwards",
-      navigationMenuEnterFromTop: "navigationMenuEnterFromTop 300ms ease forwards",
-      navigationMenuExitToBottom: "navigationMenuExitToBottom 300ms ease forwards",
+      navigationMenuEnterFromBottom:
+        "navigationMenuEnterFromBottom 300ms ease forwards",
+      navigationMenuEnterFromTop:
+        "navigationMenuEnterFromTop 300ms ease forwards",
+      navigationMenuExitToBottom:
+        "navigationMenuExitToBottom 300ms ease forwards",
       navigationMenuExitToTop: "navigationMenuExitToTop 300ms ease forwards",
 
       popoverFadeIn: "fadeIn 200ms ease-in-out",
@@ -291,7 +311,7 @@ export default {
       toastSwipeOut: "toastSwipeOut 100ms ease-out",
 
       viewportHide: "viewportHide 300ms ease-in forwards",
-      viewportShow: "viewportShow 300ms ease-out"
+      viewportShow: "viewportShow 300ms ease-out",
     },
   },
   plugins: [],

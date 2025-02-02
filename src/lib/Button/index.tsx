@@ -62,7 +62,7 @@ export default function Button({
   const props = () => ({
     ...rest,
     ...(!!href ? linkProps : buttonProps),
-    ...(!!id ? { id: String(id) } : {}),
+    ...(!!id ? { id } : {}),
     "aria-hidden": ariaHidden,
     "aria-label": ariaLabel,
     class: `${className} ${variantStyles()}`,
