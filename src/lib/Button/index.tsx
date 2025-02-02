@@ -1,6 +1,6 @@
 // Packages
 import { Button as KobalteButton } from "@kobalte/core/button";
-import { For, Show } from "solid-js";
+import { createEffect, createSignal, For, Show } from "solid-js";
 
 // Components
 import StarVector from "./starVector";
@@ -29,15 +29,26 @@ export default function Button({
   disabledAccessor,
   href,
   id,
+  onClick,
   showBottomGlow = false,
   target = "_self",
   type = "button",
   variant = ButtonVariantsEnum.fill,
   ...rest
 }: Props) {
+  const [active, setActive] = createSignal(false);
+
+  createEffect(() => {
+    if (active()) {
+      setTimeout(() => {
+        setActive(false)
+      }, 1000);
+    }
+  });
+
   const variantStyles = () =>
     variant === ButtonVariantsEnum.fill
-      ? FillButtonStyles
+      ? FillButtonStyles({ active: active() })
       : variant === ButtonVariantsEnum.outline
         ? OutlineButtonStyles({ showBottomGlow })
         : variant === ButtonVariantsEnum.lineOne
@@ -46,27 +57,31 @@ export default function Button({
             ? LineTwoButtonStyles
             : "";
 
-  const buttonProps = {
+  const buttonProps = () => ({
     "aria-controls": ariaControls,
     "aria-expanded": ariaExpanded,
     "aria-haspopup": ariaHasPopup,
     type,
-  };
+  });
 
-  const linkProps = {
+  const linkProps = () => ({
     href,
     rel: target === "_blank" ? "noreferrer" : undefined,
     target,
-  };
+  });
 
   const props = () => ({
     ...rest,
-    ...(!!href ? linkProps : buttonProps),
+    ...(!!href ? linkProps() : buttonProps()),
     ...(!!id ? { id } : {}),
     "aria-hidden": ariaHidden,
     "aria-label": ariaLabel,
     class: `${className} ${variantStyles()}`,
     disabled: disabledAccessor !== undefined ? disabledAccessor() : disabled,
+    onClick: () => {
+      setActive(true);
+      if (onClick) onClick();
+    },
   });
 
   return (

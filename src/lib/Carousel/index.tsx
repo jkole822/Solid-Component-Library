@@ -78,7 +78,7 @@ export default function Carousel({ className, items }: Props) {
           onClick={handleNext}
           variant={ButtonVariantsEnum.fill}
         >
-          <i aria-hidden="true" class={ButtonIconStyles}></i>
+          <i aria-hidden="true" class={`${ButtonIconStyles} rotate-180`}></i>
         </Button>
       </div>
     </div>

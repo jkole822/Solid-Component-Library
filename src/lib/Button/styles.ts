@@ -25,7 +25,7 @@ data-[disabled]:shadow-none
 data-[disabled]:text-neutral-primary-600
 `;
 
-const SharedStarStyles = oneLine`
+const SharedStarStyles = ({ active }: { active: boolean }) => oneLine`
 [&_.star]:-z-10
 [&_.star]:[filter:drop-shadow(0_0_0_rgb(var(--color-neutral-primary-100)))]
 [&_.star]:[transition-timing-function:cubic-bezier(0,0.4,0,1.01)_!important]
@@ -36,11 +36,10 @@ const SharedStarStyles = oneLine`
 
 [&[disabled]_.star]:invisible
 
-[&:focus_.star]:[filter:drop-shadow(0_0_10px_rgb(var(--color-neutral-primary-100)))]
-[&:focus_.star]:z-10
-
-[&:hover_.star]:[filter:drop-shadow(0_0_10px_rgb(var(--color-neutral-primary-100)))]
-[&:hover_.star]:z-10
+${active ? `
+[&_.star]:[filter:drop-shadow(0_0_10px_rgb(var(--color-neutral-primary-100)))]
+[&_.star]:z-10
+` : ``}
 `;
 
 const SharedLineStyles = oneLine`
@@ -80,9 +79,9 @@ focus:after:w-full
 hover:after:w-full
 `;
 
-export const FillButtonStyles = oneLine`
+export const FillButtonStyles = ({ active }: { active: boolean }) => oneLine`
 ${SharedStyles}
-${SharedStarStyles}
+${SharedStarStyles({ active })}
 
 bg-primary-500
 border-primary-500
@@ -90,73 +89,59 @@ outline-none
 shadow-[0_0_0_rgb(var(--color-primary-500))]
 text-neutral-primary-50
 
-focus:bg-transparent
-focus:text-primary-500
-focus:shadow-[0_0_25px_rgb(var(--color-primary-500))]
+focus-visible:border-primary-300
 
-hover:bg-transparent
-hover:text-primary-500
-hover:shadow-[0_0_25px_rgb(var(--color-primary-500))]
+hover:bg-primary-400
+hover:border-primary-400
+
+${active ? `
+!bg-transparent
+!border-primary-500
+!text-primary-500
+shadow-[0_0_25px_rgb(var(--color-primary-500))]
+
+[&_.star-0]:-left-[30%]
+[&_.star-0]:-top-[80%]
+
+[&_.star-1]:left-[10%]
+[&_.star-1]:-top-[25%]
+
+[&_.star-2]:left-[25%]
+[&_.star-2]:top-[55%]
+
+[&_.star-3]:left-[80%]
+[&_.star-3]:top-[30%]
+
+[&_.star-4]:left-[115%]
+[&_.star-4]:top-[25%]
+
+[&_.star-5]:left-[60%]
+[&_.star-5]:top-[5%]
+` : ``}
 
 [&_.star-0]:left-[20%]
 [&_.star-0]:top-[20%]
 [&_.star-0]:w-6
 
-[&:focus_.star-0]:-left-[30%]
-[&:focus_.star-0]:-top-[80%]
-
-[&:hover_.star-0]:-left-[30%]
-[&:hover_.star-0]:-top-[80%]
-
 [&_.star-1]:left-[45%]
 [&_.star-1]:top-[45%]
 [&_.star-1]:w-4
-
-[&:focus_.star-1]:left-[10%]
-[&:focus_.star-1]:-top-[25%]
-
-[&:hover_.star-1]:left-[10%]
-[&:hover_.star-1]:-top-[25%]
 
 [&_.star-2]:left-[40%]
 [&_.star-2]:top-[40%]
 [&_.star-2]:w-1.5
 
-[&:focus_.star-2]:left-[25%]
-[&:focus_.star-2]:top-[55%]
-
-[&:hover_.star-2]:left-[25%]
-[&:hover_.star-2]:top-[55%]
-
 [&_.star-3]:left-[40%]
 [&_.star-3]:top-[20%]
 [&_.star-3]:w-2
-
-[&:focus_.star-3]:left-[80%]
-[&:focus_.star-3]:top-[30%]
-
-[&:hover_.star-3]:left-[80%]
-[&:hover_.star-3]:top-[30%]
 
 [&_.star-4]:left-[45%]
 [&_.star-4]:top-[25%]
 [&_.star-4]:w-4
 
-[&:focus_.star-4]:left-[115%]
-[&:focus_.star-4]:top-[25%]
-
-[&:hover_.star-4]:left-[115%]
-[&:hover_.star-4]:top-[25%]
-
 [&_.star-5]:left-[50%]
 [&_.star-5]:top-[5%]
 [&_.star-5]:w-1
-
-[&:focus_.star-5]:left-[60%]
-[&:focus_.star-5]:top-[5%]
-
-[&:hover_.star-5]:left-[60%]
-[&:hover_.star-5]:top-[5%]
 
 [&_.fil0]:fill-neutral-primary-100
 `;
