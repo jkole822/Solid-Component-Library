@@ -162,8 +162,8 @@ md:text-left
 
 [&_a:hover]:no-underline
 
-[&_a.active]:opacity-100
-[&_a.active]:text-neutral-primary-100
+lg:[&_a.active]:opacity-100
+lg:[&_a.active]:text-neutral-primary-100
 
 md:[&_a]:mx-auto
 md:[&_a]:my-0
@@ -315,7 +315,7 @@ fixed
 home-hero-floating-link
 right-[30px]
 top-[30px]
-z-20
+z-[251]
 `;
 
 export const FloatingLinkTriggerStyles = oneLine`
