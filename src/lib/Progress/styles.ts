@@ -17,6 +17,8 @@ w-[var(--kb-progress-fill-width)]
 transition-colors
 
 [&[data-progress="complete"]]:bg-primary-400
+
+data-[indeterminate]:bg-primary-500/10
 `;
 
 export const LabelStyles = oneLine`

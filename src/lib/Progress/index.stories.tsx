@@ -12,15 +12,22 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const args = {
+  getLabelValue: (params: { value: number; min: number; max: number }) =>
+    console.log(params),
+  label: faker.lorem.word(),
+  indeterminate: false,
+  minValue: 0,
+  maxValue: 100,
+};
+
 export const Basic: Story = {
-  args: {
-    label: faker.lorem.word(),
-  },
+  args,
 };
 
 export const WithClass: Story = {
   args: {
+    ...args,
     className: "sm:w-72",
-    label: faker.lorem.word(),
   },
 };
