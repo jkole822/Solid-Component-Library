@@ -37,8 +37,8 @@ const SharedStarStyles = ({ active }: { active: boolean }) => oneLine`
 [&[disabled]_.star]:invisible
 
 ${active ? `
-[&_.star]:[filter:drop-shadow(0_0_10px_rgb(var(--color-neutral-primary-100)))]
-[&_.star]:z-10
+[&_.star]:![filter:drop-shadow(0_0_10px_rgb(var(--color-neutral-primary-100)))]
+[&_.star]:!z-10
 ` : ``}
 `;
 
@@ -100,23 +100,23 @@ ${active ? `
 !text-primary-500
 shadow-[0_0_25px_rgb(var(--color-primary-500))]
 
-[&_.star-0]:-left-[30%]
-[&_.star-0]:-top-[80%]
+[&_.star-0]:!-left-[30%]
+[&_.star-0]:!-top-[80%]
 
-[&_.star-1]:left-[10%]
-[&_.star-1]:-top-[25%]
+[&_.star-1]:!left-[10%]
+[&_.star-1]:!-top-[25%]
 
-[&_.star-2]:left-[25%]
-[&_.star-2]:top-[55%]
+[&_.star-2]:!left-[25%]
+[&_.star-2]:!top-[55%]
 
-[&_.star-3]:left-[80%]
-[&_.star-3]:top-[30%]
+[&_.star-3]:!left-[80%]
+[&_.star-3]:!top-[30%]
 
-[&_.star-4]:left-[115%]
-[&_.star-4]:top-[25%]
+[&_.star-4]:!left-[115%]
+[&_.star-4]:!top-[25%]
 
-[&_.star-5]:left-[60%]
-[&_.star-5]:top-[5%]
+[&_.star-5]:!left-[60%]
+[&_.star-5]:!top-[5%]
 ` : ``}
 
 [&_.star-0]:left-[20%]
