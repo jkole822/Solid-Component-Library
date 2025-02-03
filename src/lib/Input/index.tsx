@@ -33,6 +33,7 @@ export default function Input({
   pattern,
   required,
   type = InputTypeEnum.text,
+  validationStateAccessor,
   value,
   ...rest
 }: Props) {
@@ -71,6 +72,11 @@ export default function Input({
         !!inputValue &&
         pattern &&
         !RegExp(pattern).test(String(inputValue))
+      ) {
+        setValidationState(InputValidationStateEnum.Invalid);
+      } else if (
+        validationStateAccessor &&
+        validationStateAccessor() === InputValidationStateEnum.Invalid
       ) {
         setValidationState(InputValidationStateEnum.Invalid);
       } else {

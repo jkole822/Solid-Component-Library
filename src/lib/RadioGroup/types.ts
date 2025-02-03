@@ -30,6 +30,7 @@ export interface Props {
   orientation?: RadioGroupOrientation;
   readOnly?: boolean;
   required?: boolean;
+  validationStateAccessor?: Accessor<RadioGroupValidationState>;
   validationState?: RadioGroupValidationState;
   value: Accessor<string>;
 }

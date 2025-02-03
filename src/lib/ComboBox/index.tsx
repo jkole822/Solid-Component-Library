@@ -25,11 +25,8 @@ import {
 } from "../Input/styles";
 
 // Types
-import {
-  ComboBoxValidationState,
-  ComboBoxValidationStateEnum,
-  Props,
-} from "./types";
+import type { ComboBoxValidationState, Props } from "./types";
+import { ComboBoxValidationStateEnum } from "./types";
 
 export default function ComboBox({
   className = "",
@@ -41,6 +38,8 @@ export default function ComboBox({
   name,
   onChange,
   required,
+  useInternalAndExternalValidation,
+  validationStateAccessor,
   value,
   ...rest
 }: Props) {
@@ -129,7 +128,15 @@ export default function ComboBox({
       onChange={onChange}
       required={required}
       value={value()}
-      validationState={validationState()}
+      validationState={
+        useInternalAndExternalValidation &&
+        validationStateAccessor &&
+        validationStateAccessor() === ComboBoxValidationStateEnum.Valid
+          ? ComboBoxValidationStateEnum.Valid
+          : validationStateAccessor
+            ? validationStateAccessor()
+            : validationState()
+      }
       itemComponent={(props) => (
         <Combobox.Item item={props.item} class={ListItemStyles}>
           <Combobox.ItemLabel class={ListItemLabelStyles}>

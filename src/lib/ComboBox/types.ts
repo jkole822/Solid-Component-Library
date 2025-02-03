@@ -33,7 +33,7 @@ export interface ComboBoxItem {
   id: string;
   description?: string;
   disabled?: boolean;
-  label: string
+  label: string;
 }
 
 export interface Props {
@@ -62,6 +62,8 @@ export interface Props {
   required?: boolean;
   selectionBehavior?: ComboBoxSelectionBehavior;
   triggerMode?: ComboBoxTriggerMode;
+  useInternalAndExternalValidation?: boolean;
+  validationStateAccessor?: Accessor<ComboBoxValidationState>;
   value: Accessor<ComboBoxItem | ComboBoxItem[] | undefined>;
   virtualized?: boolean;
 }

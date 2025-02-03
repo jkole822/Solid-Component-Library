@@ -28,6 +28,8 @@ export default function RadioGroup({
   name,
   onChange,
   orientation = RadioGroupOrientationEnum.Vertical,
+  validationStateAccessor,
+  validationState,
   value,
   ...rest
 }: Props) {
@@ -44,6 +46,9 @@ export default function RadioGroup({
       onChange={onChange}
       name={name}
       orientation={orientation}
+      validationState={
+        validationStateAccessor ? validationStateAccessor() : validationState
+      }
       value={value()}
     >
       <KobalteRadioGroup.Label class={LabelStyles}>

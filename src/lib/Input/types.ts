@@ -38,8 +38,8 @@ export enum InputValidationStateEnum {
 }
 
 export type InputValidationState =
-    | InputValidationStateEnum.Invalid
-    | InputValidationStateEnum.Valid;
+  | InputValidationStateEnum.Invalid
+  | InputValidationStateEnum.Valid;
 
 export interface Props {
   autoComplete?: AutoCompleteType;
@@ -59,5 +59,6 @@ export interface Props {
   placeholder?: string;
   required?: boolean;
   type?: InputType;
+  validationStateAccessor?: Accessor<InputValidationState>;
   value: Accessor<number | string | null>;
 }

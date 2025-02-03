@@ -63,6 +63,7 @@ const args = {
   required: true,
   selectionBehavior: ComboBoxSelectionBehaviorEnum.Toggle,
   triggerMode: ComboBoxTriggerModeEnum.Manual,
+  useInternalAndExternalValidation: false,
   virtualized: false,
 };
 

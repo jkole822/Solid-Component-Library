@@ -20,6 +20,7 @@ export interface Props {
   onChange: Setter<boolean>;
   readOnly?: boolean;
   required?: boolean;
+  validationStateAccessor?: Accessor<CheckboxValidationState>;
   validationState: CheckboxValidationState;
   value?: string;
 }

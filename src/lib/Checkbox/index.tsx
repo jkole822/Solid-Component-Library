@@ -22,6 +22,7 @@ export default function Checkbox({
   description,
   errorMessage,
   name,
+  validationStateAccessor,
   validationState,
   ...rest
 }: Props) {
@@ -32,7 +33,9 @@ export default function Checkbox({
         checked={checked()}
         class={ContainerStyles}
         name={name}
-        validationState={validationState}
+        validationState={
+          validationStateAccessor ? validationStateAccessor() : validationState
+        }
       >
         <div class={FlexContainerStyles}>
           <KobalteCheckbox.Input class={InputStyles} />

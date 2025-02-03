@@ -60,27 +60,27 @@ export const Basic: Story = {
 export const DateField: Story = {
   args: {
     ...args,
-    type: InputTypeEnum.date
-  }
-}
+    type: InputTypeEnum.date,
+  },
+};
 
 export const EmailField: Story = {
   args: {
     ...args,
     autoComplete: AutoCompleteEnum.email,
-    pattern: '^\[a-zA-Z0-9._%+\\-\]+@\[a-zA-Z0-9.\\-\]+\\.\[a-zA-Z\]\{2,\}$',
-    type: InputTypeEnum.email
-  }
-}
+    pattern: "^\[a-zA-Z0-9._%+\\-\]+@\[a-zA-Z0-9.\\-\]+\\.\[a-zA-Z\]\{2,\}$",
+    type: InputTypeEnum.email,
+  },
+};
 
 export const NumberField: Story = {
   args: {
     ...args,
     min: 0,
     max: 100,
-    type: InputTypeEnum.number
-  }
-}
+    type: InputTypeEnum.number,
+  },
+};
 
 export const PasswordField: Story = {
   args: {
@@ -88,9 +88,9 @@ export const PasswordField: Story = {
     autoComplete: AutoCompleteEnum.newPassword,
     minLength: 8,
     maxLength: 16,
-    type: InputTypeEnum.password
-  }
-}
+    type: InputTypeEnum.password,
+  },
+};
 
 export const WithClass: Story = {
   args: {
