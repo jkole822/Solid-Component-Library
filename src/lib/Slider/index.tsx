@@ -1,12 +1,15 @@
 // Packages
-import { Index } from "solid-js";
+import { Index, Show } from "solid-js";
 import { Slider as KobalteSlider } from "@kobalte/core/slider";
 
 // Slider
 import {
+  DescriptionStyles,
+  ErrorMessageStyles,
   LabelStyles,
   RangeStyles,
   RootStyles,
+  TextContainerStyles,
   ThumbStyles,
   TrackStyles,
   ValueStyles,
@@ -15,11 +18,28 @@ import {
 // Types
 import type { Props } from "./types";
 
-export default function Slider({ className, label, value, ...rest }: Props) {
+export default function Slider({
+  className,
+  description,
+  errorMessage,
+  name,
+  validationStateAccessor,
+  validationState,
+  value,
+  ...rest
+}: Props) {
   return (
-    <KobalteSlider {...rest} class={`${className} ${RootStyles}`} value={value()}>
+    <KobalteSlider
+      {...rest}
+      class={`${className} ${RootStyles}`}
+      name={name}
+      validationState={
+        validationStateAccessor ? validationStateAccessor() : validationState
+      }
+      value={value()}
+    >
       <div class={LabelStyles}>
-        <KobalteSlider.Label>{label}</KobalteSlider.Label>
+        <KobalteSlider.Label>{name}</KobalteSlider.Label>
         <KobalteSlider.ValueLabel class={ValueStyles} />
       </div>
       <KobalteSlider.Track class={TrackStyles}>
@@ -32,6 +52,20 @@ export default function Slider({ className, label, value, ...rest }: Props) {
           )}
         </Index>
       </KobalteSlider.Track>
+      <Show when={description || errorMessage}>
+        <div class={TextContainerStyles}>
+          <Show when={description}>
+            <KobalteSlider.Description class={DescriptionStyles}>
+              {description}
+            </KobalteSlider.Description>
+          </Show>
+          <Show when={errorMessage}>
+            <KobalteSlider.ErrorMessage class={ErrorMessageStyles}>
+              {errorMessage}
+            </KobalteSlider.ErrorMessage>
+          </Show>
+        </div>
+      </Show>
     </KobalteSlider>
   );
 }
