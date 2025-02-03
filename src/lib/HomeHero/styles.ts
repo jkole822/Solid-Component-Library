@@ -63,6 +63,7 @@ bg-cover
 bg-no-repeat
 duration-300
 ease
+h-1/2
 home-hero-carousel-background-image
 left-1/2
 list-none
@@ -75,8 +76,12 @@ top-1/2
 transition-all
 w-[calc(100%_-_80px)]
 
+sm:h-auto
+
 [&_img]:block
-[&_img]:h-auto
+[&_img]:h-full
+[&_img]:object-center
+[&_img]:object-cover
 [&_img]:w-full
 `;
 
