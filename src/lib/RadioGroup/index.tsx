@@ -5,6 +5,8 @@ import { RadioGroup as KobalteRadioGroup } from "@kobalte/core/radio-group";
 // Styles
 import {
   ContainerStyles,
+  DescriptionStyles,
+  ErrorMessageStyles,
   GliderContainerStyles,
   GliderStyles,
   InputStyles,
@@ -20,11 +22,14 @@ import { RadioGroupOrientationEnum } from "./types";
 
 export default function RadioGroup({
   className = "",
+  description,
+  errorMessage,
   items,
-  label,
+  name,
   onChange,
   orientation = RadioGroupOrientationEnum.Vertical,
   value,
+  ...rest
 }: Props) {
   const [valueIndex, setValueIndex] = createSignal<number | undefined>();
 
@@ -34,13 +39,15 @@ export default function RadioGroup({
 
   return (
     <KobalteRadioGroup
+      {...rest}
       class={`${className} ${ContainerStyles}`}
       onChange={onChange}
+      name={name}
       orientation={orientation}
       value={value()}
     >
       <KobalteRadioGroup.Label class={LabelStyles}>
-        {label}
+        {name}
       </KobalteRadioGroup.Label>
       <div class={OptionContainerStyles}>
         <div
@@ -90,6 +97,16 @@ export default function RadioGroup({
           </Show>
         </div>
       </div>
+      <Show when={description}>
+        <KobalteRadioGroup.Description class={DescriptionStyles}>
+          {description}
+        </KobalteRadioGroup.Description>
+      </Show>
+      <Show when={errorMessage}>
+        <KobalteRadioGroup.ErrorMessage class={ErrorMessageStyles}>
+          {errorMessage}
+        </KobalteRadioGroup.ErrorMessage>
+      </Show>
     </KobalteRadioGroup>
   );
 }

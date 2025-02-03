@@ -9,11 +9,27 @@ export type RadioGroupOrientation =
   | RadioGroupOrientationEnum.Horizontal
   | RadioGroupOrientationEnum.Vertical;
 
+export enum RadioGroupValidationStateEnum {
+  Valid = "valid",
+  Invalid = "invalid",
+}
+
+export type RadioGroupValidationState =
+  | RadioGroupValidationStateEnum.Invalid
+  | RadioGroupValidationStateEnum.Valid;
+
 export interface Props {
   className?: string;
+  defaultValue?: string;
+  description?: string;
+  disabled?: boolean;
+  errorMessage?: string;
   items: string[];
-  label: string;
+  name: string;
   onChange: Setter<string>;
   orientation?: RadioGroupOrientation;
+  readOnly?: boolean;
+  required?: boolean;
+  validationState?: RadioGroupValidationState;
   value: Accessor<string>;
 }
