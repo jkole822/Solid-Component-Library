@@ -1,0 +1,171 @@
+// Packages
+import { createSignal, For, onMount, Show } from "solid-js";
+
+// Components
+import Button from "../Button";
+import Tooltip from "../Tooltip";
+
+// Styles
+import {
+  BottomCTAContainerStyles,
+  BottomCTATextStyles,
+  CarouselBackgroundImageStyles,
+  CarouselImagesContainerStyles,
+  CarouselLinkStyles,
+  CarouselLinksContainerStyles,
+  CarouselNumberBackStyles,
+  CarouselNumberFixedStyles,
+  CarouselNumberStyles,
+  CarouselTitleStyles,
+  ContainerStyles,
+  CursorOneStyles,
+  CursorThreeStyles,
+  CursorTwoStyles,
+  FloatingLinkStyles,
+  FloatingLinkTriggerStyles,
+  ScrollToTopStyles,
+  SectionDescriptionStyles,
+  SectionFlexRowStyles,
+  SectionHeaderStyles,
+  SectionHeadingStyles,
+  SectionInnerContainerStyles,
+  SectionParallaxStyles,
+  SectionStyles,
+  ShadowTitleStyles,
+} from "./styles";
+
+// Utils
+import { handleCursor, handleParallax, handleScrollToTop } from "./utils";
+
+// Types
+import type { Props } from "./types";
+
+export default function HomeHero({
+  bottomLinkCTA,
+  eyebrow,
+  floatingCTA,
+  floatingCTAChildren,
+  heading,
+  headingSecondLine,
+  items,
+  parallaxBackgroundImages,
+  shadowTitle,
+}: Props) {
+  const [activeItem, setActiveItem] = createSignal(0);
+
+  const handleMouseEnter = (index: number) => {
+    setActiveItem(index);
+  };
+
+  onMount(() => {
+    handleCursor();
+    handleParallax(parallaxBackgroundImages);
+    handleScrollToTop();
+  });
+
+  return (
+    <div class={ContainerStyles}>
+      <div class={ShadowTitleStyles}>{shadowTitle}</div>
+      <For each={parallaxBackgroundImages}>
+        {(image, index) => (
+          <div
+            class={`${SectionParallaxStyles} parallax-image-${index()}`}
+            style={`background-image: url('${image}')`}
+          ></div>
+        )}
+      </For>
+
+      <div class={`${SectionStyles} h-screen`}>
+        <div class={SectionHeaderStyles}>
+          <div class={SectionInnerContainerStyles}>
+            <div class={SectionFlexRowStyles}>
+              <div class="basis-full max-w-full text-center parallax-fade-top">
+                <p class={SectionDescriptionStyles}>{eyebrow}</p>
+                <h2 class={SectionHeadingStyles}>
+                  {heading}
+                  <Show when={headingSecondLine}>
+                    <br />
+                    {headingSecondLine}
+                  </Show>
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class={`${SectionStyles} h-screen z-[100]`}>
+        <ul class={CarouselLinksContainerStyles}>
+          <For each={items}>
+            {({ cta }, index) => (
+              <li
+                class={CarouselLinkStyles}
+                onMouseEnter={() => handleMouseEnter(index())}
+              >
+                <a
+                  {...cta}
+                  class={`${index() === activeItem() ? "active" : ""} hover-target`}
+                >
+                  {cta.title}
+                </a>
+              </li>
+            )}
+          </For>
+        </ul>
+
+        <ul class={CarouselImagesContainerStyles}>
+          <For each={items}>
+            {({ image, title }, index) => (
+              <li class={index() === activeItem() ? "show" : ""}>
+                <div class={CarouselBackgroundImageStyles}>
+                  <img {...image} />
+                </div>
+                <div class={CarouselNumberBackStyles}>0{index() + 1}</div>
+                <div class={CarouselNumberStyles}>0{index() + 1}</div>
+                <div class={CarouselNumberFixedStyles}>0{items.length}</div>
+                <div class={CarouselTitleStyles}>{title}</div>
+              </li>
+            )}
+          </For>
+        </ul>
+      </div>
+
+      <Show when={bottomLinkCTA}>
+        <div
+          class={`${SectionStyles} bg-neutral-secondary-900 py-[100px] overflow-hidden z-[200]`}
+        >
+          <div class={SectionInnerContainerStyles}>
+            <div class={`${SectionFlexRowStyles} justify-center`}>
+              <div class="text-center md:basis-[58.3333%] md:max-w-[58.3333%]">
+                <a {...bottomLinkCTA} class="hover-target">
+                  <div class={BottomCTAContainerStyles}>
+                    <p class={BottomCTATextStyles}>{bottomLinkCTA?.title}</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Show>
+
+      <div class={`${ScrollToTopStyles} hover-target`}>
+        <i aria-hidden="true" class="fa-solid fa-arrow-up"></i>
+      </div>
+
+      <div class={CursorOneStyles} id="cursor-one"></div>
+      <div class={CursorTwoStyles} id="cursor-two"></div>
+      <div class={CursorThreeStyles} id="cursor-three"></div>
+
+      <Show when={floatingCTA && floatingCTAChildren}>
+        <Tooltip
+          text={`Navigate to ${floatingCTA?.title}`}
+          triggerClass={FloatingLinkStyles}
+        >
+          <Button {...floatingCTA} className={FloatingLinkTriggerStyles}>
+            {floatingCTAChildren}
+          </Button>
+        </Tooltip>
+      </Show>
+    </div>
+  );
+}
