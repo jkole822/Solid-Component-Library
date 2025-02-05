@@ -10,11 +10,13 @@ import type { Props } from "./types";
 export default function Tooltip({
   className = "",
   children,
+  open,
   text,
   triggerClass = "",
+  ...rest
 }: Props) {
   return (
-    <KobalteTooltip>
+    <KobalteTooltip {...rest} open={open ? open() : undefined}>
       <KobalteTooltip.Trigger
         as="div"
         class={`${triggerClass} ${TriggerStyles}`}
