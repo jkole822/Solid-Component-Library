@@ -36,6 +36,7 @@ cursor-pointer
 duration-100
 ease-in
 group
+outline-none
 pl-7
 pr-4
 py-2
