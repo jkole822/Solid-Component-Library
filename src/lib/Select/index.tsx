@@ -20,6 +20,7 @@ import {
   SelectionItemCloseButtonStyles,
   SelectionItemStyles,
 } from "../ComboBox/styles";
+import { DescriptionStyles, ErrorMessageStyles } from "../Input/styles";
 
 // Types
 import { AutoCompleteEnum } from "../Input/types";
@@ -190,6 +191,20 @@ export default function Select({
           </KobalteSelect.Icon>
         </KobalteSelect.Trigger>
       </div>
+      <Show when={description || errorMessage}>
+        <div class="mt-2">
+          <Show when={description}>
+            <KobalteSelect.Description class={DescriptionStyles}>
+              {description}
+            </KobalteSelect.Description>
+          </Show>
+          <Show when={errorMessage}>
+            <KobalteSelect.ErrorMessage class={ErrorMessageStyles}>
+              {errorMessage}
+            </KobalteSelect.ErrorMessage>
+          </Show>
+        </div>
+      </Show>
       <KobalteSelect.Portal>
         <KobalteSelect.Content class={ContentStyles}>
           <KobalteSelect.Listbox class={MenuStyles} />
