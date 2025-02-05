@@ -10,7 +10,7 @@ data-[disabled]:cursor-not-allowed
 
 export const DescriptionStyles = oneLine`
 checkbox-description
-ml-[38px]
+ml-1.5
 text-neutral-primary-400
 text-sm
 `;
@@ -18,7 +18,7 @@ text-sm
 export const ErrorMessageStyles = oneLine`
 checkbox-error-message
 font-medium
-ml-[38px]
+ml-1.5
 text-red-400
 text-sm
 `;
@@ -38,6 +38,8 @@ w-0
 [&[data-checked]_~_div_svg_.path]:[stroke-dasharray:70.5096664428711_9999999]
 [&[data-checked]_~_div_svg_.path]:[stroke-dashoffset:-262.2723388671875]
 
+[&[data-checked][data-invalid]_~_div_svg_.path]:stroke-red-500
+
 [&[data-disabled]_~_div_svg]:cursor-not-allowed
 
 [&[data-disabled]_~_label]:cursor-not-allowed
@@ -47,9 +49,9 @@ w-0
 
 [&[data-disabled]_~_div_svg_.path]:!stroke-neutral-primary-600
 
-[&:focus-visible_~_label]:text-neutral-primary-50
+[&:focus_~_label]:text-neutral-primary-50
 
-[&:focus-visible_~_label:after]:w-full
+[&:focus_~_label:after]:w-full
 `;
 
 export const LabelStyles = oneLine`
@@ -71,6 +73,8 @@ after:left-0
 after:pointer-events-none
 after:transition-all
 after:w-0
+
+data-[invalid]:after:bg-red-500
 `;
 
 export const PathStyles = oneLine`
@@ -86,6 +90,8 @@ path
 scale-50
 stroke-[6]
 stroke-neutral-primary-200
+
+[[data-invalid]_&]:stroke-red-500
 `;
 
 export const VectorStyles = oneLine`

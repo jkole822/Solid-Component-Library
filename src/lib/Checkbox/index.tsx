@@ -1,4 +1,6 @@
+// Packages
 import { Checkbox as KobalteCheckbox } from "@kobalte/core/checkbox";
+import { Show } from "solid-js";
 
 // Styles
 import {
@@ -14,7 +16,6 @@ import {
 
 // Types
 import type { Props } from "./types";
-import { Show } from "solid-js";
 
 export default function Checkbox({
   checked,
