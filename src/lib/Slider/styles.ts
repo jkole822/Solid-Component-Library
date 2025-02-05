@@ -56,6 +56,7 @@ flex
 flex-col
 mt-4
 self-start
+slider-text-container
 `;
 
 export const ThumbStyles = oneLine`
