@@ -87,8 +87,6 @@ export default function ComboBox({
     }
   });
 
-  createEffect(() => console.log(value()));
-
   const ComboBoxControlContents = () => (
     <>
       <Combobox.Input
@@ -170,7 +168,7 @@ export default function ComboBox({
         >
           {(state) => (
             <>
-              <div class="flex gap-2.5 flex-wrap w-[calc(100%-5.5rem)]">
+              <div class="flex flex-wrap gap-2.5 w-[calc(100%-5.5rem)]">
                 <For each={state.selectedOptions()}>
                   {(option) => (
                     <span
