@@ -18,16 +18,16 @@ import { TabsOrientationEnum } from "./types";
 export default function Tabs({
   ariaLabel,
   className,
-  defaultValue,
   items,
-  orientation = TabsOrientationEnum.Horizontal,
+  value,
+  ...rest
 }: Props) {
   return (
     <KobalteTabs
+      {...rest}
       aria-label={ariaLabel}
       class={`${className} ${ContainerStyles}`}
-      defaultValue={defaultValue}
-      orientation={orientation}
+      value={value ? value() : undefined}
     >
       <KobalteTabs.List class={ListStyles}>
         <For each={items}>

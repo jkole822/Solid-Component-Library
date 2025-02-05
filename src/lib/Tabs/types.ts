@@ -1,4 +1,13 @@
-import type { JSX } from "solid-js";
+import type { Accessor, JSX, Setter } from "solid-js";
+
+export enum TabsActivationModeEnum {
+  Automatic = "automatic",
+  Manual = "manual",
+}
+
+export type TabsActivationMode =
+  | TabsActivationModeEnum.Automatic
+  | TabsActivationModeEnum.Manual;
 
 export enum TabsOrientationEnum {
   Vertical = "vertical",
@@ -17,9 +26,13 @@ export interface TabItem {
 }
 
 export interface Props {
+  activationMode?: TabsActivationMode;
   ariaLabel: string;
   className?: string;
   defaultValue: string;
+  disabled?: boolean;
   items: TabItem[];
+  onChange?: Setter<string>;
   orientation: TabsOrientation;
+  value?: Accessor<string>;
 }
