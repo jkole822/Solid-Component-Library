@@ -1,19 +1,20 @@
 import { oneLine } from "common-tags";
 
 export const ContainerStyles = oneLine`
-gap-8
-flex
-items-center
 switch-container
 w-fit
 
 [&[data-checked]_.switch-control]:bg-primary-500
+
+[&[data-checked][data-invalid]_.switch-control]:bg-red-500
 
 [&[data-checked]_.switch-control_.switch-thumb]:translate-y-[2.3em]
 
 [&[data-checked]_.switch-control:after]:[transform:rotateZ(90deg)_rotateY(180deg)_translateY(0.45em)_translateX(-1.4em)]
 
 [&[data-checked]:focus-within_.switch-control]:ring-primary-300
+
+[&[data-checked][data-invalid]:focus-within_.switch-control]:ring-red-300
 
 [&[data-disabled]]:cursor-not-allowed
 
@@ -45,6 +46,8 @@ ring-primary-500
 rounded-lg
 switch-control
 
+data-[invalid]:ring-red-500
+
 after:!bg-no-repeat
 after:[border-left:0.4em_solid_rgb(var(--color-neutral-primary-100))_!important]
 after:[border-right:0_solid_transparent_!important]
@@ -61,6 +64,26 @@ after:relative
 after:rotate-90
 after:top-[0.5em]
 after:w-[2em]
+`;
+
+export const DescriptionStyles = oneLine`
+switch-description
+text-neutral-primary-400
+text-sm
+`;
+
+export const ErrorMessageStyles = oneLine`
+font-medium
+switch-error-message
+text-red-400
+text-sm
+`;
+
+export const FlexContainerStyles = oneLine`
+flex
+gap-8
+items-center
+switch-flex-container
 `;
 
 export const InputStyles = oneLine`
@@ -87,6 +110,8 @@ after:left-0
 after:pointer-events-none
 after:transition-all
 after:w-0
+
+data-[invalid]:after:bg-red-500   
 `;
 
 export const SwitchContainerStyles = oneLine`
@@ -96,6 +121,13 @@ relative
 text-[17px]
 w-[1.2em]
 h-[3.3em]
+`;
+
+export const TextContainerStyles = oneLine`
+flex
+flex-col
+mt-4
+switch-text-container
 `;
 
 export const ThumbStyles = oneLine`

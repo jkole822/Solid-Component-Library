@@ -1,13 +1,18 @@
 // Packages
 import { Switch as KobalteSwitch } from "@kobalte/core/switch";
+import { Show } from "solid-js";
 
 // Styles
 import {
   ContainerStyles,
   ControlStyles,
+  DescriptionStyles,
+  ErrorMessageStyles,
+  FlexContainerStyles,
   InputStyles,
   LabelStyles,
   SwitchContainerStyles,
+  TextContainerStyles,
   ThumbStyles,
 } from "./styles";
 
@@ -17,24 +22,46 @@ import type { Props } from "./types";
 export default function Switch({
   checked,
   className = "",
-  disabled = false,
-  label,
-  onChange,
+  description,
+  errorMessage,
+  name,
+  validationStateAccessor,
+  validationState,
+  ...rest
 }: Props) {
   return (
     <KobalteSwitch
-      class={`${className} ${ContainerStyles}`}
+      {...rest}
       checked={checked()}
-      disabled={disabled}
-      onChange={onChange}
+      class={ContainerStyles}
+      name={name}
+      validationState={
+        validationStateAccessor ? validationStateAccessor() : validationState
+      }
     >
-      <div class={SwitchContainerStyles}>
-        <KobalteSwitch.Input class={InputStyles} />
-        <KobalteSwitch.Control class={ControlStyles}>
-          <KobalteSwitch.Thumb class={ThumbStyles} />
-        </KobalteSwitch.Control>
+      <div class={FlexContainerStyles}>
+        <div class={SwitchContainerStyles}>
+          <KobalteSwitch.Input class={InputStyles} />
+          <KobalteSwitch.Control class={ControlStyles}>
+            <KobalteSwitch.Thumb class={ThumbStyles} />
+          </KobalteSwitch.Control>
+        </div>
+        <KobalteSwitch.Label class={LabelStyles}>{name}</KobalteSwitch.Label>
       </div>
-      <KobalteSwitch.Label class={LabelStyles}>{label}</KobalteSwitch.Label>
+      <Show when={description || errorMessage}>
+        <div class={TextContainerStyles}>
+          <Show when={description}>
+            <KobalteSwitch.Description class={DescriptionStyles}>
+              {description}
+            </KobalteSwitch.Description>
+          </Show>
+          <Show when={errorMessage}>
+            <KobalteSwitch.ErrorMessage class={ErrorMessageStyles}>
+              {errorMessage}
+            </KobalteSwitch.ErrorMessage>
+          </Show>
+        </div>
+      </Show>
     </KobalteSwitch>
   );
 }

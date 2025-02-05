@@ -1,9 +1,26 @@
 import type { Accessor, Setter } from "solid-js";
 
+export enum SwitchValidationStateEnum {
+  Valid = "valid",
+  Invalid = "invalid",
+}
+
+export type SwitchValidationState =
+  | SwitchValidationStateEnum.Invalid
+  | SwitchValidationStateEnum.Valid;
+
 export interface Props {
   checked: Accessor<boolean>;
   className?: string;
+  defaultChecked?: boolean;
+  description?: string;
   disabled?: boolean;
-  label: string;
+  errorMessage?: string;
+  name: string;
   onChange: Setter<boolean>;
+  readOnly?: boolean;
+  required?: boolean;
+  validationStateAccessor?: Accessor<SwitchValidationState>;
+  validationState: SwitchValidationState;
+  value?: string;
 }
