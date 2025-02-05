@@ -1,12 +1,7 @@
 import { oneLine } from "common-tags";
+import { SelectValidationStateEnum } from "./types";
 
-export const CheckContainerStyles = ({
-  isSelected,
-}: {
-  isSelected: boolean;
-}) => oneLine`
-${isSelected ? "block" : "hidden"}
-
+export const CheckContainerStyles = oneLine`
 absolute
 check
 select-check-container
@@ -34,29 +29,6 @@ select-content
 data-[expanded]:animate-selectFadeIn
 `;
 
-export const ItemStyles = oneLine`
-cursor-pointer
-group
-outline-none
-pl-8
-pr-4
-py-1
-relative
-rounded-lg
-select-item
-text-neutral-primary-300
-              
-focus:text-primary-700
-focus:z-10
-
-hover:bg-primary-100
-
-data-[disabled]:opacity-50
-
-data-[highlighted]:bg-primary-200
-data-[highlighted]:text-primary-800
-`;
-
 export const LabelStyles = oneLine`
 font-bold
 select-label
@@ -82,7 +54,13 @@ z-10
 focus:!ring-0
 `;
 
-export const TriggerStyles = oneLine`
+export const TriggerStyles = ({
+  receivedFocus,
+  validationState,
+}: {
+  receivedFocus?: boolean;
+  validationState?: string;
+}) => oneLine`
 bg-transparent
 flex
 items-center
@@ -98,6 +76,10 @@ text-neutral-primary-200
 transition-shadow
 w-full
 
+[&_>_span:first-child]:flex
+[&_>_span:first-child]:flex-wrap
+[&_>_span:first-child]:w-[calc(100%-5.5rem)]
+
 disabled:cursor-not-allowed
 disabled:ring-neutral-primary-600
 disabled:text-neutral-primary-600
@@ -109,18 +91,39 @@ focus:ring-primary-500
 hover:ring-primary-500
 
 [&_>_span[data-placeholder-shown]]:text-neutral-primary-500
+
+${
+  receivedFocus && validationState === SelectValidationStateEnum.Invalid
+    ? `
+      !ring-red-400      
+    `
+    : ``
+}
 `;
 
 export const VectorContainerStyles = ({
   isOpen,
+  receivedFocus,
+  validationState,
 }: {
   isOpen: boolean;
+  receivedFocus?: boolean;
+  validationState?: string;
 }) => oneLine`
 ${
   isOpen
     ? `
 rotate-0
+
+${
+  receivedFocus && validationState === SelectValidationStateEnum.Invalid
+    ? `
+text-red-500
+`
+    : `
 text-primary-500
+`
+}
 `
     : `
 rotate-180
