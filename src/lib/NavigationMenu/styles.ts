@@ -2,6 +2,7 @@ import { oneLine } from "common-tags";
 
 export const ArrowStyles = oneLine`
 duration-300
+navigation-menu-arrow
 transition-transform
 `;
 
@@ -123,6 +124,7 @@ block
 duration-200
 ease-in-out
 leading-[1]
+navigation-menu-item
 no-underline
 outline-none
 p-3
@@ -162,6 +164,9 @@ navigation-menu-line
 stroke-[3]
 stroke-neutral-primary-100
 transition-all
+
+group-hover:!stroke-neutral-100
+
 `;
 
 export const LineTopBottomStyles = oneLine`
@@ -184,6 +189,8 @@ ${
   open
     ? `
     [&_svg]:-rotate-45
+    [&_svg]:-translate-x-[0.25px]
+    [&_svg]:translate-y-[0.75px]
     
     [&_svg]:[stroke-dasharray:20_300]
     
@@ -199,6 +206,7 @@ export const MobilePopoverContentStyles = oneLine`
 !rounded-none
 !w-[var(--kb-popper-content-available-width)]
 outline-none
+navigation-menu-mobile-popover-content
 
 [&_.popover-arrow]:hidden
 
@@ -206,11 +214,13 @@ outline-none
 `;
 
 export const MobilePopoverStyles = oneLine`
+!ring-0
 duration-300
 ease-in-out
-!ring-0
-transition-all
+group
+navigation-menu-mobile-popover
 sm:hidden
+transition-all
 
 focus:!ring-2
 
@@ -235,7 +245,7 @@ gap-3
 items-center
 navigation-menu-title-container
 outline-none
-ring-blue-500
+ring-primary-500
 rounded-lg
 
 focus:ring-2

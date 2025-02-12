@@ -75,13 +75,7 @@ export default function NavigationMenu({
       href={href}
     >
       <Show when={image}>
-        <img
-          alt={image?.alt}
-          class={image?.className}
-          sizes={image?.sizes}
-          src={image?.src}
-          srcSet={image?.srcset}
-        />
+        <img {...image} />
       </Show>
       <Dynamic
         component={isSmall() ? KobalteNavigationMenu.ItemLabel : "h3"}

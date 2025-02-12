@@ -57,7 +57,8 @@ const generateMenuItems = (length: number) =>
   }));
 
 const args = {
-    className: "bg-neutral-secondary-950 flex fixed items-center justify-between p-4 w-screen",
+  className:
+    "bg-neutral-secondary-950 flex fixed items-center justify-between p-4 w-screen",
   delayDuration: 100,
   focusOnAlt: true,
   forceMount: false,
@@ -86,7 +87,8 @@ export const Horizontal: Story = {
 export const Vertical: Story = {
   args: {
     ...args,
-      className: "bg-neutral-secondary-950 inline-flex fixed items-center justify-between p-4 w-screen sm:[&_nav]:w-full sm:[&_.navigation-menu-root]:items-stretch sm:[&_.navigation-menu-root]:w-full sm:[&_.navigation-menu-trigger]:w-full sm:flex-col sm:gap-4 sm:h-screen sm:items-start sm:justify-stretch sm:w-auto",
+    className:
+      "bg-neutral-secondary-950 inline-flex fixed items-center justify-between p-4 w-screen sm:[&_nav]:w-full sm:[&_.navigation-menu-root]:items-stretch sm:[&_.navigation-menu-root]:w-full sm:[&_.navigation-menu-trigger]:w-full sm:flex-col sm:gap-4 sm:h-screen sm:items-start sm:justify-stretch sm:w-auto",
     orientation: NavigationMenuOrientationEnum.Vertical,
   },
   render,
