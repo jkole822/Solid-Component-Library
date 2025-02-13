@@ -7,6 +7,9 @@ const meta = {
   component: HomeHero,
   tags: ["autodocs"],
   argTypes: {},
+  parameters: {
+    layout: 'fullscreen'
+  }
 } satisfies Meta<typeof HomeHero>;
 
 export default meta;
