@@ -9,6 +9,9 @@ import Tooltip from "../Tooltip";
 import {
   BottomCTAContainerStyles,
   BottomCTATextStyles,
+  ButtonContainerStyles,
+  ButtonIconStyles,
+  ButtonStyles,
   CarouselBackgroundImageStyles,
   CarouselImagesContainerStyles,
   CarouselLinkStyles,
@@ -39,6 +42,7 @@ import { handleCursor, handleParallax, handleScrollToTop } from "./utils";
 
 // Types
 import type { Props } from "./types";
+import { ButtonVariantsEnum } from "../Button/types";
 
 export default function HomeHero({
   bottomLinkCTA,
@@ -55,6 +59,22 @@ export default function HomeHero({
 
   const handleMouseEnter = (index: number) => {
     setActiveItem(index);
+  };
+
+  const handleNext = () => {
+    if (activeItem() === items.length - 1) {
+      setActiveItem(0);
+    } else {
+      setActiveItem(activeItem() + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (activeItem() === 0) {
+      setActiveItem(items.length - 1);
+    } else {
+      setActiveItem(activeItem() - 1);
+    }
   };
 
   onMount(() => {
@@ -112,6 +132,23 @@ export default function HomeHero({
             )}
           </For>
         </ul>
+
+        <div class={ButtonContainerStyles}>
+          <Button
+            className={ButtonStyles}
+            onClick={handlePrevious}
+            variant={ButtonVariantsEnum.outline}
+          >
+            <i aria-hidden="true" class={ButtonIconStyles}></i>
+          </Button>
+          <Button
+            className={ButtonStyles}
+            onClick={handleNext}
+            variant={ButtonVariantsEnum.outline}
+          >
+            <i aria-hidden="true" class={`${ButtonIconStyles} rotate-180`}></i>
+          </Button>
+        </div>
 
         <ul class={CarouselImagesContainerStyles}>
           <For each={items}>

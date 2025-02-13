@@ -54,6 +54,42 @@ transition-all
 hover:opacity-[0.15]
 `;
 
+export const ButtonContainerStyles = oneLine`
+absolute
+carousel-button-container
+flex
+gap-12
+left-1/2
+-translate-x-1/2
+select-none
+z-20
+bottom-[152px]
+
+sm:!bottom-56
+sm:left-auto
+sm:right-10
+sm:translate-x-[unset]
+
+md:!bottom-48
+
+[@media(min-width:880px)]:!bottom-40
+
+lg:hidden
+`;
+
+export const ButtonIconStyles = oneLine`
+carousel-button-icon
+fa-solid
+fa-arrow-left
+`;
+
+export const ButtonStyles = oneLine`
+carousel-button
+!px-4
+!rounded-full
+`;
+
+
 export const CarouselBackgroundImageStyles = oneLine`
 -translate-x-1/2
 -translate-y-1/2
@@ -122,6 +158,8 @@ export const CarouselLinksContainerStyles = oneLine`
 -translate-y-1/2
 absolute
 bg-neutral-secondary-900/95
+flex
+flex-col
 home-hero-carousel-links-container
 left-1/2
 list-none
@@ -133,6 +171,8 @@ shadow-[0_0_10px_rgba(0,0,0,.8)]
 top-1/2
 w-auto
 z-10
+
+sm:flex-row
 
 md:bg-neutral-secondary-900/80
 md:shadow-[0_0_30px_rgba(0,0,0,.8)]
@@ -167,8 +207,8 @@ md:text-left
 
 [&_a:hover]:no-underline
 
-lg:[&_a.active]:opacity-100
-lg:[&_a.active]:text-neutral-primary-100
+[&_a.active]:opacity-100
+[&_a.active]:text-neutral-primary-100
 
 md:[&_a]:mx-auto
 md:[&_a]:my-0
