@@ -166,7 +166,6 @@ stroke-neutral-primary-100
 transition-all
 
 group-hover:!stroke-neutral-100
-
 `;
 
 export const LineTopBottomStyles = oneLine`
@@ -202,11 +201,14 @@ ${
 `;
 
 export const MobilePopoverContentStyles = oneLine`
+!h-[calc(100vh-112px)]
 !max-w-[unset]
 !rounded-none
+!top-8
 !w-[var(--kb-popper-content-available-width)]
-outline-none
 navigation-menu-mobile-popover-content
+outline-none
+overflow-y-scroll
 
 [&_.popover-arrow]:hidden
 
@@ -219,8 +221,8 @@ duration-300
 ease-in-out
 group
 navigation-menu-mobile-popover
-sm:hidden
 transition-all
+sm:hidden
 
 focus:!ring-2
 
@@ -283,7 +285,6 @@ transition-transform
 
 export const TriggerStyles = oneLine`
 appearance-none
-bg-neutral-secondary-950
 border-none
 duration-300
 font-medium
@@ -300,6 +301,8 @@ py-5
 text-neutral-primary-300
 transition-colors
 w-auto
+
+md:bg-neutral-secondary-950
 
 data-[disabled]:!bg-neutral-800
 data-[disabled]:cursor-not-allowed
