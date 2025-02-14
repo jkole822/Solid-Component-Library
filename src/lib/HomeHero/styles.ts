@@ -56,23 +56,13 @@ hover:opacity-[0.15]
 
 export const ButtonContainerStyles = oneLine`
 absolute
+bottom-5
 carousel-button-container
 flex
-gap-12
-left-1/2
--translate-x-1/2
+gap-5
+right-5
 select-none
 z-20
-bottom-[152px]
-
-sm:!bottom-56
-sm:left-auto
-sm:right-10
-sm:translate-x-[unset]
-
-md:!bottom-48
-
-[@media(min-width:880px)]:!bottom-40
 
 lg:hidden
 `;

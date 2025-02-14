@@ -86,6 +86,7 @@ export default function HomeHero({
   return (
     <div class={ContainerStyles}>
       <div class={ShadowTitleStyles}>{shadowTitle}</div>
+
       <For each={parallaxBackgroundImages}>
         {(image, index) => (
           <div
@@ -133,29 +134,31 @@ export default function HomeHero({
           </For>
         </ul>
 
-        <div class={ButtonContainerStyles}>
-          <Button
-            className={ButtonStyles}
-            onClick={handlePrevious}
-            variant={ButtonVariantsEnum.outline}
-          >
-            <i aria-hidden="true" class={ButtonIconStyles}></i>
-          </Button>
-          <Button
-            className={ButtonStyles}
-            onClick={handleNext}
-            variant={ButtonVariantsEnum.outline}
-          >
-            <i aria-hidden="true" class={`${ButtonIconStyles} rotate-180`}></i>
-          </Button>
-        </div>
-
         <ul class={CarouselImagesContainerStyles}>
           <For each={items}>
             {({ image, title }, index) => (
               <li class={index() === activeItem() ? "show" : ""}>
                 <div class={CarouselBackgroundImageStyles}>
                   <img {...image} />
+                  <div class={ButtonContainerStyles}>
+                    <Button
+                      className={ButtonStyles}
+                      onClick={handlePrevious}
+                      variant={ButtonVariantsEnum.outline}
+                    >
+                      <i aria-hidden="true" class={ButtonIconStyles}></i>
+                    </Button>
+                    <Button
+                      className={ButtonStyles}
+                      onClick={handleNext}
+                      variant={ButtonVariantsEnum.outline}
+                    >
+                      <i
+                        aria-hidden="true"
+                        class={`${ButtonIconStyles} rotate-180`}
+                      ></i>
+                    </Button>
+                  </div>
                 </div>
                 <div class={CarouselNumberBackStyles}>0{index() + 1}</div>
                 <div class={CarouselNumberStyles}>0{index() + 1}</div>
