@@ -1,5 +1,10 @@
+// Packages
 import { faker } from "@faker-js/faker";
+
+// Components
 import Accordion from "./story";
+
+// Types
 import { HeadingLevelEnum } from "../../types";
 import type { Meta, StoryObj } from "storybook-solidjs";
 
@@ -8,6 +13,7 @@ const meta = {
   component: Accordion,
   tags: ["autodocs"],
   argTypes: {
+    className: { control: "text" },
     headingLevel: {
       control: {
         type: "select",
@@ -35,21 +41,14 @@ const generateItems = (length: number) =>
     disabled: index === 2,
   }));
 
-const args = {
-  collapsible: false,
-  defaultValue: ["item-1"],
-  headingLevel: HeadingLevelEnum.Three,
-  items: generateItems(5),
-  shouldFocusWrap: false,
-};
-
 export const Basic: Story = {
-  args,
-};
-
-export const WithClass: Story = {
   args: {
-    ...args,
-    className: "sm:w-72",
+    collapsible: false,
+    defaultValue: ["item-1"],
+    headingLevel: HeadingLevelEnum.Three,
+    items: generateItems(5),
+    multiple: false,
+    shouldFocusWrap: false,
+    value: [],
   },
 };

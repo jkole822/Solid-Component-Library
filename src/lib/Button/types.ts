@@ -14,9 +14,9 @@ export type ButtonVariants =
   | ButtonVariantsEnum.outline;
 
 export interface Props {
-  ariaControls?: string;
-  ariaExpanded?: boolean;
-  ariaHasPopup?:
+  "aria-controls"?: string;
+  "aria-expanded"?: boolean;
+  "aria-haspopup"?:
     | boolean
     | "dialog"
     | "menu"
@@ -26,12 +26,11 @@ export interface Props {
     | "false"
     | "true"
     | undefined;
-  ariaHidden?: boolean;
-  ariaLabel?: string;
+  "aria-hidden"?: boolean;
+  "aria-label"?: string;
   children: JSX.Element;
   className?: string;
   disabled?: boolean;
-  disabledAccessor?: Accessor<boolean>;
   href?: string;
   id?: string;
   onClick?: () => void;

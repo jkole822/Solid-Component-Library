@@ -1,9 +1,16 @@
+// Packages
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
 import { fn } from "@storybook/test";
+
+// Components
 import Button from ".";
-import { ButtonVariantsEnum } from "./types";
+
+// Styles
 import { IconStyles } from "../../styles";
+
+// Types
+import { ButtonVariantsEnum } from "./types";
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
@@ -11,9 +18,9 @@ const meta = {
   component: Button,
   tags: ["autodocs"],
   argTypes: {
-    ariaControls: { control: "text" },
-    ariaExpanded: { control: "boolean" },
-    ariaHasPopup: {
+    "aria-controls": { control: "text" },
+    "aria-expanded": { control: "boolean" },
+    "aria-haspopup": {
       control: "select",
       options: [
         undefined,
@@ -28,8 +35,9 @@ const meta = {
         "true",
       ],
     },
-    ariaHidden: { control: "boolean" },
-    ariaLabel: { control: "text" },
+    "aria-hidden": { control: "boolean" },
+    "aria-label": { control: "text" },
+    className: { control: "text" },
     href: { control: "text" },
     showBottomGlow: { control: "boolean" },
     tabIndex: {
@@ -89,15 +97,6 @@ export const Outline: Story = {
   },
 };
 
-export const OutlineWithGlow: Story = {
-  args: {
-    ...args,
-    className: "mx-auto",
-    showBottomGlow: true,
-    variant: ButtonVariantsEnum.outline,
-  },
-};
-
 export const LineOne: Story = {
   args: {
     ...args,
@@ -113,13 +112,5 @@ export const LineTwo: Story = {
     href: "https://www.solidjs.com/",
     target: "_blank",
     variant: ButtonVariantsEnum.lineTwo,
-  },
-};
-
-export const WithClass: Story = {
-  args: {
-    children: ButtonContent,
-    className: "mx-auto",
-    variant: ButtonVariantsEnum.fill,
   },
 };

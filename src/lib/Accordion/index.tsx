@@ -1,6 +1,6 @@
 // Packages
 import { Accordion as KobalteAccordion } from "@kobalte/core/accordion";
-import { For, Show } from "solid-js";
+import { For, mergeProps, Show, splitProps } from "solid-js";
 
 // Styles
 import {
@@ -15,27 +15,34 @@ import {
 // Types
 import { Props } from "./types";
 
-export default function Accordion({
-  className = "",
-  headingLevel,
-  items,
-  value,
-  ...rest
-}: Props) {
+export default function Accordion(initialProps: Props) {
+  const mergedProps = mergeProps({ className: "" }, initialProps);
+  const [props, rest] = splitProps(mergedProps, [
+    "className",
+    "headingLevel",
+    "items",
+    "value",
+  ]);
+
+  const rootProps = () => ({
+    ...rest,
+    ...(props.value ? { value: props.value() } : {}),
+    class: `${props.className} ${ContainerStyles}`,
+  });
+
   return (
-    <KobalteAccordion
-      {...rest}
-      {...(value ? { value: value() } : {})}
-      class={`${className} ${ContainerStyles}`}
-    >
-      <For each={items}>
+    <KobalteAccordion {...rootProps()}>
+      <For each={props.items}>
         {(item) => (
           <KobalteAccordion.Item
             class={SectionStyles}
             disabled={item.disabled}
             value={item.id}
           >
-            <KobalteAccordion.Header as={headingLevel} class={HeadingStyles}>
+            <KobalteAccordion.Header
+              as={props.headingLevel}
+              class={HeadingStyles}
+            >
               <KobalteAccordion.Trigger class={ButtonStyles}>
                 <span>{item.title}</span>
                 <i

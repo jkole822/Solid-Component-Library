@@ -1,6 +1,6 @@
 import { oneLine } from "common-tags";
 
-export const ButtonStyles = `
+export const ButtonStyles = oneLine`
 accordion-button
 bg-neutral-secondary-900
 cursor-pointer

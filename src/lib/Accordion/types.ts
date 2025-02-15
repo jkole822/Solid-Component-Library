@@ -15,7 +15,8 @@ export interface Props {
   defaultValue?: string[];
   headingLevel: HeadingLevels;
   items: AccordionItem[];
-  onChange?: Setter<string[]>;
+  multiple?: boolean;
+  onChange?: Setter<string[] | undefined>;
   shouldFocusWrap?: boolean;
-  value?: Accessor<string[]>;
+  value?: Accessor<string[] | undefined>;
 }
