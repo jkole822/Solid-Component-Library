@@ -62,8 +62,7 @@ export interface Props {
   required?: boolean;
   selectionBehavior?: ComboBoxSelectionBehavior;
   triggerMode?: ComboBoxTriggerMode;
-  useInternalAndExternalValidation?: boolean;
-  validationStateAccessor?: Accessor<ComboBoxValidationState>;
+  validationState?: ComboBoxValidationState;
   value: Accessor<ComboBoxItem | ComboBoxItem[] | undefined>;
   virtualized?: boolean;
 }

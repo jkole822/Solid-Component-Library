@@ -10,11 +10,7 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 // Types
 import type { ComboBoxItem, Props } from "./types";
 
-export default function ComboBoxStory({
-  value: _,
-  onChange: __,
-  ...rest
-}: Props) {
+export default function ComboBoxStory(props: Props) {
   const [value, setValue] = createSignal<
     ComboBoxItem | ComboBoxItem[] | undefined
   >();
@@ -38,7 +34,7 @@ export default function ComboBoxStory({
 
   return (
     <>
-      <ComboBox {...rest} onChange={setValue} value={value} />
+      <ComboBox {...props} onChange={setValue} value={value} />
       <p class={SubHeadingStyles}>Binding Check</p>
       <Show when={Array.isArray(value())} fallback={<BindingCheck />}>
         {/*@ts-ignore*/}

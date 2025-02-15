@@ -4,6 +4,7 @@ import ComboBox from "./story";
 import {
   ComboBoxSelectionBehaviorEnum,
   ComboBoxTriggerModeEnum,
+  ComboBoxValidationStateEnum,
 } from "./types";
 import type { Meta, StoryObj } from "storybook-solidjs";
 
@@ -25,6 +26,13 @@ const meta = {
         ComboBoxTriggerModeEnum.Focus,
         ComboBoxTriggerModeEnum.Manual,
         ComboBoxTriggerModeEnum.Input,
+      ],
+    },
+    validationState: {
+      control: "select",
+      options: [
+        ComboBoxValidationStateEnum.Valid,
+        ComboBoxValidationStateEnum.Invalid,
       ],
     },
   },
@@ -63,7 +71,6 @@ const args = {
   required: true,
   selectionBehavior: ComboBoxSelectionBehaviorEnum.Toggle,
   triggerMode: ComboBoxTriggerModeEnum.Manual,
-  useInternalAndExternalValidation: false,
   virtualized: false,
 };
 
@@ -77,12 +84,5 @@ export const Multiple: Story = {
     closeOnSelection: false,
     multiple: true,
     triggerMode: ComboBoxTriggerModeEnum.Input,
-  },
-};
-
-export const WithClass: Story = {
-  args: {
-    ...args,
-    className: "sm:w-72",
   },
 };

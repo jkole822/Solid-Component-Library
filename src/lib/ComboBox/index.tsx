@@ -1,6 +1,13 @@
 // Packages
 import { Combobox } from "@kobalte/core/combobox";
-import { createEffect, createSignal, For, Show } from "solid-js";
+import {
+  createEffect,
+  createSignal,
+  For,
+  mergeProps,
+  Show,
+  splitProps,
+} from "solid-js";
 
 // Styles
 import {
@@ -25,33 +32,46 @@ import {
 } from "../Input/styles";
 
 // Types
-import type { ComboBoxValidationState, Props } from "./types";
-import { ComboBoxValidationStateEnum } from "./types";
+import {
+  ComboBoxValidationState,
+  ComboBoxValidationStateEnum,
+  Props,
+} from "./types";
 
-export default function ComboBox({
-  className = "",
-  description,
-  errorMessage,
-  id,
-  inputClass = "",
-  multiple,
-  name,
-  onChange,
-  required,
-  useInternalAndExternalValidation,
-  validationStateAccessor,
-  value,
-  ...rest
-}: Props) {
+export default function ComboBox(initialProps: Props) {
+  const mergedProps = mergeProps(
+    {
+      className: "",
+      inputClass: "",
+      validationState: ComboBoxValidationStateEnum.Valid,
+    },
+    initialProps,
+  );
+
+  const [props, rest] = splitProps(mergedProps, [
+    "className",
+    "description",
+    "errorMessage",
+    "id",
+    "inputClass",
+    "multiple",
+    "name",
+    "onChange",
+    "required",
+    "validationState",
+    "value",
+  ]);
+
   const [inputValue, setInputValue] = createSignal("");
   const [receivedFocus, setReceivedFocus] = createSignal(false);
-  const [validationState, setValidationState] =
-    createSignal<ComboBoxValidationState>(ComboBoxValidationStateEnum.Valid);
+  const [validation, setValidation] = createSignal<ComboBoxValidationState>(
+    ComboBoxValidationStateEnum.Valid,
+  );
 
   const handleBlur = () => {
-    if (!multiple) {
+    if (!props.multiple) {
       //@ts-ignore
-      setInputValue(value()?.label ?? "");
+      setInputValue(props.value()?.label ?? "");
     }
 
     setReceivedFocus(true);
@@ -62,59 +82,72 @@ export default function ComboBox({
   ) => {
     setInputValue(e.target.value);
 
-    if (!multiple && !e.target.value) {
-      onChange(undefined);
+    if (!props.multiple && !e.target.value) {
+      props.onChange(undefined);
     }
   };
 
   createEffect(() => {
-    if (multiple) {
+    if (props.multiple) {
       //@ts-ignore
-      if (receivedFocus() && required && (!value() || value()?.length === 0)) {
-        setValidationState(ComboBoxValidationStateEnum.Invalid);
+      if (receivedFocus() && props.required && (!props.value() || props.value()?.length === 0)) {
+        setValidation(ComboBoxValidationStateEnum.Invalid);
       } else {
-        setValidationState(ComboBoxValidationStateEnum.Valid);
+        setValidation(ComboBoxValidationStateEnum.Valid);
       }
     } else {
-      if (receivedFocus() && required && !value()) {
-        setValidationState(ComboBoxValidationStateEnum.Invalid);
+      if (receivedFocus() && props.required && !props.value()) {
+        setValidation(ComboBoxValidationStateEnum.Invalid);
       } else {
-        setValidationState(ComboBoxValidationStateEnum.Valid);
+        setValidation(ComboBoxValidationStateEnum.Valid);
       }
 
       //@ts-ignore
-      setInputValue(value()?.label ?? "");
+      setInputValue(props.value()?.label ?? "");
     }
   });
 
-  const ComboBoxControlContents = () => (
-    <>
-      <Combobox.Input
-        aria-required={multiple ? false : required}
-        //@ts-ignore
-        class={`${inputClass} ${InputStyles({ hasValue: (!multiple && !!inputValue()) || (!multiple && !!value()) || (multiple && value()?.length > 0), multiple, receivedFocus: receivedFocus(), validationState: validationState() })}`}
-        id={id}
-        name={name}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        required={multiple ? false : required}
-        value={inputValue()}
-      />
-      <label class={LabelStyles} for={id}>
-        {name}
-      </label>
-      <Combobox.Trigger class={TriggerStyles}>
-        <Combobox.Icon class={VectorContainerStyles}>
-          <i aria-hidden="true" class="fa-solid fa-sort"></i>
-        </Combobox.Icon>
-      </Combobox.Trigger>
-    </>
-  );
+  const ComboBoxControlContents = () => {
+    const isRequired = () => (props.multiple ? false : props.required);
+
+    return (
+      <>
+        <Combobox.Input
+          aria-required={isRequired()}
+          class={`${props.inputClass} ${InputStyles({
+            hasValue:
+              (!props.multiple && !!inputValue()) ||
+              (!props.multiple && !!props.value()) ||
+              //@ts-ignore
+              (props.multiple && props.value()?.length > 0),
+            multiple: props.multiple,
+            receivedFocus: receivedFocus(),
+            validationState: validation(),
+          })}`}
+          id={props.id}
+          name={props.name}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          required={isRequired()}
+          value={inputValue()}
+        />
+        <label class={LabelStyles} for={props.id}>
+          {props.name}
+        </label>
+        <Combobox.Trigger class={TriggerStyles}>
+          <Combobox.Icon class={VectorContainerStyles}>
+            <i aria-hidden="true" class="fa-solid fa-sort"></i>
+          </Combobox.Icon>
+        </Combobox.Trigger>
+      </>
+    );
+  };
 
   return (
     <Combobox
       {...rest}
-      multiple={multiple}
+      multiple={props.multiple}
+      onChange={props.onChange}
       //@ts-ignore
       optionDisabled="disabled"
       //@ts-ignore
@@ -123,17 +156,13 @@ export default function ComboBox({
       optionTextValue="label"
       //@ts-ignore
       optionValue="id"
-      onChange={onChange}
-      required={required}
-      value={value()}
+      required={props.required}
+      value={props.value()}
       validationState={
-        useInternalAndExternalValidation &&
-        validationStateAccessor &&
-        validationStateAccessor() === ComboBoxValidationStateEnum.Valid
+        validation() === ComboBoxValidationStateEnum.Valid &&
+        props.validationState === ComboBoxValidationStateEnum.Valid
           ? ComboBoxValidationStateEnum.Valid
-          : validationStateAccessor
-            ? validationStateAccessor()
-            : validationState()
+          : ComboBoxValidationStateEnum.Invalid
       }
       itemComponent={(props) => (
         <Combobox.Item item={props.item} class={ListItemStyles}>
@@ -155,16 +184,22 @@ export default function ComboBox({
       )}
     >
       <Show
-        when={multiple}
+        when={props.multiple}
         fallback={
-          <Combobox.Control class={`${className} ${ContainerStyles({})}`}>
+          <Combobox.Control class={`${props.className} ${ContainerStyles({})}`}>
             <ComboBoxControlContents />
           </Combobox.Control>
         }
       >
         <Combobox.Control
-          //@ts-ignore
-          class={`${className} ${ContainerStyles({ hasInputValue: !!inputValue(), hasValue: value()?.length > 0, multiple, receivedFocus: receivedFocus(), validationState: validationState() })}`}
+          class={`${props.className} ${ContainerStyles({
+            hasInputValue: !!inputValue(),
+            //@ts-ignore
+            hasValue: props.value()?.length > 0,
+            multiple: props.multiple,
+            receivedFocus: receivedFocus(),
+            validationState: validation(),
+          })}`}
         >
           {(state) => (
             <>
@@ -188,7 +223,7 @@ export default function ComboBox({
                 </For>
               </div>
               {/*@ts-ignore*/}
-              <Show when={value()?.length > 0}>
+              <Show when={props.value()?.length > 0}>
                 <button
                   class={MultiSelectionCloseButtonStyles}
                   onPointerDown={(e) => e.stopPropagation()}
@@ -202,16 +237,16 @@ export default function ComboBox({
           )}
         </Combobox.Control>
       </Show>
-      <Show when={description || errorMessage}>
+      <Show when={props.description || props.errorMessage}>
         <div class="mt-2">
-          <Show when={description}>
+          <Show when={props.description}>
             <Combobox.Description class={DescriptionStyles}>
-              {description}
+              {props.description}
             </Combobox.Description>
           </Show>
-          <Show when={errorMessage}>
+          <Show when={props.errorMessage}>
             <Combobox.ErrorMessage class={ErrorMessageStyles}>
-              {errorMessage}
+              {props.errorMessage}
             </Combobox.ErrorMessage>
           </Show>
         </div>
