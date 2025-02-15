@@ -7,6 +7,6 @@ export interface Props {
   defaultOpen?: boolean;
   disabled?: boolean;
   forceMount?: boolean;
-  onOpenChange?: Setter<boolean>;
-  open?: Accessor<boolean>;
+  onOpenChange?: Setter<boolean | undefined>;
+  open?: Accessor<boolean | undefined>;
 }

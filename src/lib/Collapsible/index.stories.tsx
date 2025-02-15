@@ -1,6 +1,13 @@
+// Packages
 import { faker } from "@faker-js/faker";
+
+// Components
 import Collapsible from "./story";
+
+// Styles
 import { IconStyles } from "../../styles";
+
+// Types
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
@@ -20,20 +27,11 @@ const buttonContent = () => (
   </div>
 );
 
-const args = {
-  buttonContent,
-  defaultOpen: false,
-  disabled: false,
-  forceMount: false,
-};
-
 export const Basic: Story = {
-  args,
-};
-
-export const WithClass: Story = {
   args: {
-    ...args,
-    className: "mx-auto sm:w-72",
+    buttonContent,
+    defaultOpen: false,
+    disabled: false,
+    forceMount: false,
   },
 };
