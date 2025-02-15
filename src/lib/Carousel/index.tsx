@@ -1,5 +1,5 @@
 // Packages
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, For, mergeProps, Show } from "solid-js";
 import { createMediaQuery } from "@solid-primitives/media";
 
 // Components
@@ -22,8 +22,9 @@ import {
 import { ButtonVariantsEnum } from "../Button/types";
 import type { Props } from "./types";
 
-export default function Carousel({ className, items }: Props) {
-  const [cards, setCards] = createSignal(items);
+export default function Carousel(initialProps: Props) {
+  const props = mergeProps({className: ""}, initialProps);
+  const [cards, setCards] = createSignal(props.items);
   const isTwoExtraSmall = createMediaQuery("(min-width: 384px)");
   const isSmall = createMediaQuery("(min-width: 640px)");
   const isLarge = createMediaQuery("(min-width: 1024px)");
@@ -34,11 +35,11 @@ export default function Carousel({ className, items }: Props) {
   };
 
   const handlePrevious = () => {
-    setCards([cards()[items.length - 1], ...cards().slice(0, -1)]);
+    setCards([cards()[props.items.length - 1], ...cards().slice(0, -1)]);
   };
 
   return (
-    <div class={`${className} ${ContainerStyles}`}>
+    <div class={`${props.className} ${ContainerStyles}`}>
       <div class={CarouselStyles}>
         <For each={cards()}>
           {({ cta, description, image, title }, index) => (

@@ -1,6 +1,6 @@
 // Packages
 import { Checkbox as KobalteCheckbox } from "@kobalte/core/checkbox";
-import { Show } from "solid-js";
+import { mergeProps, Show, splitProps } from "solid-js";
 
 // Styles
 import {
@@ -17,27 +17,26 @@ import {
 // Types
 import type { Props } from "./types";
 
-export default function Checkbox({
-  checked,
-  className = "",
-  description,
-  errorMessage,
-  name,
-  validationStateAccessor,
-  validationState,
-  ...rest
-}: Props) {
+export default function Checkbox(initialProps: Props) {
+  const mergedProps = mergeProps({ className: "" }, initialProps);
+  const [props, rest] = splitProps(mergedProps, [
+    "checked",
+    "className",
+    "description",
+    "errorMessage",
+    "name",
+  ]);
+
+  const rootProps = () => ({
+    ...rest,
+    ...(props.checked !== undefined ? { checked: props.checked() } : {}),
+    class: ContainerStyles,
+    name: props.name,
+  });
+
   return (
-    <div class={`${className} w-fit`}>
-      <KobalteCheckbox
-        {...rest}
-        checked={checked()}
-        class={ContainerStyles}
-        name={name}
-        validationState={
-          validationStateAccessor ? validationStateAccessor() : validationState
-        }
-      >
+    <div class={`${props.className} w-fit`}>
+      <KobalteCheckbox {...rootProps()}>
         <div class={FlexContainerStyles}>
           <KobalteCheckbox.Input class={InputStyles} />
           <KobalteCheckbox.Control>
@@ -55,17 +54,17 @@ export default function Checkbox({
             </svg>
           </KobalteCheckbox.Control>
           <KobalteCheckbox.Label class={LabelStyles}>
-            {name}
+            {props.name}
           </KobalteCheckbox.Label>
         </div>
-        <Show when={description}>
+        <Show when={props.description}>
           <KobalteCheckbox.Description class={DescriptionStyles}>
-            {description}
+            {props.description}
           </KobalteCheckbox.Description>
         </Show>
-        <Show when={errorMessage}>
+        <Show when={props.errorMessage}>
           <KobalteCheckbox.ErrorMessage class={ErrorMessageStyles}>
-            {errorMessage}
+            {props.errorMessage}
           </KobalteCheckbox.ErrorMessage>
         </Show>
       </KobalteCheckbox>

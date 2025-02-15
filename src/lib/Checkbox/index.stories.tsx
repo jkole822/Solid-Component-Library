@@ -1,13 +1,19 @@
+// Packages
 import { faker } from "@faker-js/faker";
+
+// Components
 import Checkbox from "./story";
-import type { Meta, StoryObj } from "storybook-solidjs";
+
+// Types
 import { CheckboxValidationStateEnum } from "./types";
+import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
   title: "Checkbox",
   component: Checkbox,
   tags: ["autodocs"],
   argTypes: {
+    className: { control: "text" },
     validationState: {
       control: "select",
       options: [
@@ -34,19 +40,4 @@ const args = {
 
 export const Basic: Story = {
   args,
-};
-
-export const Invalid: Story = {
-  args: {
-    ...args,
-    required: true,
-    validationState: CheckboxValidationStateEnum.Invalid,
-  },
-};
-
-export const WithClass: Story = {
-  args: {
-    ...args,
-    className: "mx-auto",
-  },
 };
