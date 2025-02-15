@@ -49,6 +49,5 @@ export const Basic: Story = {
     items: generateItems(5),
     multiple: false,
     shouldFocusWrap: false,
-    value: [],
   },
 };
