@@ -1,5 +1,11 @@
 // Packages
-import { createEffect, createSignal, Show } from "solid-js";
+import {
+  createEffect,
+  createSignal,
+  mergeProps,
+  Show,
+  splitProps,
+} from "solid-js";
 
 // Styles
 import {
@@ -18,110 +24,97 @@ import {
   Props,
 } from "./types";
 
-export default function Input({
-  className = "",
-  description,
-  errorMessage,
-  id,
-  inputClass = "",
-  max,
-  maxLength,
-  min,
-  minLength,
-  name,
-  onChange,
-  pattern,
-  required,
-  type = InputTypeEnum.text,
-  validationStateAccessor,
-  value,
-  ...rest
-}: Props) {
+export default function Input(initialProps: Props) {
+  const mergedProps = mergeProps({
+    className: "",
+    inputClass: "",
+    type: InputTypeEnum.text,
+    validationState: InputValidationStateEnum.Valid,
+  }, initialProps);
+
+  const [props, rest] = splitProps(mergedProps, ["className", "description", "errorMessage", "id", "inputClass", "max", "maxLength", "min", "minLength", "name", "onChange", "pattern", "required", "type", "validationState", "value"])
   const [receivedFocus, setReceivedFocus] = createSignal(false);
-  const [validationState, setValidationState] =
-    createSignal<InputValidationState>(InputValidationStateEnum.Valid);
+  const [validation, setValidation] = createSignal<InputValidationState>(
+    InputValidationStateEnum.Valid,
+  );
 
   const isInvalid = () =>
-    validationState() === InputValidationStateEnum.Invalid;
+    validation() === InputValidationStateEnum.Invalid ||
+    props.validationState === InputValidationStateEnum.Invalid;
 
-  const ariaDescribedBy = `${description ? `${id}-description` : ""} ${errorMessage && isInvalid() ? `${id}-error-message` : ""}`;
+  const ariaDescribedBy = `${props.description ? `${props.id}-description` : ""} ${props.errorMessage && isInvalid() ? `${props.id}-error-message` : ""}`;
 
   createEffect(() => {
-    const inputValue = value();
+    const inputValue = props.value();
 
     if (receivedFocus()) {
-      if (required && !inputValue) {
-        setValidationState(InputValidationStateEnum.Invalid);
+      if (props.required && !inputValue) {
+        setValidation(InputValidationStateEnum.Invalid);
       } else if (
         (!!inputValue &&
           typeof inputValue === "string" &&
-          (minLength || minLength === 0) &&
-          String(inputValue).length < minLength) ||
-        (maxLength && String(inputValue).length > maxLength)
+          (props.minLength || props.minLength === 0) &&
+          String(inputValue).length < props.minLength) ||
+        (props.maxLength && String(inputValue).length > props.maxLength)
       ) {
-        setValidationState(InputValidationStateEnum.Invalid);
+        setValidation(InputValidationStateEnum.Invalid);
       } else if (
         (!!inputValue &&
-          type === InputTypeEnum.number &&
-          (min || min === 0) &&
-          Number(inputValue) < min) ||
-        (max && Number(inputValue) > max)
+          props.type === InputTypeEnum.number &&
+          (props.min || props.min === 0) &&
+          Number(inputValue) < props.min) ||
+        (props.max && Number(inputValue) > props.max)
       ) {
-        setValidationState(InputValidationStateEnum.Invalid);
+        setValidation(InputValidationStateEnum.Invalid);
       } else if (
         !!inputValue &&
-        pattern &&
-        !RegExp(pattern).test(String(inputValue))
+        props.pattern &&
+        !RegExp(props.pattern).test(String(inputValue))
       ) {
-        setValidationState(InputValidationStateEnum.Invalid);
-      } else if (
-        validationStateAccessor &&
-        validationStateAccessor() === InputValidationStateEnum.Invalid
-      ) {
-        setValidationState(InputValidationStateEnum.Invalid);
+        setValidation(InputValidationStateEnum.Invalid);
       } else {
-        setValidationState(InputValidationStateEnum.Valid);
+        setValidation(InputValidationStateEnum.Valid);
       }
     }
   });
 
   return (
-    <div class={`${className} ${ContainerStyles({})}`}>
+    <div class={`${props.className} ${ContainerStyles({})}`}>
       <input
         {...rest}
-        {...(description || errorMessage
+        {...(props.description || props.errorMessage
           ? { "aria-describedby": ariaDescribedBy }
           : {})}
-        class={`${inputClass} ${InputStyles({
-          hasValue: !!value() || value() === 0,
+        class={`${props.inputClass} ${InputStyles({
+          hasValue: !!props.value() || props.value() === 0,
           receivedFocus: receivedFocus(),
         })}`}
-        id={id}
-        max={max}
-        maxLength={maxLength}
-        min={min}
-        minLength={minLength}
-        name={name}
-        onChange={(e) => onChange(e.target.value)}
+        id={props.id}
+        max={props.max}
+        maxLength={props.maxLength}
+        min={props.min}
+        minLength={props.minLength}
+        name={props.name}
         onBlur={() => setReceivedFocus(true)}
-        pattern={pattern}
-        required={required}
-        type={type}
-        value={value() ?? undefined}
+        onChange={(e) => props.onChange(e.target.value)}
+        pattern={props.pattern}
+        required={props.required}
+        type={props.type}
+        value={props.value() ?? undefined}
       />
-      <label class={LabelStyles} for={id}>
-        {name}
+      <label class={LabelStyles} for={props.id}>
+        {props.name}
       </label>
-      <Show when={description || (errorMessage && isInvalid())}>
+      <Show when={props.description || (props.errorMessage && isInvalid())}>
         <div class="mt-2">
-          <Show when={description}>
-            <div class={DescriptionStyles} id={`${id}-description`}>
-              {description}
+          <Show when={props.description}>
+            <div class={DescriptionStyles} id={`${props.id}-description`}>
+              {props.description}
             </div>
           </Show>
-          <Show when={errorMessage && isInvalid()}>
-            <div class={ErrorMessageStyles} id={`${id}-error-message`}>
-              {description}
+          <Show when={props.errorMessage && isInvalid()}>
+            <div class={ErrorMessageStyles} id={`${props.id}-error-message`}>
+              {props.description}
             </div>
           </Show>
         </div>

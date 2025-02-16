@@ -59,6 +59,6 @@ export interface Props {
   placeholder?: string;
   required?: boolean;
   type?: InputType;
-  validationStateAccessor?: Accessor<InputValidationState>;
+  validationState?: InputValidationState;
   value: Accessor<number | string | null>;
 }

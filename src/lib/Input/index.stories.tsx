@@ -1,7 +1,16 @@
+// Packages
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
+
+// Components
 import Input from "./story";
-import { AutoCompleteEnum, InputTypeEnum } from "../Input/types";
+
+// Types
+import {
+  AutoCompleteEnum,
+  InputTypeEnum,
+  InputValidationStateEnum,
+} from "../Input/types";
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
@@ -34,6 +43,13 @@ const meta = {
         InputTypeEnum.number,
         InputTypeEnum.password,
         InputTypeEnum.text,
+      ],
+    },
+    validationState: {
+      control: "select",
+      options: [
+        InputValidationStateEnum.Valid,
+        InputValidationStateEnum.Invalid,
       ],
     },
   },
@@ -89,12 +105,5 @@ export const PasswordField: Story = {
     minLength: 8,
     maxLength: 16,
     type: InputTypeEnum.password,
-  },
-};
-
-export const WithClass: Story = {
-  args: {
-    ...args,
-    className: "sm:w-72",
   },
 };
