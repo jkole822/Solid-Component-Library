@@ -10,16 +10,12 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 // Types
 import type { Props } from "./types";
 
-export default function PaginationStory({
-  page: _,
-  onPageChange: __,
-  ...rest
-}: Props) {
+export default function PaginationStory(props: Props) {
   const [page, setPaged] = createSignal(1);
 
   return (
     <>
-      <Pagination {...rest} onPageChange={setPaged} page={page} />
+      <Pagination {...props} onPageChange={setPaged} page={page} />
       <p class={SubHeadingStyles}>Binding Check</p>
       <p class={PararaphStyles}>{page()}</p>
     </>

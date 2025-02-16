@@ -1,5 +1,10 @@
+// Packages
 import { faker } from "@faker-js/faker";
+
+// Components
 import Pagination from "./story";
+
+// Types
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
@@ -7,6 +12,7 @@ const meta = {
   component: Pagination,
   tags: ["autodocs"],
   argTypes: {
+    className: { control: "text" },
     defaultPage: { control: "number" },
     fixedItems: { control: "select", options: [false, true, "no-ellipsis"] },
     showFirst: { control: "boolean" },
@@ -64,12 +70,5 @@ export const HiddenPreviousNextButtons: Story = {
     hideNextButton: true,
     hidePreviousButton: true,
     siblingCount: 3,
-  },
-};
-
-export const WithClass: Story = {
-  args: {
-    ...args,
-    className: "mx-auto",
   },
 };
