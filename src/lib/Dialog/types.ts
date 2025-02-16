@@ -7,7 +7,7 @@ export interface Props {
   defaultOpen?: boolean;
   description?: string;
   forceMount?: boolean;
-  id: string;
+  id?: string;
   onOpenChange: Setter<boolean>;
   onSubmit?: () => void;
   modal?: boolean;

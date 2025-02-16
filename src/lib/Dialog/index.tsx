@@ -1,6 +1,6 @@
 // Packages
 import { Dialog as KobalteDialog } from "@kobalte/core/dialog";
-import { Show } from "solid-js";
+import { mergeProps, Show, splitProps } from "solid-js";
 
 // Styles
 import {
@@ -17,48 +17,52 @@ import {
 // Types
 import type { Props } from "./types";
 
-export default function Dialog({
-  cancelButtonText,
-  children,
-  className = "",
-  description,
-  open,
-  onOpenChange,
-  onSubmit,
-  submitButtonText,
-  title,
-  trigger,
-    ...rest
-}: Props) {
+export default function Dialog(initialProps: Props) {
+  const mergedProps = mergeProps({ className: "" }, initialProps);
+  const [props, rest] = splitProps(mergedProps, [
+    "cancelButtonText",
+    "children",
+    "className",
+    "description",
+    "open",
+    "onOpenChange",
+    "onSubmit",
+    "submitButtonText",
+    "title",
+    "trigger",
+  ]);
+
   const handleClose = () => {
-    onOpenChange(false);
+    props.onOpenChange(false);
   };
 
   return (
     <>
-      <Show when={trigger}>{trigger}</Show>
-      <KobalteDialog {...rest} open={open()} onOpenChange={onOpenChange}>
+      <Show when={props.trigger}>{props.trigger}</Show>
+      <KobalteDialog
+        {...rest}
+        open={props.open()}
+        onOpenChange={props.onOpenChange}
+      >
         <KobalteDialog.Portal>
           <KobalteDialog.Overlay class={OverlayStyles} />
-          <KobalteDialog.Content
-            class={`${className} ${ContentStyles}`}
-          >
+          <KobalteDialog.Content class={`${props.className} ${ContentStyles}`}>
             <KobalteDialog.Title class={HeadingStyles}>
-              {title}
+              {props.title}
             </KobalteDialog.Title>
             <KobalteDialog.Description class={DescriptionStyles}>
-              {description}
+              {props.description}
             </KobalteDialog.Description>
-            {children}
+            {props.children}
             <div class={ButtonContainerStyles}>
-              <Show when={cancelButtonText}>
+              <Show when={props.cancelButtonText}>
                 <button class={CancelButtonStyles} onclick={handleClose}>
-                  {cancelButtonText}
+                  {props.cancelButtonText}
                 </button>
               </Show>
-              <Show when={submitButtonText && onSubmit}>
-                <button class={SubmitButtonStyles} onclick={onSubmit}>
-                  {submitButtonText}
+              <Show when={props.submitButtonText && props.onSubmit}>
+                <button class={SubmitButtonStyles} onclick={props.onSubmit}>
+                  {props.submitButtonText}
                 </button>
               </Show>
             </div>

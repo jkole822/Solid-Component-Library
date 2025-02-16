@@ -14,11 +14,7 @@ import { AutoCompleteEnum } from "../Input/types";
 import { ButtonVariantsEnum } from "../Button/types";
 import type { Props } from "./types";
 
-export default function DialogStory({
-  open: _,
-  onOpenChange: __,
-  ...rest
-}: Props) {
+export default function DialogStory(props: Props) {
   const [name, setName] = createSignal<number | string | null>("");
   const [open, setOpen] = createSignal(false);
   const [username, setUsername] = createSignal<number | string | null>("");
@@ -37,7 +33,7 @@ export default function DialogStory({
   return (
     <>
       <Dialog
-        {...rest}
+        {...props}
         onOpenChange={setOpen}
         onSubmit={handleSubmit}
         open={open}
