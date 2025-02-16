@@ -7,12 +7,8 @@ import Switch from ".";
 // Types
 import type { Props } from "./types";
 
-export default function SwitchStory({
-  checked: _,
-  onChange: __,
-  ...rest
-}: Props) {
-  const [checked, setChecked] = createSignal(false);
+export default function SwitchStory(props: Props) {
+  const [checked, setChecked] = createSignal(props.defaultChecked ?? false);
 
-  return <Switch {...rest} checked={checked} onChange={setChecked} />;
+  return <Switch {...props} checked={checked} onChange={setChecked} />;
 }

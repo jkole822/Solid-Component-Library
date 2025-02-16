@@ -1,6 +1,6 @@
 // Packages
 import { Switch as KobalteSwitch } from "@kobalte/core/switch";
-import { Show } from "solid-js";
+import { mergeProps, Show, splitProps } from "solid-js";
 
 // Styles
 import {
@@ -19,25 +19,22 @@ import {
 // Types
 import type { Props } from "./types";
 
-export default function Switch({
-  checked,
-  className = "",
-  description,
-  errorMessage,
-  name,
-  validationStateAccessor,
-  validationState,
-  ...rest
-}: Props) {
+export default function Switch(initialProps: Props) {
+  const mergedProps = mergeProps({ className: "" }, initialProps);
+  const [props, rest] = splitProps(mergedProps, [
+    "checked",
+    "className",
+    "description",
+    "errorMessage",
+    "name",
+  ]);
+
   return (
     <KobalteSwitch
       {...rest}
-      checked={checked()}
+      checked={props.checked()}
       class={ContainerStyles}
-      name={name}
-      validationState={
-        validationStateAccessor ? validationStateAccessor() : validationState
-      }
+      name={props.name}
     >
       <div class={FlexContainerStyles}>
         <div class={SwitchContainerStyles}>
@@ -46,18 +43,20 @@ export default function Switch({
             <KobalteSwitch.Thumb class={ThumbStyles} />
           </KobalteSwitch.Control>
         </div>
-        <KobalteSwitch.Label class={LabelStyles}>{name}</KobalteSwitch.Label>
+        <KobalteSwitch.Label class={LabelStyles}>
+          {props.name}
+        </KobalteSwitch.Label>
       </div>
-      <Show when={description || errorMessage}>
+      <Show when={props.description || props.errorMessage}>
         <div class={TextContainerStyles}>
-          <Show when={description}>
+          <Show when={props.description}>
             <KobalteSwitch.Description class={DescriptionStyles}>
-              {description}
+              {props.description}
             </KobalteSwitch.Description>
           </Show>
-          <Show when={errorMessage}>
+          <Show when={props.errorMessage}>
             <KobalteSwitch.ErrorMessage class={ErrorMessageStyles}>
-              {errorMessage}
+              {props.errorMessage}
             </KobalteSwitch.ErrorMessage>
           </Show>
         </div>
