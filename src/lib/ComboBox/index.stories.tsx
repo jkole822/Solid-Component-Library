@@ -1,6 +1,11 @@
+// Packages
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
+
+// Components
 import ComboBox from "./story";
+
+// Types
 import {
   ComboBoxSelectionBehaviorEnum,
   ComboBoxTriggerModeEnum,
