@@ -17,7 +17,6 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {
     className: { control: "text" },
-    defaultValue: { control: "text" },
     orientation: {
       control: "select",
       options: [
@@ -38,11 +37,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const items = [faker.lorem.words(2), faker.lorem.word(), faker.lorem.words(3)];
+const defaultValue = faker.lorem.word();
+
+const items = [faker.lorem.words(2), defaultValue, faker.lorem.words(3)];
 
 const args = {
-  disabled: false,
+  defaultValue,
   description: faker.lorem.sentence(),
+  disabled: false,
   errorMessage: faker.lorem.sentence(),
   items,
   name: faker.lorem.word(),

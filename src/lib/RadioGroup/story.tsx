@@ -11,7 +11,7 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 import type { Props } from "./types";
 
 export default function RadioGroupStory(props: Props) {
-  const [value, setValue] = createSignal("");
+  const [value, setValue] = createSignal(props.defaultValue ?? "");
 
   return (
     <>

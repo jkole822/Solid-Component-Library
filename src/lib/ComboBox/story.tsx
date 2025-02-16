@@ -13,7 +13,7 @@ import type { ComboBoxItem, Props } from "./types";
 export default function ComboBoxStory(props: Props) {
   const [value, setValue] = createSignal<
     ComboBoxItem | ComboBoxItem[] | undefined
-  >();
+  >(props.defaultValue);
 
   const BindingCheck = ({
     label,

@@ -16,7 +16,7 @@ import type { Props } from "./types";
 
 export default function DialogStory(props: Props) {
   const [name, setName] = createSignal<number | string | null>("");
-  const [open, setOpen] = createSignal(false);
+  const [open, setOpen] = createSignal(props.defaultOpen ?? false);
   const [username, setUsername] = createSignal<number | string | null>("");
 
   const handleSubmit = () => {

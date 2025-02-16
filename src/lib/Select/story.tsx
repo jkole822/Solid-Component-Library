@@ -13,7 +13,7 @@ import type { Props, SelectItem } from "./types";
 export default function SelectStory(props: Props) {
   const [value, setValue] = createSignal<
     SelectItem | SelectItem[] | undefined
-  >();
+  >(props.defaultValue);
 
   const BindingCheck = ({
     label,

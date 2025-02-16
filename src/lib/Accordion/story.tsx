@@ -9,7 +9,7 @@ import type { Props } from "./types";
 import { PararaphStyles, SubHeadingStyles } from "../../styles";
 
 export default function AccordionStory(props: Props) {
-  const [value, setValue] = createSignal<string[]>([]);
+  const [value, setValue] = createSignal<string[]>(props.defaultValue ?? []);
 
   return (
     <>

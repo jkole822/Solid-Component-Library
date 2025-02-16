@@ -11,7 +11,7 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 import type { Props } from "./types";
 
 export default function CheckboxStory(props: Props) {
-  const [checked, setChecked] = createSignal(false);
+  const [checked, setChecked] = createSignal(props.defaultChecked ?? false);
 
   return (
     <>

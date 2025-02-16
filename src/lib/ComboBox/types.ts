@@ -41,7 +41,7 @@ export interface Props {
   allowsEmptyCollection?: boolean;
   className?: string;
   closeOnSelection?: boolean;
-  defaultValue?: string | string[];
+  defaultValue?: ComboBoxItem | ComboBoxItem[];
   description?: string;
   disabled?: boolean;
   disallowEmptySelection?: boolean;

@@ -11,7 +11,7 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 import type { Props } from "./types";
 
 export default function PaginationStory(props: Props) {
-  const [page, setPaged] = createSignal(1);
+  const [page, setPaged] = createSignal(props.defaultPage ?? 1);
 
   return (
     <>

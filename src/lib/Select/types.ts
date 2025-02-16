@@ -33,7 +33,7 @@ export interface Props {
   autoComplete?: AutoCompleteType;
   className?: string;
   closeOnSelection?: boolean;
-  defaultValue?: string;
+  defaultValue?: SelectItem | SelectItem[];
   description?: string;
   disabled?: boolean;
   disallowEmptySelection?: boolean;
