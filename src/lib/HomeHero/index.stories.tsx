@@ -1,5 +1,10 @@
+// Packages
 import { faker } from "@faker-js/faker";
+
+// Components
 import HomeHero from ".";
+
+// Types
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
