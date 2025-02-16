@@ -1,7 +1,12 @@
+// Packages
 import { faker } from "@faker-js/faker";
+
+// Components
 import Tabs from "./story";
-import { TabsActivationModeEnum, TabsOrientationEnum } from "./types";
+
+// Types
 import type { Meta, StoryObj } from "storybook-solidjs";
+import { TabsActivationModeEnum, TabsOrientationEnum } from "./types";
 
 const meta = {
   title: "Tabs",
@@ -33,24 +38,13 @@ const args = {
 };
 
 export const Horizontal: Story = {
-  args,
-};
-
-export const Vertical: Story = {
-  args: {
-    ...args,
-    orientation: TabsOrientationEnum.Vertical,
-  },
-};
-
-export const HorizontalWithClass: Story = {
   args: {
     ...args,
     className: "mx-auto overflow-hidden rounded-md sm:w-[500px]",
   },
 };
 
-export const VerticalWithClass: Story = {
+export const Vertical: Story = {
   args: {
     ...args,
     className: "mx-auto overflow-hidden rounded-md sm:w-[500px]",

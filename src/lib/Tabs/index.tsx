@@ -1,5 +1,5 @@
 // Packages
-import { For } from "solid-js";
+import { For, mergeProps, splitProps } from "solid-js";
 import { Tabs as KobalteTabs } from "@kobalte/core/tabs";
 
 // Styles
@@ -12,25 +12,32 @@ import {
 } from "./styles";
 
 // Types
-import type { Props } from "./types";
-import { TabsOrientationEnum } from "./types";
+import { Props, TabsOrientationEnum } from "./types";
 
-export default function Tabs({
-  ariaLabel,
-  className,
-  items,
-  value,
-  ...rest
-}: Props) {
+export default function Tabs(initialProps: Props) {
+  const mergedProps = mergeProps(
+    { className: "", orientation: TabsOrientationEnum.Horizontal },
+    initialProps,
+  );
+
+  const [props, rest] = splitProps(mergedProps, [
+    "ariaLabel",
+    "className",
+    "items",
+    "value",
+  ]);
+
+  const rootProps = () => ({
+    ...rest,
+    ...(props.value ? { value: props.value() } : {}),
+    "aria-label": props.ariaLabel,
+    class: `${props.className} ${ContainerStyles}`,
+  });
+
   return (
-    <KobalteTabs
-      {...rest}
-      aria-label={ariaLabel}
-      class={`${className} ${ContainerStyles}`}
-      value={value ? value() : undefined}
-    >
+    <KobalteTabs {...rootProps()}>
       <KobalteTabs.List class={ListStyles}>
-        <For each={items}>
+        <For each={props.items}>
           {({ id, label }) => (
             <KobalteTabs.Trigger class={TriggerStyles} value={id}>
               {label}
@@ -39,7 +46,7 @@ export default function Tabs({
         </For>
         <KobalteTabs.Indicator class={IndicatorStyles} />
       </KobalteTabs.List>
-      <For each={items}>
+      <For each={props.items}>
         {({ children, id }) => (
           <KobalteTabs.Content class={ContentStyles} value={id}>
             {children}

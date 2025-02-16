@@ -29,10 +29,10 @@ export interface Props {
   activationMode?: TabsActivationMode;
   ariaLabel: string;
   className?: string;
-  defaultValue: string;
+  defaultValue?: string;
   disabled?: boolean;
   items: TabItem[];
   onChange?: Setter<string>;
-  orientation: TabsOrientation;
+  orientation?: TabsOrientation;
   value?: Accessor<string>;
 }

@@ -1,5 +1,5 @@
 // Packages
-import { createSignal } from "solid-js";
+import { createSignal, splitProps } from "solid-js";
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
 
@@ -16,12 +16,15 @@ import type { Props } from "./types";
 import type { Accessor, Setter } from "solid-js";
 import { ButtonVariantsEnum } from "../Button/types";
 
-export default function TabsStory({ items: _, ...rest }: Props) {
+export default function TabsStory(props: Props) {
+  const [_, rest] = splitProps(props, ["items"]);
   const [valueOne, setValueOne] = createSignal<number | string | null>("");
   const [valueTwo, setValueTwo] = createSignal<number | string | null>("");
   const [valueThree, setValueThree] = createSignal<number | string | null>("");
 
-  const defaultTabId = uuid();
+  const idOne = uuid();
+  const idTwo = uuid();
+  const idThree = uuid();
 
   const TabContent = ({
     onChange,
@@ -53,23 +56,23 @@ export default function TabsStory({ items: _, ...rest }: Props) {
     <>
       <Tabs
         {...rest}
-        defaultValue={defaultTabId}
+        defaultValue={idTwo}
         items={[
           {
             children: <TabContent onChange={setValueOne} value={valueOne} />,
-            id: uuid(),
+            id: idOne,
             label: faker.lorem.word(),
           },
           {
             children: <TabContent onChange={setValueTwo} value={valueTwo} />,
-            id: defaultTabId,
+            id: idTwo,
             label: faker.lorem.word(),
           },
           {
             children: (
               <TabContent onChange={setValueThree} value={valueThree} />
             ),
-            id: uuid(),
+            id: idThree,
             label: faker.lorem.word(),
           },
         ]}
