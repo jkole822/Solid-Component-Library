@@ -1,16 +1,22 @@
+// Packages
 import { faker } from "@faker-js/faker";
+
+// Components
 import RadioGroup from "./story";
+
+// Types
+import type { Meta, StoryObj } from "storybook-solidjs";
 import {
   RadioGroupOrientationEnum,
   RadioGroupValidationStateEnum,
 } from "./types";
-import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
   title: "RadioGroup",
   component: RadioGroup,
   tags: ["autodocs"],
   argTypes: {
+    className: { control: "text" },
     defaultValue: { control: "text" },
     orientation: {
       control: "select",
@@ -46,20 +52,13 @@ const args = {
   validationState: RadioGroupValidationStateEnum.Valid,
 };
 
-export const Basic: Story = {
+export const Vertical: Story = {
   args,
 };
 
-export const HorizontalOrientation = {
+export const Horizontal = {
   args: {
     ...args,
     orientation: RadioGroupOrientationEnum.Horizontal,
-  },
-};
-
-export const WithClass: Story = {
-  args: {
-    ...args,
-    className: "mx-auto",
   },
 };
