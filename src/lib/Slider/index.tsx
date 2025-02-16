@@ -1,5 +1,5 @@
 // Packages
-import { Index, Show } from "solid-js";
+import { Index, mergeProps, Show, splitProps } from "solid-js";
 import { Slider as KobalteSlider } from "@kobalte/core/slider";
 
 // Slider
@@ -18,33 +18,30 @@ import {
 // Types
 import type { Props } from "./types";
 
-export default function Slider({
-  className,
-  description,
-  errorMessage,
-  name,
-  validationStateAccessor,
-  validationState,
-  value,
-  ...rest
-}: Props) {
+export default function Slider(initialProps: Props) {
+  const mergedProps = mergeProps({ className: "" }, initialProps);
+  const [props, rest] = splitProps(mergedProps, [
+    "className",
+    "description",
+    "errorMessage",
+    "name",
+    "value",
+  ]);
+
   return (
     <KobalteSlider
       {...rest}
-      class={`${className} ${RootStyles}`}
-      name={name}
-      validationState={
-        validationStateAccessor ? validationStateAccessor() : validationState
-      }
-      value={value()}
+      class={`${props.className} ${RootStyles}`}
+      name={props.name}
+      value={props.value()}
     >
       <div class={LabelStyles}>
-        <KobalteSlider.Label>{name}</KobalteSlider.Label>
+        <KobalteSlider.Label>{props.name}</KobalteSlider.Label>
         <KobalteSlider.ValueLabel class={ValueStyles} />
       </div>
       <KobalteSlider.Track class={TrackStyles}>
         <KobalteSlider.Fill class={RangeStyles} />
-        <Index each={value()}>
+        <Index each={props.value()}>
           {(_) => (
             <KobalteSlider.Thumb class={ThumbStyles}>
               <KobalteSlider.Input />
@@ -52,16 +49,16 @@ export default function Slider({
           )}
         </Index>
       </KobalteSlider.Track>
-      <Show when={description || errorMessage}>
+      <Show when={props.description || props.errorMessage}>
         <div class={TextContainerStyles}>
-          <Show when={description}>
+          <Show when={props.description}>
             <KobalteSlider.Description class={DescriptionStyles}>
-              {description}
+              {props.description}
             </KobalteSlider.Description>
           </Show>
-          <Show when={errorMessage}>
+          <Show when={props.errorMessage}>
             <KobalteSlider.ErrorMessage class={ErrorMessageStyles}>
-              {errorMessage}
+              {props.errorMessage}
             </KobalteSlider.ErrorMessage>
           </Show>
         </div>

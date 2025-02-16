@@ -1,5 +1,10 @@
+// Packages
 import { faker } from "@faker-js/faker";
+
+// Components
 import Slider from "./story";
+
+// Types
 import type { Meta, StoryObj } from "storybook-solidjs";
 import { SliderOrientationEnum, SliderValidationStateEnum } from "./types";
 
@@ -8,6 +13,7 @@ const meta = {
   component: Slider,
   tags: ["autodocs"],
   argTypes: {
+    className: { control: "text" },
     orientation: {
       control: "select",
       options: [
@@ -55,12 +61,5 @@ export const MultiValue: Story = {
   args: {
     ...args,
     defaultValue: [25, 75],
-  },
-};
-
-export const WithClass: Story = {
-  args: {
-    ...args,
-    className: "sm:w-72",
   },
 };

@@ -20,23 +20,22 @@ export type SliderValidationState =
 
 export interface Props {
   className?: string;
-  defaultValue: number[];
+  defaultValue?: number[];
   description?: string;
   disabled?: boolean;
   errorMessage?: string;
   getValueLabel?: (params: any) => string;
   inverted?: boolean;
-  maxValue: number;
+  maxValue?: number;
   minStepsBetweenThumbs?: number;
-  minValue: number;
+  minValue?: number;
   name: string;
   onChange: Setter<number[]>;
   onChangeEnd: (value: number[]) => void;
   orientation?: SliderOrientation;
   readOnly?: boolean;
   required?: boolean;
-  step: number;
+  step?: number;
   validationState?: SliderValidationState;
-  validationStateAccessor?: Accessor<SliderValidationState>;
   value: Accessor<number[]>;
 }
