@@ -16,7 +16,7 @@ import { AutoCompleteEnum } from "../Input/types";
 import type { Props } from "./types";
 
 export default function TooltipStory(props: Props) {
-  const [value, setValue] = createSignal<string | null>("");
+  const [value, setValue] = createSignal<number | string | null>("");
 
   return (
     <>

@@ -1,4 +1,5 @@
 // Packages
+import { mergeProps, splitProps } from "solid-js";
 import { Tooltip as KobalteTooltip } from "@kobalte/core/tooltip";
 
 // Styles
@@ -7,28 +8,39 @@ import { TextStyles, TooltipStyles, TriggerStyles } from "./styles";
 // Types
 import type { Props } from "./types";
 
-export default function Tooltip({
-  className = "",
-  children,
-  open,
-  text,
-  triggerClass = "",
-  ...rest
-}: Props) {
+export default function Tooltip(initialProps: Props) {
+  const mergedProps = mergeProps(
+    { className: "", triggerClass: "" },
+    initialProps,
+  );
+
+  const [props, rest] = splitProps(mergedProps, [
+    "className",
+    "children",
+    "open",
+    "text",
+    "triggerClass",
+  ]);
+
+  const rootProps = () => ({
+    ...rest,
+    ...(props.open ? { open: props.open() } : {}),
+  });
+
   return (
-    <KobalteTooltip {...rest} open={open ? open() : undefined}>
+    <KobalteTooltip {...rootProps()}>
       <KobalteTooltip.Trigger
         as="div"
-        class={`${triggerClass} ${TriggerStyles}`}
+        class={`${props.triggerClass} ${TriggerStyles}`}
         role="tooltip"
         tabIndex={0}
       >
-        {children}
+        {props.children}
       </KobalteTooltip.Trigger>
       <KobalteTooltip.Portal>
-        <KobalteTooltip.Content class={`${className} ${TooltipStyles}`}>
+        <KobalteTooltip.Content class={`${props.className} ${TooltipStyles}`}>
           <KobalteTooltip.Arrow />
-          <p class={TextStyles}>{text}</p>
+          <p class={TextStyles}>{props.text}</p>
         </KobalteTooltip.Content>
       </KobalteTooltip.Portal>
     </KobalteTooltip>
