@@ -1,8 +1,13 @@
+// Packages
 import { faker } from "@faker-js/faker";
+
+// Components
 import NavigationMenu from ".";
+
+// Types
 import { NavigationMenuOrientationEnum } from "./types";
-import type { Props } from "./types";
 import type { Meta, StoryObj } from "storybook-solidjs";
+import type { Props } from "./types";
 
 const meta = {
   title: "NavigationMenu",

@@ -1,6 +1,6 @@
 // Packages
 import { createMediaQuery } from "@solid-primitives/media";
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, For, mergeProps, Show, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { NavigationMenu as KobalteNavigationMenu } from "@kobalte/core/navigation-menu";
 import { v4 as uuid } from "uuid";
@@ -33,22 +33,35 @@ import {
 } from "./styles";
 
 // Types
-import type { NavigationMenuItem, NavigationMenuMenu, Props } from "./types";
 import { HeadingLevelEnum } from "../../types";
+import type { NavigationMenuItem, NavigationMenuMenu, Props } from "./types";
 
-export default function NavigationMenu({
-  arrowProps = {},
-  className = "",
-  contentProps = {},
-  homeHref,
-  icon,
-  itemIndicatorProps = {},
-  items,
-  menuProps = {},
-  title,
-  viewportProps = {},
-  ...rest
-}: Props) {
+export default function NavigationMenu(initialProps: Props) {
+  const mergedProps = mergeProps(
+    {
+      arrowProps: {},
+      className: "",
+      contentProps: {},
+      itemIndicatorProps: {},
+      menuProps: {},
+      viewportProps: {},
+    },
+    initialProps,
+  );
+
+  const [props, rest] = splitProps(mergedProps, [
+    "arrowProps",
+    "className",
+    "contentProps",
+    "homeHref",
+    "icon",
+    "itemIndicatorProps",
+    "items",
+    "menuProps",
+    "title",
+    "viewportProps",
+  ]);
+
   const isSmall = createMediaQuery("(min-width): 640px");
   const [mobileNavigationOpen, setMobileNavigationOpen] = createSignal(false);
 
@@ -102,7 +115,7 @@ export default function NavigationMenu({
       {title}
       <Show when={items.length > 0}>
         <KobalteNavigationMenu.Icon
-          {...itemIndicatorProps}
+          {...props.itemIndicatorProps}
           class={TriggerIndicatorStyles}
         >
           <i aria-hidden="true" class="fa-solid fa-caret-down" />
@@ -112,7 +125,7 @@ export default function NavigationMenu({
   );
 
   const mapToAccordionItems = () =>
-    items
+    props.items
       .filter((menuItem) => menuItem.items?.length > 0)
       .map((menuItem) => ({
         disabled: menuItem.disabled,
@@ -132,34 +145,37 @@ export default function NavigationMenu({
       }));
 
   return (
-    <div class={className}>
-      <Show when={icon || title}>
+    <div class={props.className}>
+      <Show when={props.icon || props.title}>
         <Dynamic
-          component={!!homeHref ? "a" : "div"}
-          {...(homeHref ? { href: homeHref } : {})}
+          component={!!props.homeHref ? "a" : "div"}
+          {...(props.homeHref ? { href: props.homeHref } : {})}
           class={TitleContainerStyles}
         >
-          <Show when={icon}>
+          <Show when={props.icon}>
             <figure>
-              <img {...icon} class={IconStyles} />
+              <img {...props.icon} class={IconStyles} />
               <figcaption class="h-0 opacity-0 w-0">
                 Navigate to Home
               </figcaption>
             </figure>
           </Show>
-          <Show when={title}>
-            <h1 class={TitleStyles}>{title}</h1>
+          <Show when={props.title}>
+            <h1 class={TitleStyles}>{props.title}</h1>
           </Show>
         </Dynamic>
       </Show>
       <KobalteNavigationMenu {...rest} class={RootStyles}>
-        <For each={items}>
+        <For each={props.items}>
           {({ items, ...rest }) => (
             <Show
               when={items.length > 0}
               fallback={<Trigger {...rest} items={items} />}
             >
-              <KobalteNavigationMenu.Menu {...contentProps} {...menuProps}>
+              <KobalteNavigationMenu.Menu
+                {...props.contentProps}
+                {...props.menuProps}
+              >
                 <Trigger {...rest} items={items} />
                 <KobalteNavigationMenu.Portal>
                   <KobalteNavigationMenu.Content
@@ -177,10 +193,13 @@ export default function NavigationMenu({
           )}
         </For>
         <KobalteNavigationMenu.Viewport
-          {...viewportProps}
+          {...props.viewportProps}
           class={ViewportStyles}
         >
-          <KobalteNavigationMenu.Arrow {...arrowProps} class={ArrowStyles} />
+          <KobalteNavigationMenu.Arrow
+            {...props.arrowProps}
+            class={ArrowStyles}
+          />
         </KobalteNavigationMenu.Viewport>
       </KobalteNavigationMenu>
       <Popover
@@ -211,7 +230,7 @@ export default function NavigationMenu({
           headingLevel={HeadingLevelEnum.Two}
           items={mapToAccordionItems()}
         />
-        <For each={items.filter((menuItem) => !!menuItem.href)}>
+        <For each={props.items.filter((menuItem) => !!menuItem.href)}>
           {(item) => (
             <a {...item} class={TriggerStyles}>
               {item.title}
