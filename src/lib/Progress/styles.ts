@@ -25,4 +25,5 @@ export const LabelStyles = oneLine`
 block
 h-0
 invisible
+progress-label
 `;

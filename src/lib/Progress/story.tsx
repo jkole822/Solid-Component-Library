@@ -7,7 +7,7 @@ import Progress from ".";
 // Types
 import type { Props } from "./types";
 
-export default function ProgressStory({ value: _, ...rest }: Props) {
+export default function ProgressStory(props: Props) {
   const [value, setValue] = createSignal(0);
 
   let frame: number;
@@ -23,5 +23,5 @@ export default function ProgressStory({ value: _, ...rest }: Props) {
 
   onCleanup(() => cancelAnimationFrame(frame));
 
-  return <Progress {...rest} value={value} />;
+  return <Progress {...props} value={value} />;
 }
