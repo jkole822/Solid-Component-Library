@@ -53,7 +53,7 @@ export default function ToastStory() {
           Create Toast
         </Button>
         <Button
-          disabledAccessor={isToastUpdateDisabled}
+          disabled={isToastUpdateDisabled()}
           onClick={handleUpdateRandomToast}
           variant={ButtonVariantsEnum.outline}
         >

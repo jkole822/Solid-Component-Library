@@ -1,4 +1,7 @@
+// Components
 import Toast from "./story";
+
+// Types
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {

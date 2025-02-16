@@ -15,6 +15,7 @@ right-2
 ring-primary-400
 rounded-full
 text-primary-600
+toast-close-button
 top-2
 transition-all
 w-6

@@ -18,19 +18,19 @@ import {
 // Types
 import type { Props, Toast, ToastInstanceProps, ToastUpdate } from "./types";
 
-function ToastInstance({
-  toastComponentProps,
-  toastUpdate,
-}: ToastInstanceProps) {
+function ToastInstance(props: ToastInstanceProps) {
   return (
-    <KobalteToast toastId={toastComponentProps.toastId} class={ToastStyles}>
+    <KobalteToast
+      toastId={props.toastComponentProps.toastId}
+      class={ToastStyles}
+    >
       <div class={ContentStyles}>
         <div>
           <KobalteToast.Title class={TitleStyles}>
-            {toastUpdate.title}
+            {props.toastUpdate.title}
           </KobalteToast.Title>
           <KobalteToast.Description class={DescriptionStyles}>
-            {toastUpdate.description}
+            {props.toastUpdate.description}
           </KobalteToast.Description>
         </div>
         <KobalteToast.CloseButton class={CloseButtonStyles}>
@@ -44,7 +44,7 @@ function ToastInstance({
   );
 }
 
-export default function Toast({ toastUpdates }: Props) {
+export default function Toast(props: Props) {
   const [toasts, setToasts] = createSignal<Toast[]>([]);
 
   const showToast = (toastUpdate: ToastUpdate) => {
@@ -70,7 +70,7 @@ export default function Toast({ toastUpdates }: Props) {
   };
 
   createEffect(() => {
-    const accessedToastUpdates = toastUpdates();
+    const accessedToastUpdates = props.toastUpdates();
     const toastUpdatesLength = accessedToastUpdates.length;
 
     if (toastUpdatesLength > 0 && toastUpdatesLength !== toasts().length) {
