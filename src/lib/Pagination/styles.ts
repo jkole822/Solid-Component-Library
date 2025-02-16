@@ -7,7 +7,7 @@ ease-in-out
 grid
 h-8
 items-center
-outline-none
+outline-hidden
 pagination-button
 px-3
 ring-2
@@ -21,8 +21,8 @@ transition-all
 disabled:cursor-not-allowed
 disabled:!opacity-25
 
-[&[aria-current="page"]]:bg-primary-500
-[&[aria-current="page"]]:text-neutral-primary-100
+aria-[current="page"]:bg-primary-500
+aria-[current="page"]:text-neutral-primary-100
 
 [&[aria-current="page"]:hover:not(.pagination-ellipsis)]:bg-primary-400
 

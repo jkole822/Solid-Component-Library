@@ -9,7 +9,7 @@ h-6
 inline-flex
 items-center
 justify-center
-outline-none
+outline-hidden
 p-2
 right-2
 ring-primary-400
@@ -48,7 +48,7 @@ gap-2
 list-none
 m-0
 max-w-screen
-outline-none
+outline-hidden
 p-[var(--viewport-padding)]
 right-0
 toast-list
@@ -95,16 +95,16 @@ rounded-lg
 shadow-[0_10px_15px_-3px_rgb(0_0_0_/_0.1),_0_4px_6px_-4px_rgb(0_0_0_/_0.1)]
 toast
 
-data-[closed]:animate-toastFadeOut
+data-closed:animate-toast-fade-out
 
-data-[opened]:animate-toastSlideIn
+data-opened:animate-toast-slide-in
 
-[&[data-swipe="cancel"]]:translate-x-0
-[&[data-swipe="cancel"]]:transition-transform
-[&[data-swipe="cancel"]]:duration-200
-[&[data-swipe="cancel"]]:ease-out
+data-[swipe="cancel"]:translate-x-0
+data-[swipe="cancel"]:transition-transform
+data-[swipe="cancel"]:duration-200
+data-[swipe="cancel"]:ease-out
 
-[&[data-swipe="end"]]:animate-toastSwipeOut
-[&[data-swipe="end"]]:duration-100
-[&[data-swipe="end"]]:ease-out
+data-[swipe="end"]:animate-toast-swipe-out
+data-[swipe="end"]:duration-100
+data-[swipe="end"]:ease-out
 `;

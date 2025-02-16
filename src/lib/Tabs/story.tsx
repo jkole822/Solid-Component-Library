@@ -38,7 +38,7 @@ export default function TabsStory(props: Props) {
       <fieldset class="mb-4 flex w-full flex-col justify-start">
         <Input
           id={uuid()}
-          inputClass="[&_~_label]:!bg-neutral-secondary-950"
+          inputClass="[&_~_label]:bg-neutral-secondary-950!"
           name={faker.lorem.words()}
           onChange={onChange}
           value={value}

@@ -105,7 +105,7 @@ export default function HomeHero(props: Props) {
         </div>
       </div>
 
-      <div class={`${SectionStyles} h-screen z-[100]`}>
+      <div class={`${SectionStyles} h-screen z-100`}>
         <ul class={CarouselLinksContainerStyles}>
           <For each={props.items}>
             {({ cta }, index) => (
@@ -164,7 +164,7 @@ export default function HomeHero(props: Props) {
 
       <Show when={props.bottomLinkCTA}>
         <div
-          class={`${SectionStyles} bg-neutral-secondary-900 py-[100px] overflow-hidden z-[200]`}
+          class={`${SectionStyles} bg-neutral-secondary-900 py-[100px] overflow-hidden z-200`}
         >
           <div class={SectionInnerContainerStyles}>
             <div class={`${SectionFlexRowStyles} justify-center`}>
@@ -192,7 +192,7 @@ export default function HomeHero(props: Props) {
 
       <Show when={props.floatingCTA && props.floatingCTAChildren}>
         <Tooltip
-          className="z-[251]"
+          className="z-251"
           text={`Navigate to ${props.floatingCTA?.title}`}
           triggerClass={FloatingLinkStyles}
         >

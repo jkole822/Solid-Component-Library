@@ -6,7 +6,7 @@ ease-in-out
 inline-flex
 items-center
 justify-center
-outline-none
+outline-hidden
 p-2
 ring-primary-400
 rounded-full
@@ -27,7 +27,7 @@ translate-y-[calc(-50%+1px)]
 top-1/2
 z-10
 
-group-data-[highlighted]:text-primary-800
+group-data-highlighted:text-primary-800
 `;
 
 export const ListItemStyles = oneLine`
@@ -36,7 +36,7 @@ cursor-pointer
 duration-100
 ease-in
 group
-outline-none
+outline-hidden
 pl-7
 pr-4
 py-2
@@ -46,10 +46,10 @@ scroll-my-2
 text-sm
 transition-all
 
-data-[disabled]:cursor-not-allowed
-data-[disabled]:opacity-50
+data-disabled:cursor-not-allowed
+data-disabled:opacity-50
 
-data-[highlighted]:bg-primary-200
+data-highlighted:bg-primary-200
 `;
 
 export const ListItemDescriptionStyles = oneLine`
@@ -59,7 +59,7 @@ opacity-75
 text-sm
 text-neutral-primary-400
 
-[[data-highlighted]_&]:text-primary-800
+in-data-highlighted:text-primary-800
 `;
 
 export const ListItemLabelStyles = oneLine`
@@ -67,7 +67,7 @@ block
 combo-box-list-item-label
 text-neutral-primary-200
 
-[[data-highlighted]_&]:text-primary-900
+in-data-highlighted:text-primary-900
 `;
 
 export const ListStyles = oneLine`
@@ -88,7 +88,7 @@ top-1/2
 `;
 
 export const ScrollContainerStyles = oneLine`
-animate-selectFadeOut
+animate-select-fade-out
 bg-neutral-secondary-900
 combo-box-scroll-container
 flex
@@ -101,7 +101,7 @@ rounded-lg
 shadow-lg
 text-neutral-primary-300
 
-data-[expanded]:animate-selectFadeIn
+data-expanded:animate-select-fade-in
 `;
 
 export const SelectionItemCloseButtonStyles = oneLine`

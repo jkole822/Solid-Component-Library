@@ -32,7 +32,7 @@ export default function TooltipStory(props: Props) {
             autoComplete={AutoCompleteEnum.name}
             className="mt-8"
             id={uuid()}
-            inputClass="[&_~_label]:!bg-neutral-secondary-900"
+            inputClass="[&_~_label]:bg-neutral-secondary-900!"
             name={faker.lorem.word()}
             onChange={setValue}
             required

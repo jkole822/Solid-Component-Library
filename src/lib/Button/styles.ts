@@ -17,17 +17,17 @@ transition-all
 w-full
 2xs:w-fit
 
-data-[disabled]:[text-shadow:none]
-data-[disabled]:bg-transparent
-data-[disabled]:border-neutral-primary-600
-data-[disabled]:cursor-not-allowed
-data-[disabled]:shadow-none
-data-[disabled]:text-neutral-primary-600
+data-disabled:[text-shadow:none]
+data-disabled:bg-transparent
+data-disabled:border-neutral-primary-600
+data-disabled:cursor-not-allowed
+data-disabled:shadow-none
+data-disabled:text-neutral-primary-600
 `;
 
 const SharedStarStyles = ({ active }: { active: boolean }) => oneLine`
 [&_.star]:-z-10
-[&_.star]:[filter:drop-shadow(0_0_0_rgb(var(--color-neutral-primary-100)))]
+[&_.star]:[filter:drop-shadow(0_0_0_var(--color-neutral-primary-100))]
 [&_.star]:[transition-timing-function:cubic-bezier(0,0.4,0,1.01)_!important]
 [&_.star]:absolute
 [&_.star]:duration-1000
@@ -37,7 +37,7 @@ const SharedStarStyles = ({ active }: { active: boolean }) => oneLine`
 [&[disabled]_.star]:invisible
 
 ${active ? `
-[&_.star]:![filter:drop-shadow(0_0_10px_rgb(var(--color-neutral-primary-100)))]
+[&_.star]:![filter:drop-shadow(0_0_10px_var(--color-neutral-primary-100))]
 [&_.star]:!z-10
 ` : ``}
 `;
@@ -47,7 +47,7 @@ const SharedLineStyles = oneLine`
 border-none
 duration-[400ms]
 font-extrabold
-outline-none
+outline-hidden
 relative
 text-neutral-primary-200
 tracking-wide
@@ -55,8 +55,8 @@ transition-all
 uppercase
 w-fit
 
-data-[disabled]:!text-neutral-primary-600
-data-[disabled]:cursor-not-allowed
+data-disabled:text-neutral-primary-600!
+data-disabled:cursor-not-allowed
 
 focus:text-neutral-primary-50
 
@@ -72,7 +72,7 @@ after:pointer-events-none
 after:transition-all
 after:w-0
 
-data-[disabled]:after:!w-0
+data-disabled:after:w-0!
 
 focus:after:w-full
 
@@ -85,8 +85,8 @@ ${SharedStarStyles({ active })}
 
 bg-primary-500
 border-primary-500
-outline-none
-shadow-[0_0_0_rgb(var(--color-primary-500))]
+outline-hidden
+shadow-[0_0_0_var(--color-primary-500)]
 text-neutral-primary-50
 
 focus-visible:border-primary-300
@@ -98,7 +98,7 @@ ${active ? `
 !bg-transparent
 !border-primary-500
 !text-primary-500
-shadow-[0_0_25px_rgb(var(--color-primary-500))]
+shadow-[0_0_25px_var(--color-primary-500)]
 
 [&_.star-0]:!-left-[30%]
 [&_.star-0]:!-top-[80%]
@@ -153,21 +153,21 @@ export const OutlineButtonStyles = ({
 }) => oneLine`
 ${SharedStyles}
 
-[text-shadow:_0_0_.5em_rgb(var(--color-primary-300))]
+[text-shadow:_0_0_.5em_var(--color-primary-300)]
 bg-primary-950
 border-primary-300
-outline-none
-shadow-[0_0_1em_.25em_rgb(var(--color-primary-300)),_0_0_4em_1em_rgb(var(--color-primary-500)),_inset_0_0_.75em_.25em_rgb(var(--color-primary-300))]
+outline-hidden
+shadow-[0_0_1em_.25em_var(--color-primary-300),_0_0_4em_1em_var(--color-primary-500),_inset_0_0_.75em_.25em_var(--color-primary-300)]
 text-primary-300
 
-active:shadow-[0_0_0.6em_.25em_rgb(var(--color-primary-300)),_0_0_2.5em_2em_rgb(var(--color-primary-500)),_inset_0_0_.75em_.25em_rgb(var(--color-primary-300))]
+active:shadow-[0_0_0.6em_.25em_var(--color-primary-300),_0_0_2.5em_2em_var(--color-primary-500),_inset_0_0_.75em_.25em_var(--color-primary-300)]
 
 focus:bg-primary-300
-focus:shadow-[0_0_1em_.25em_rgb(var(--color-primary-300)),_0_0_4em_2em_rgb(var(--color-primary-500)),_inset_0_0_.75em_.25em_rgb(var(--color-primary-300))]
+focus:shadow-[0_0_1em_.25em_var(--color-primary-300),_0_0_4em_2em_var(--color-primary-500),_inset_0_0_.75em_.25em_var(--color-primary-300)]
 focus:text-primary-950
 
 hover:bg-primary-300
-hover:shadow-[0_0_1em_.25em_rgb(var(--color-primary-300)),_0_0_4em_2em_rgb(var(--color-primary-500)),_inset_0_0_.75em_.25em_rgb(var(--color-primary-300))]
+hover:shadow-[0_0_1em_.25em_var(--color-primary-300),_0_0_4em_2em_var(--color-primary-500),_inset_0_0_.75em_.25em_var(--color-primary-300)]
 hover:text-primary-950
 
 ${
@@ -187,7 +187,7 @@ after:w-full
     : ``
 }
 
-data-[disabled]:after:content-none
+data-disabled:after:content-none
 `;
 
 export const LineOneButtonStyles = oneLine`
@@ -216,7 +216,7 @@ before:right-0
 before:transition-all
 before:w-0
 
-data-[disabled]:before:!w-0
+data-disabled:before:w-0!
 
 focus:before:w-full
 

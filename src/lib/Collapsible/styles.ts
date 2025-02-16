@@ -1,7 +1,7 @@
 import { oneLine } from "common-tags";
 
 export const ContentContainerStyles = oneLine`
-animate-collapsibleSlideUp
+animate-collapsible-slide-up
 bg-neutral-secondary-900
 collapsible-content-container
 overflow-hidden
@@ -10,7 +10,7 @@ rounded-b-lg
 text-neutral-primary-400
 w-[calc(100%-32px)]
 
-data-[expanded]:animate-collapsibleSlideDown
+data-expanded:animate-collapsible-slide-down
 `;
 
 export const ContentStyles = oneLine`
@@ -30,7 +30,7 @@ flex
 items-center
 justify-between
 mx-auto
-outline-none
+outline-hidden
 p-4
 relative
 border-2
@@ -40,8 +40,8 @@ text-neutral-primary-200
 transition-all
 w-full
 
-data-[expanded]:border-primary-500
-data-[expanded]:shadow-[0_0_20px_rgba(var(--color-primary-600)_/_0.8)]
+data-expanded:border-primary-500
+data-expanded:shadow-[0_0_20px_--alpha(var(--color-primary-600)_/_0.8)]
 
 disabled:cursor-not-allowed
 disabled:opacity-50

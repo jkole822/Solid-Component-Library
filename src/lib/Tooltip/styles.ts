@@ -17,7 +17,7 @@ md:max-w-60
 `;
 
 export const TriggerStyles = oneLine`
-outline-none
+outline-hidden
 tooltip-trigger
 w-fit
 `;

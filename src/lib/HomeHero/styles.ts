@@ -19,12 +19,12 @@ ease-in-out
 h-9
 transition-all
 w-9
-z-[9998]
+z-9998
 
 [&.hover]:-translate-x-1/4
 [&.hover]:-translate-y-1/4
 [&.hover]:border-none
-[&.hover]:scale-[2]
+[&.hover]:scale-200
 `;
 
 export const BottomCTAContainerStyles = oneLine`
@@ -119,7 +119,7 @@ left-0
 w-full
 h-full
 m-0
-z-[2]
+z-2
 
 [&_li]:absolute
 [&_li]:duration-300
@@ -181,7 +181,7 @@ md:text-left
 [&_a]:duration-300
 [&_a]:ease
 [&_a]:font-extrabold
-[&_a]:leading-[1]
+[&_a]:leading-none
 [&_a]:list-none
 [&_a]:m-[5px]
 [&_a]:no-underline
@@ -215,14 +215,14 @@ duration-300
 ease
 font-black
 home-hero-carousel-number-back
-leading-[1]
+leading-none
 left-1/2
 list-none
 opacity-0
 text-[26vw]
 text-neutral-primary-50/20
 transition-all
-z-[5]
+z-5
 
 md:[32vw]
 
@@ -235,7 +235,7 @@ block
 bottom-10
 font-light
 home-hero-carousel-number-fixed
-leading-[1]
+leading-none
 left-1/2
 list-none
 ml-[30px]
@@ -244,7 +244,7 @@ text-center
 text-neutral-primary-50
 tracking-[2px]
 w-10
-z-[6]
+z-6
 
 before:-left-[60px]
 before:absolute
@@ -252,7 +252,7 @@ before:bg-neutral-primary-50/40
 before:h-px
 before:top-1/2
 before:w-[60px]
-before:z-[1]
+before:z-1
 `;
 
 export const CarouselNumberStyles = oneLine`
@@ -264,7 +264,7 @@ duration-300
 ease
 font-light
 home-hero-carousel-number 
-leading-[1]
+leading-none
 left-1/2
 list-none
 opacity-0
@@ -275,7 +275,7 @@ tracking-[2px]
 transition-all
 translate-y-full
 w-10
-z-[6]
+z-6
 `;
 
 export const CarouselTitleStyles = oneLine`
@@ -297,7 +297,7 @@ text-sm
 top-0
 tracking-[1px]
 transition-all
-z-[19]
+z-19
 
 xl:left-[30px]
 `;
@@ -322,7 +322,7 @@ bg-neutral-primary-50
 h-0
 home-hero-cursor-one
 w-0
-z-[9999]
+z-9999
 `;
 
 export const CursorTwoStyles = oneLine`
@@ -332,10 +332,10 @@ ${CursorTwoThreeStyles}
 border-2
 border-neutral-primary-200
 home-hero-cursor-two
-shadow-[0_0_22px_rgba(var(--color-neutral-primary-50)_/_0.6)]
+shadow-[0_0_22px_--alpha(var(--color-neutral-primary-50)_/_0.6)]
 
 [&.hover]:bg-neutral-primary-50/10
-[&.hover]:shadow-[0_0_12px_rgba(var(--color-neutral-primary-50)_/_0.2)]
+[&.hover]:shadow-[0_0_12px_--alpha(var(--color-neutral-primary-50)_/_0.2)]
 `;
 
 export const CursorThreeStyles = oneLine`
@@ -351,7 +351,7 @@ home-hero-floating-link
 hover-target
 right-[30px]
 top-[30px]
-z-[251]
+z-251
 `;
 
 export const FloatingLinkTriggerStyles = oneLine`
@@ -389,7 +389,7 @@ text-2xl
 transition-all
 translate-y-[15px]
 w-2.5
-z-[251]
+z-251
 
 hover:bottom-8
 
@@ -421,13 +421,13 @@ home-hero-section-header
 left-0
 top-1/2
 w-full
-z-[3]
+z-3
 `;
 
 export const SectionHeadingStyles = oneLine`
 font-black
 home-hero-section-heading
-leading-[1]
+leading-none
 m-0
 p-0
 text-[5vw]
@@ -457,7 +457,7 @@ home-hero-section-parallax
 left-0
 top-0
 w-full
-z-[2]
+z-2
 `;
 
 export const SectionStyles = oneLine`
@@ -472,12 +472,12 @@ export const ShadowTitleStyles = oneLine`
 [-webkit-text-fill-color:transparent]
 [-webkit-writing-mode:vertical-lr]
 [writing-mode:vertical-lr]
-bg-[linear-gradient(90deg,_rgba(var(--color-neutral-primary-400)_/_0),_rgba(var(--color-neutral-primary-400)_/_0.35))]
+bg-[linear-gradient(90deg,_--alpha(var(--color-neutral-primary-400)_/_0),_--alpha(var(--color-neutral-primary-400)_/_0.35))]
 fixed
 font-black
 h-[300%]
 home-hero-shadow-title
-leading-[1]
+leading-none
 left-5
 mt-[30px]
 text-[18vw]
@@ -485,5 +485,5 @@ text-left
 text-neutral-primary-400/10
 top-0
 w-full
-z-[1]
+z-1
 `;

@@ -7,7 +7,7 @@ gap-2
 radio-group-container
 w-fit
 
-[&[aria-orientation="horizontal"]_.radio-group-glider-container]:[background:linear-gradient(90deg,_rgb(var(--color-neutral-secondary-900))_0%,_rgb(var(--color-neutral-secondary-700))_50%,_rgb(var(--color-neutral-secondary-900))_100%)]
+[&[aria-orientation="horizontal"]_.radio-group-glider-container]:[background:linear-gradient(90deg,_var(--color-neutral-secondary-900)_0%,_var(--color-neutral-secondary-700))_50%,_var(--color-neutral-secondary-900))_100%)]
 [&[aria-orientation="horizontal"]_.radio-group-glider-container]:h-px
 [&[aria-orientation="horizontal"]_.radio-group-glider-container]:w-full
 
@@ -16,15 +16,15 @@ w-fit
 
 [&[aria-orientation="horizontal"]_.radio-group-option-container_[role="presentation"]]:grid
 
-[&[aria-orientation="horizontal"]_.radio-group-glider]:[background:linear-gradient(90deg,_rgb(var(--color-neutral-secondary-900))_0%,_rgb(var(--color-primary-500))_50%,_rgb(var(--color-neutral-secondary-900))_100%)]
+[&[aria-orientation="horizontal"]_.radio-group-glider]:[background:linear-gradient(90deg,_var(--color-neutral-secondary-900))_0%,_var(--color-primary-500))_50%,_var(--color-neutral-secondary-900))_100%)]
 
-[&[data-invalid][aria-orientation="horizontal"]_.radio-group-glider]:[background:linear-gradient(90deg,_rgb(var(--color-neutral-secondary-900))_0%,_theme(colors.red.500)_50%,_rgb(var(--color-neutral-secondary-900))_100%)]
+[&[data-invalid][aria-orientation="horizontal"]_.radio-group-glider]:[background:linear-gradient(90deg,var(--color-neutral-secondary-900))_0%,var(--color-red-500)_50%,var(--color-neutral-secondary-900))_100%)]
 
-[&[aria-orientation="horizontal"]_.radio-group-glider:after]:[background:linear-gradient(180deg,_rgba(var(--color-primary-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
+[&[aria-orientation="horizontal"]_.radio-group-glider:after]:[background:linear-gradient(180deg,_--alpha(var(--color-primary-500)_/_0.3)_0%,_--alpha(0,_0,_0,_0)_100%)]
 [&[aria-orientation="horizontal"]_.radio-group-glider:after]:h-16
 [&[aria-orientation="horizontal"]_.radio-group-glider:after]:w-full
 
-[&[data-invalid][aria-orientation="horizontal"]_.radio-group-glider:after]:[background:linear-gradient(180deg,_theme(colors.red.500)30_0%,_rgba(0,_0,_0,_0)_100%)]
+[&[data-invalid][aria-orientation="horizontal"]_.radio-group-glider:after]:[background:linear-gradient(180deg,var(--color-red-500)30_0%,rgba(0,0,0,0)_100%)]
 
 [&[aria-orientation="horizontal"]_.radio-group-glider:before]:-translate-x-1/2
 [&[aria-orientation="horizontal"]_.radio-group-glider:before]:-translate-y-auto
@@ -55,7 +55,7 @@ text-sm
 
 export const GliderContainerStyles = oneLine`
 absolute
-[background:linear-gradient(0deg,_rgb(var(--color-neutral-secondary-900))_0%,_rgb(var(--color-neutral-secondary-700))_50%,_rgb(var(--color-neutral-secondary-900))_100%)]
+[background:linear-gradient(0deg,_var(--color-neutral-secondary-900)_0%,_var(--color-neutral-secondary-700)_50%,_var(--color-neutral-secondary-900)_100%)]
 bottom-0
 left-0
 radio-group-glider-container
@@ -64,7 +64,7 @@ w-px
 `;
 
 export const GliderStyles = oneLine`
-[background:linear-gradient(0deg,_rgba(0,0,0,0)_0%,_rgb(var(--color-primary-500))_50%,_rgba(0,0,0,0)_100%)]
+[background:linear-gradient(0deg,_rgba(0,0,0,0)_0%,_var(--color-primary-500)_50%,_rgba(0,0,0,0)_100%)]
 [transition-timing-function:cubic-bezier(0.37,1.95,0.66,0.56)]
 duration-500
 radio-group-glider
@@ -72,7 +72,7 @@ relative
 transition-all
 w-full
 
-after:[background:linear-gradient(90deg,_rgba(var(--color-primary-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
+after:[background:linear-gradient(90deg,_--alpha(var(--color-primary-500)_/_0.3)_0%,_rgba(0,_0,_0,_0)_100%)]
 after:absolute
 after:h-full
 after:left-0
@@ -86,8 +86,8 @@ before:h-full
 before:top-1/2
 before:w-2
 
-[[data-invalid]_&]:[background:linear-gradient(0deg,_rgba(0,0,0,0)_0%,_theme(colors.red.500)_50%,_rgba(0,0,0,0)_100%)]
-[[data-invalid]_&::after]:[background:linear-gradient(90deg,_theme(colors.red.500)30_0%,_rgba(0,_0,_0,_0)_100%)]
+in-data-invalid:[background:linear-gradient(0deg,rgba(0,0,0,0)_0%,var(--color-red-500)_50%,rgba(0,0,0,0)_100%)]
+[[data-invalid]_&::after]:[background:linear-gradient(90deg,var(--color-red-500)30_0%,rgba(0,0,0,0)_100%)]
 [[data-invalid]_&::before]:bg-red-500
 `;
 
@@ -105,8 +105,8 @@ export const ItemStyles = oneLine`
 radio-group-item
 p-3
 
-data-[disabled]:cursor-not-allowed
-data-[disabled]:opacity-50
+data-disabled:cursor-not-allowed
+data-disabled:opacity-50
 `;
 
 export const ItemLabelStyles = oneLine`
@@ -129,7 +129,7 @@ tracking-wider
 uppercase
 transition-all
 
-data-[disabled]:opacity-50
+data-disabled:opacity-50
 `;
 
 export const OptionContainerStyles = oneLine`

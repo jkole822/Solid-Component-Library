@@ -29,11 +29,11 @@ export default function Collapsible(initialProps: Props) {
         {props.buttonContent}
         <i
           aria-hidden="true"
-          class="fa-solid fa-sort [[data-expanded]_&]:hidden"
+          class="fa-solid fa-sort in-data-expanded:hidden!"
         ></i>
         <i
           aria-hidden="true"
-          class="fa-solid fa-close hidden [[data-expanded]_&]:block"
+          class="fa-solid fa-close hidden! in-data-expanded:block!"
         ></i>
       </KobalteCollapsible.Trigger>
       <KobalteCollapsible.Content class={ContentContainerStyles}>

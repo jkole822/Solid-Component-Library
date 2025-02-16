@@ -5,12 +5,12 @@ accordion-button
 bg-neutral-secondary-900
 cursor-pointer
 flex
-flex-grow
+grow
 font-medium
 items-center
 justify-between
 leading-none
-outline-none
+outline-hidden
 p-5
 text-left
 text-neutral-primary-200
@@ -40,13 +40,13 @@ rounded-lg
 
 export const ContentStyles = oneLine`
 accordion-content
-animate-accordionSlideUp
+animate-accordion-slide-up
 bg-neutral-secondary-900/25
 overflow-hidden
 text-sm
 text-neutral-secondary-200
 
-[&[data-expanded]]:animate-accordionSlideDown
+data-expanded:animate-accordion-slide-down
 `;
 
 export const DescriptionStyles = oneLine`

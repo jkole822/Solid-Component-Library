@@ -55,7 +55,7 @@ ${
     ${
       !hasInputValue && hasValue
         ? `
-        [&_input]:placeholder:text-neutral-primary-500
+        [&_input]:placeholder:text-neutral-primary-500!
         `
         : ``
     }
@@ -63,7 +63,7 @@ ${
     ${
       !hasInputValue
         ? `
-          [&:focus-within_input]:placeholder:text-neutral-primary-500
+          [&:focus-within_input]:placeholder:text-neutral-primary-500!
           `
         : ``
     }
@@ -158,7 +158,7 @@ bg-transparent
 duration-150
 ease-[cubic-bezier(0.4,0,0.2,1)]
 input-input
-outline-none
+outline-hidden
 text-neutral-primary-200
 transition-all
 w-full
@@ -167,7 +167,7 @@ disabled:cursor-not-allowed
 
 [&:disabled_~_label]:text-neutral-primary-600
 
-placeholder:text-transparent
+placeholder:text-transparent!
 
 ${
   multiple
@@ -192,7 +192,7 @@ ${
     
     focus:ring-primary-500
     
-    focus:placeholder:text-neutral-primary-500
+    focus:placeholder:text-neutral-primary-500!
     
     [&:focus_~_label]:-translate-y-[55%]
     [&:focus_~_label]:bg-neutral-secondary-800
@@ -215,10 +215,10 @@ ${
     [&::-webkit-calendar-picker-indicator]:[filter:invert(100%)_sepia(16%)_saturate(716%)_hue-rotate(181deg)_brightness(96%)_contrast(88%)]
     [&::-webkit-calendar-picker-indicator]:cursor-pointer
     [&::-webkit-calendar-picker-indicator]:outline-offset-2
-    [&::-webkit-calendar-picker-indicator]:rounded
+    [&::-webkit-calendar-picker-indicator]:rounded-sm
     
     [&::-webkit-datetime-edit-day-field]:cursor-pointer
-    [&::-webkit-datetime-edit-day-field]:rounded   
+    [&::-webkit-datetime-edit-day-field]:rounded-sm   
      
     [&::-webkit-datetime-edit-day-field:focus]:bg-transparent
     [&::-webkit-datetime-edit-day-field:focus]:ring-2
@@ -227,7 +227,7 @@ ${
     
     [&::-webkit-datetime-edit-month-field]:cursor-pointer
     [&::-webkit-datetime-edit-month-field]:ml-0.5
-    [&::-webkit-datetime-edit-month-field]:rounded
+    [&::-webkit-datetime-edit-month-field]:rounded-sm
     
     [&::-webkit-datetime-edit-month-field:focus]:bg-transparent
     [&::-webkit-datetime-edit-month-field:focus]:ring-2
@@ -236,7 +236,7 @@ ${
     [&::-webkit-datetime-edit-month-field]:cursor-pointer
     
     [&::-webkit-datetime-edit-year-field]:cursor-pointer
-    [&::-webkit-datetime-edit-year-field]:rounded
+    [&::-webkit-datetime-edit-year-field]:rounded-sm
     
     [&::-webkit-datetime-edit-year-field:focus]:bg-transparent
     [&::-webkit-datetime-edit-year-field:focus]:ring-2

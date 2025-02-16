@@ -27,7 +27,7 @@ ease-in-out
 flex
 items-center
 justify-center
-outline-none
+outline-hidden
 overflow-hidden
 popover-button
 relative
@@ -37,10 +37,10 @@ text-primary-500
 tooltip-button
 transition-all
 
-data-[disabled]:bg-transparent
-data-[disabled]:ring-neutral-primary-600
-data-[disabled]:cursor-not-allowed
-data-[disabled]:text-neutral-primary-600
+data-disabled:bg-transparent
+data-disabled:ring-neutral-primary-600
+data-disabled:cursor-not-allowed
+data-disabled:text-neutral-primary-600
 
 [&:disabled:hover:before]:h-0
 
@@ -73,7 +73,7 @@ h-6
 inline-flex
 items-center
 justify-center
-outline-none
+outline-hidden
 p-1
 popover-close-button
 right-4
@@ -90,7 +90,7 @@ hover:bg-primary-100
 `;
 
 export const ContentStyles = oneLine`
-animate-popoverFadeOut
+animate-popover-fade-out
 bg-neutral-secondary-900
 duration-200
 max-w-[min(calc(100vw-16px),_380px)]
@@ -103,7 +103,7 @@ shadow-xl
 w-[calc(100vw-16px)]
 z-10
 
-[&[data-expanded]]:animate-popoverFadeIn
+data-expanded:animate-popover-fade-in
 `;
 
 export const DescriptionStyles = oneLine`

@@ -32,7 +32,7 @@ h-full
 rounded-full
 slider-range
 
-data-[invalid]:bg-red-500
+data-invalid:bg-red-500
 
 data-[orientation=vertical]:h-auto
 data-[orientation=vertical]:w-full
@@ -63,20 +63,20 @@ export const ThumbStyles = oneLine`
 -top-1.5
 block
 bg-neutral-primary-100
-outline-none
+outline-hidden
 relative
 rounded-full
 size-5
 slider-thumb
 transition-shadow
 
-hover:shadow-[0_0_0_4px_rgba(var(--color-primary-400)_/_0.4)]
+hover:shadow-[0_0_0_4px_--alpha(var(--color-primary-400)_/_0.4)]
 
-focus:shadow-[0_0_0_4px_rgba(var(--color-primary-400)_/_0.7)]
+focus:shadow-[0_0_0_4px_--alpha(var(--color-primary-400)_/_0.7)]
 
-hover:data-[invalid]:shadow-[0_0_0_4px_theme(colors.red.500)40]
+hover:data-invalid:shadow-[0_0_0_4px_--alpha(var(--color-red-500)_/_0.4)]
 
-focus:data-[invalid]:shadow-[0_0_0_4px_theme(colors.red.500)70]
+focus:data-invalid:shadow-[0_0_0_4px_--alpha(var(--color-red-500)_/_0.7)]
 
 data-[orientation=vertical]:-left-1.5
 data-[orientation=vertical]:top-[unset]
@@ -93,7 +93,7 @@ w-full
 data-[orientation=vertical]:h-full
 data-[orientation=vertical]:w-2
 
-data-[inverted]:rotate-180
+data-inverted:rotate-180
 `;
 
 export const ValueStyles = oneLine`

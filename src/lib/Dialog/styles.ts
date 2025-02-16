@@ -37,7 +37,7 @@ h-6
 inline-flex
 items-center
 justify-center
-outline-none
+outline-hidden
 p-1
 right-4
 ring-primary-400
@@ -61,7 +61,7 @@ fixed
 left-1/2
 max-h-[85vh]
 max-w-[28.125rem]
-origin-top-left
+origin-center
 p-6
 rounded-xl
 shadow-xl
@@ -69,9 +69,9 @@ top-1/2
 w-[90vw]
 z-50
 
-animate-dialogScaleOut
+animate-dialog-scale-out
 
-[&[data-expanded]]:animate-dialogScaleIn
+data-expanded:animate-dialog-scale-in
 `;
 
 export const DescriptionStyles = oneLine`
@@ -97,9 +97,9 @@ fixed
 inset-0
 z-50
 
-animate-overlayFadeOut
+animate-overlay-fade-out
 
-[&[data-expanded]]:animate-overlayFadeIn
+data-expanded:animate-overlay-fade-in
 `;
 
 export const SubmitButtonStyles = oneLine`

@@ -59,7 +59,7 @@ lg:left-12
 `;
 
 export const CardStyles = oneLine`
-[transition:transform_0.1s,_left_0.75s,_top_0.75s,_width_0.75s,_height_0.75s]
+[transition:translate_0.1s,_left_0.75s,_top_0.75s,_width_0.75s,_height_0.75s]
 absolute
 bg-center
 bg-cover
@@ -81,23 +81,33 @@ sm:w-[160px]
 lg:h-[300px]
 lg:w-[200px]
 
-[&:nth-child(1)]:[transform:none]
-[&:nth-child(1)]:h-full
-[&:nth-child(1)]:opacity-100
-[&:nth-child(1)]:rounded-none
-[&:nth-child(1)]:shadow-none
-[&:nth-child(1)]:top-0
-[&:nth-child(1)]:w-full
+nth-1:[transform:none]
+nth-1:h-full
+nth-1:opacity-100
+nth-1:rounded-none
+nth-1:shadow-none
+nth-1:top-0
+nth-1:translate-y-0
+nth-1:w-full
 
-[&:nth-child(2)]:[transform:none]
-[&:nth-child(2)]:h-full
-[&:nth-child(2)]:opacity-100
-[&:nth-child(2)]:rounded-none
-[&:nth-child(2)]:shadow-none
-[&:nth-child(2)]:top-0
-[&:nth-child(2)]:w-full
+nth-2:[transform:none]
+nth-2:h-full
+nth-2:opacity-100
+nth-2:rounded-none
+nth-2:shadow-none
+nth-2:top-0
+nth-2:translate-y-0
+nth-2:w-full
 
-[&:nth-of-type(2)_.carousel-content]:animate-carouselShow
+nth-1:before:absolute
+nth-1:before:inset-0
+nth-1:before:bg-neutral-950/75
+
+nth-2:before:absolute
+nth-2:before:inset-0
+nth-2:before:bg-neutral-950/50
+
+[&:nth-of-type(2)_.carousel-content]:animate-carousel-show
 [&:nth-of-type(2)_.carousel-content]:block
 `;
 

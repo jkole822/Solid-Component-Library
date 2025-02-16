@@ -11,7 +11,7 @@ translate-y-[calc(-50%+1px)]
 top-1/2
 z-10
 
-group-data-[highlighted]:text-primary-800
+group-data-highlighted:text-primary-800
 `;
 
 export const ContainerStyles = oneLine`
@@ -22,11 +22,11 @@ select-container
 `;
 
 export const ContentStyles = oneLine`
-animate-selectFadeOut
+animate-select-fade-out
 origin-[var(--kb-select-content-transform-origin)]
 select-content
 
-data-[expanded]:animate-selectFadeIn
+data-expanded:animate-select-fade-in
 `;
 
 export const LabelStyles = oneLine`
@@ -43,7 +43,7 @@ bg-neutral-secondary-900
 flex
 flex-col
 max-h-72
-outline-none
+outline-hidden
 overflow-y-auto
 p-1
 rounded-lg
@@ -65,7 +65,7 @@ bg-transparent
 flex
 items-center
 justify-between
-outline-none
+outline-hidden
 p-4
 relative
 ring-2

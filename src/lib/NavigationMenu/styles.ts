@@ -13,7 +13,7 @@ grid
 grid-rows-3
 m-0
 navigation-menu-content
-outline-none
+outline-hidden
 p-[22px]
 relative
 xs:grid-flow-col
@@ -24,23 +24,23 @@ sm:left-0
 sm:pointer-events-none
 sm:top-0
 
-data-[expanded]:pointer-events-auto
+data-expanded:pointer-events-auto
 
-[&[data-motion=from-start]]:animate-navigationMenuEnterFromLeft
+data-[motion=from-start]:animate-navigation-menu-enter-from-left
 
-[&[data-motion=from-end]]:animate-navigationMenuEnterFromRight
+data-[motion=from-end]:animate-navigation-menu-enter-from-right
 
-[&[data-motion=to-start]]:animate-navigationMenuExitToLeft
+data-[motion=to-start]:animate-navigation-menu-exit-to-left
 
-[&[data-motion=to-end]]:animate-navigationMenuExitToRight
+data-[motion=to-end]:animate-navigation-menu-exit-to-right
 
-[&[data-orientation=vertical][data-motion=from-start]]:animate-navigationMenuEnterFromTop
+[&[data-orientation=vertical][data-motion=from-start]]:animate-navigation-menu-enter-from-top
 
-[&[data-orientation=vertical][data-motion=from-end]]:animate-navigationMenuEnterFromBottom
+[&[data-orientation=vertical][data-motion=from-end]]:animate-navigation-menu-enter-from-bottom
 
-[&[data-orientation=vertical][data-motion=to-start]]:animate-navigationMenuExitToTop
+[&[data-orientation=vertical][data-motion=to-start]]:animate-navigation-menu-exit-to-top
 
-[&[data-orientation=vertical][data-motion=to-end]]:animate-navigationMenuExitToBottom
+[&[data-orientation=vertical][data-motion=to-end]]:animate-navigation-menu-exit-to-bottom
 `;
 
 export const ContentWithCallout = oneLine`
@@ -68,7 +68,7 @@ size-20
 `;
 
 export const ItemCalloutStyles = oneLine`
-bg-[linear-gradient(135deg,_rgb(var(--color-primary-400))_0%,_rgb(var(--color-primary-600))_100%)]
+bg-[linear-gradient(135deg,_var(--color-primary-400)_0%,_var(--color-primary-600)_100%)]
 box-border
 flex
 flex-col
@@ -76,7 +76,7 @@ h-full
 justify-end
 navigation-menu-item-callout
 no-underline
-outline-none
+outline-hidden
 p-6
 rounded-lg
 row-span-3
@@ -123,21 +123,21 @@ export const ItemStyles = oneLine`
 block
 duration-200
 ease-in-out
-leading-[1]
+leading-none
 navigation-menu-item
 no-underline
-outline-none
+outline-hidden
 p-3
 rounded-lg
 select-none
 transition-colors
 
-data-[disabled]:bg-neutral-800
-data-[disabled]:cursor-not-allowed
+data-disabled:bg-neutral-800
+data-disabled:cursor-not-allowed
 
-data-[disabled]:[&_.navigation-menu-item-description]:text-neutral-primary-500
+[&_.navigation-menu-item-description]:data-disabled:text-neutral-primary-500
 
-data-[disabled]:[&_.navigation-menu-item-label]:text-neutral-primary-400
+[&_.navigation-menu-item-label]:data-disabled:text-neutral-primary-400
 
 focus:bg-neutral-secondary-900
 
@@ -161,7 +161,7 @@ duration-300
 ease-in-out
 fill-none
 navigation-menu-line
-stroke-[3]
+stroke-3
 stroke-neutral-primary-100
 transition-all
 
@@ -207,7 +207,7 @@ export const MobilePopoverContentStyles = oneLine`
 !top-8
 !w-[var(--kb-popper-content-available-width)]
 navigation-menu-mobile-popover-content
-outline-none
+outline-hidden
 overflow-y-scroll
 
 [&_.popover-arrow]:hidden
@@ -238,7 +238,7 @@ px-1
 w-max
 sm:flex
 
-[&[data-orientation=vertical]]:flex-col
+data-[orientation=vertical]:flex-col
 `;
 
 export const TitleContainerStyles = oneLine`
@@ -246,7 +246,7 @@ flex
 gap-3
 items-center
 navigation-menu-title-container
-outline-none
+outline-hidden
 ring-primary-500
 rounded-lg
 
@@ -276,9 +276,9 @@ relative
 size-[15px]
 transition-transform
 
-[&[data-expanded]]:[transform:rotateX(180deg)]
+data-expanded:[transform:rotateX(180deg)]
 
-[[data-orientation=vertical]_&]:-rotate-90
+in-data-[orientation=vertical]:-rotate-90
 
 [[data-orientation=vertical]_.navigation-menu-trigger[data-expanded]_&]:[transform:rotate(-90deg)_rotateX(180deg)]
 `;
@@ -295,7 +295,7 @@ justify-center
 leading-none
 navigation-menu-trigger
 no-underline
-outline-none
+outline-hidden
 px-4
 py-5
 text-neutral-primary-300
@@ -304,17 +304,17 @@ w-auto
 
 md:bg-neutral-secondary-950
 
-data-[disabled]:!bg-neutral-800
-data-[disabled]:cursor-not-allowed
-data-[disabled]:!text-neutral-primary-500
+data-disabled:bg-neutral-800!
+data-disabled:cursor-not-allowed
+data-disabled:text-neutral-primary-500!
 
-[&[data-highlighted=true]]:bg-neutral-secondary-900
-[&[data-highlighted=true]]:text-primary-500
+data-[highlighted=true]:bg-neutral-secondary-900
+data-[highlighted=true]:text-primary-500
 `;
 
 export const ViewportStyles = oneLine`
 [transition:width,_height,_250ms_ease]
-animate-viewportHide
+animate-viewport-hide
 bg-neutral-secondary-950
 border-neutral-secondary-700
 border-[1.5px]
@@ -334,11 +334,11 @@ shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.1),_0_2px_4px_-2px_rgb(0_0_0_/_0.1)]
 w-[var(--kb-navigation-menu-viewport-width)]
 z-100
 
-[&[data-expanded]]:animate-viewportShow
-[&[data-expanded]]:opacity-100
-[&[data-expanded]]:pointer-events-auto
-[&[data-expanded]]:rounded-lg
+data-expanded:animate-viewport-show
+data-expanded:opacity-100
+data-expanded:pointer-events-auto
+data-expanded:rounded-lg
 
-[&[data-orientation=vertical]]:overflow-x-visible
-[&[data-orientation=vertical]]:overflow-y-clip
+data-[orientation=vertical]:overflow-x-visible
+data-[orientation=vertical]:overflow-y-clip
 `;

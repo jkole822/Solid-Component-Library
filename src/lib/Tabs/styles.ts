@@ -48,7 +48,7 @@ duration-200
 ease-in-out
 inline-block
 p-4
-outline-none
+outline-hidden
 tabs-trigger
 text-neutral-primary-300
 transition-all
@@ -58,6 +58,6 @@ hover:text-neutral-primary-100
 
 focus-visible:bg-neutral-secondary-900
 
-data-[disabled]:!bg-transparent
-data-[disabled]:!opacity-50
+data-disabled:bg-transparent!
+data-disabled:opacity-50!
 `;

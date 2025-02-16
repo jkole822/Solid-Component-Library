@@ -10,13 +10,15 @@ w-fit
 
 [&[data-checked]_.switch-control_.switch-thumb]:translate-y-[2.3em]
 
-[&[data-checked]_.switch-control:after]:[transform:rotateZ(90deg)_rotateY(180deg)_translateY(0.45em)_translateX(-1.4em)]
+[&[data-checked]_.switch-control:after]:rotate-x-180
+[&[data-checked]_.switch-control:after]:-translate-x-[0.45em]
+[&[data-checked]_.switch-control:after]:translate-y-[1.2em]
 
 [&[data-checked]:focus-within_.switch-control]:ring-primary-300
 
 [&[data-checked][data-invalid]:focus-within_.switch-control]:ring-red-300
 
-[&[data-disabled]]:cursor-not-allowed
+data-disabled:cursor-not-allowed
 
 [&[data-disabled]_.switch-label]:cursor-not-allowed
 [&[data-disabled]_.switch-label]:text-neutral-primary-600
@@ -24,8 +26,8 @@ w-fit
 [&[data-disabled]_.switch-control]:bg-neutral-primary-600
 
 [&[data-disabled]_.switch-control:after]:-translate-x-[22.5%]
-[&[data-disabled]_.switch-control:after]:[background:linear-gradient(transparent_50%,_rgba(var(--color-neutral-primary-400)_/_0.15)_0)_0_50%_/_50%_100%,_repeating-linear-gradient(90deg,rgb(var(--color-neutral-primary-400))_0,rgb(var(--color-neutral-primary-400)),rgb(var(--color-neutral-primary-400))_20%,rgb(var(--color-neutral-primary-400))_20%,rgb(var(--color-neutral-primary-400))_40%)_0_50%_/_50%_100%,_radial-gradient(circle_at_50%_50%,rgb(var(--color-neutral-primary-400))_25%,_transparent_26%)]
-[&[data-disabled]_.switch-control:after]:[border-left:0.4em_solid_rgb(var(--color-neutral-primary-400))_!important]
+[&[data-disabled]_.switch-control:after]:[background:linear-gradient(transparent_50%,_--alpha(var(--color-neutral-primary-400)_/_0.15)_0)_0_50%_/_50%_100%,_repeating-linear-gradient(90deg,var(--color-neutral-primary-400)_0,var(--color-neutral-primary-400),var(--color-neutral-primary-400)_20%,var(--color-neutral-primary-400)_20%,var(--color-neutral-primary-400)_40%)_0_50%_/_50%_100%,_radial-gradient(circle_at_50%_50%,var(--color-neutral-primary-400)_25%,_transparent_26%)]
+[&[data-disabled]_.switch-control:after]:[border-left:0.4em_solid_var(--color-neutral-primary-400)_!important]
 [&[data-disabled]_.switch-control:after]:rotate-90
 
 [&[data-disabled]_.switch-control_.switch-thumb]:bg-neutral-primary-400
@@ -40,20 +42,20 @@ export const ControlStyles = oneLine`
 absolute
 bg-neutral-primary-400
 cursor-pointer
-duration-[400ms]
+duration-400
 inset-0
 ring-primary-500
 rounded-lg
 switch-control
 
-data-[invalid]:ring-red-500
+data-invalid:ring-red-500
 
 after:!bg-no-repeat
-after:[border-left:0.4em_solid_rgb(var(--color-neutral-primary-100))_!important]
+after:[border-left:0.4em_solid_var(--color-neutral-primary-100)_!important]
 after:[border-right:0_solid_transparent_!important]
 after:-translate-x-[22.5%]
-after:[background:linear-gradient(transparent_50%,_rgba(var(--color-neutral-primary-100)_/_0.15)_0)_0_50%_/_50%_100%,_repeating-linear-gradient(90deg,_rgb(var(--color-neutral-primary-100))_0,_rgb(var(--color-neutral-primary-100)),_rgb(var(--color-neutral-primary-100))_20%,_rgb(var(--color-neutral-primary-100))_20%,_rgb(var(--color-neutral-primary-100))_40%)_0_50%_/_50%_100%,_radial-gradient(circle_at_50%_50%,_rgb(var(--color-neutral-primary-100))_30%,_transparent_26%)]
-after:[transition:border-left-color_0.1s_0.3s_ease-out,_transform_0.3s_ease-out]
+after:[background:linear-gradient(transparent_50%,_--alpha(var(--color-neutral-primary-100)_/_0.15)_0)_0_50%_/_50%_100%,_repeating-linear-gradient(90deg,_var(--color-neutral-primary-100)_0,_var(--color-neutral-primary-100),_var(--color-neutral-primary-100)_20%,_var(--color-neutral-primary-100)_20%,_var(--color-neutral-primary-100)_40%)_0_50%_/_50%_100%,_radial-gradient(circle_at_50%_50%,_var(--color-neutral-primary-100)_30%,_transparent_26%)]
+after:[transition:border-left-color_0.1s_0.3s_ease-out,_translate_0.4s,_transform_0.4s]
 after:block
 after:[border:0.25em_solid_transparent]
 after:box-border
@@ -61,7 +63,7 @@ after:h-[1em]
 after:left-[0.55em]
 after:origin-[25%_50%]
 after:relative
-after:rotate-90
+after:rotate-z-90
 after:top-[0.5em]
 after:w-[2em]
 `;
@@ -111,7 +113,7 @@ after:pointer-events-none
 after:transition-all
 after:w-0
 
-data-[invalid]:after:bg-red-500   
+data-invalid:after:bg-red-500   
 `;
 
 export const SwitchContainerStyles = oneLine`
@@ -135,7 +137,7 @@ export const ThumbStyles = oneLine`
 absolute
 bg-neutral-primary-100
 block
-duration-[400ms]
+duration-400
 h-[0.5em]
 rounded-lg
 shadow-[0_6px_7px_rgba(0,0,0,0.3)]

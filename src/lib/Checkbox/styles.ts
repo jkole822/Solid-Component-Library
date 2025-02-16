@@ -5,7 +5,7 @@ checkbox-container
 cursor-pointer
 group
 
-data-[disabled]:cursor-not-allowed
+data-disabled:cursor-not-allowed
 `;
 
 export const DescriptionStyles = oneLine`
@@ -74,7 +74,7 @@ after:pointer-events-none
 after:transition-all
 after:w-0
 
-data-[invalid]:after:bg-red-500
+data-invalid:after:bg-red-500
 `;
 
 export const PathStyles = oneLine`
@@ -88,10 +88,10 @@ fill-none
 origin-center
 path
 scale-50
-stroke-[6]
+stroke-6
 stroke-neutral-primary-200
 
-[[data-invalid]_&]:stroke-red-500
+in-data-invalid:stroke-red-500
 `;
 
 export const VectorStyles = oneLine`
