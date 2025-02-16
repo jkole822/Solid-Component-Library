@@ -192,6 +192,7 @@ export default function HomeHero(props: Props) {
 
       <Show when={props.floatingCTA && props.floatingCTAChildren}>
         <Tooltip
+          className="z-[251]"
           text={`Navigate to ${props.floatingCTA?.title}`}
           triggerClass={FloatingLinkStyles}
         >

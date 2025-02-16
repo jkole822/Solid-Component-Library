@@ -348,6 +348,7 @@ export const FloatingLinkStyles = oneLine`
 cursor-pointer
 fixed
 home-hero-floating-link
+hover-target
 right-[30px]
 top-[30px]
 z-[251]
