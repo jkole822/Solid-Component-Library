@@ -1,6 +1,11 @@
+// Packages
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
+
+// Components
 import Popover from "./story";
+
+// Types
 import type { Meta, StoryObj } from "storybook-solidjs";
 import type { Props } from "./types";
 
@@ -8,7 +13,10 @@ const meta = {
   title: "Popover",
   component: Popover,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    className: { control: "text" },
+    contentClass: { control: "text" },
+  },
 } satisfies Meta<typeof Popover>;
 
 export default meta;
@@ -50,11 +58,4 @@ export const Modal: Story = {
       <Popover {...args} />
     </div>
   ),
-};
-
-export const WithClass: Story = {
-  args: {
-    ...args,
-    className: "mx-auto",
-  },
 };

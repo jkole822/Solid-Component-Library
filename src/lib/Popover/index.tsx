@@ -1,6 +1,6 @@
 // Packages
 import { Popover as KobaltePopover } from "@kobalte/core/popover";
-import { Show } from "solid-js";
+import { mergeProps, Show, splitProps } from "solid-js";
 
 // Styles
 import {
@@ -14,52 +14,62 @@ import {
 // Types
 import type { Props } from "./types";
 
-export default function Popover({
-  ariaLabel,
-  buttonContent,
-  children,
-  className = "",
-  contentClass = "",
-  contentProps = {},
-  contentStyles,
-  description,
-  disabled,
-  isIconButton,
-  onOpenChange,
-  open,
-  title,
-  ...rest
-}: Props) {
+export default function Popover(initialProps: Props) {
+  const mergedProps = mergeProps(
+    { className: "", contentClass: "", contentProps: {} },
+    initialProps,
+  );
+
+  const [props, rest] = splitProps(mergedProps, [
+    "ariaLabel",
+    "buttonContent",
+    "children",
+    "className",
+    "contentClass",
+    "contentProps",
+    "contentStyles",
+    "description",
+    "disabled",
+    "isIconButton",
+    "onOpenChange",
+    "open",
+    "title",
+  ]);
+
+  const rootProps = () => ({
+    ...rest,
+    ...props.contentProps,
+    ...(!!props.onOpenChange && props.open !== undefined
+      ? { onOpenChange: props.onOpenChange, open: props.open() }
+      : {}),
+  });
+
   return (
-    <KobaltePopover
-      {...rest}
-      {...contentProps}
-      {...(!!onOpenChange && open !== undefined
-        ? { onOpenChange, open: open() }
-        : {})}
-    >
+    <KobaltePopover {...rootProps()}>
       <KobaltePopover.Trigger
-        aria-label={ariaLabel}
-        class={`${className} ${ButtonStyles({ isIconButton })}`}
-        disabled={disabled}
+        aria-label={props.ariaLabel}
+        class={`${props.className} ${ButtonStyles({ isIconButton: props.isIconButton })}`}
+        disabled={props.disabled}
       >
-        {buttonContent}
+        {props.buttonContent}
       </KobaltePopover.Trigger>
       <KobaltePopover.Portal>
-        <KobaltePopover.Content class={`${contentClass} ${ContentStyles}`}>
-          <div style={!!contentStyles ? contentStyles() : {}}>
+        <KobaltePopover.Content
+          class={`${props.contentClass} ${ContentStyles}`}
+        >
+          <div style={!!props.contentStyles ? props.contentStyles() : {}}>
             <KobaltePopover.Arrow class="popover-arrow" />
-            <Show when={title}>
+            <Show when={props.title}>
               <KobaltePopover.Title class={TitleStyles}>
-                {title}
+                {props.title}
               </KobaltePopover.Title>
             </Show>
-            <Show when={description}>
+            <Show when={props.description}>
               <KobaltePopover.Description class={DescriptionStyles}>
-                {description}
+                {props.description}
               </KobaltePopover.Description>
             </Show>
-            <Show when={children}>{children}</Show>
+            <Show when={props.children}>{props.children}</Show>
             <KobaltePopover.CloseButton class={CloseButtonStyles}>
               <i aria-hidden="true" class="fa-solid fa-xmark"></i>
             </KobaltePopover.CloseButton>
