@@ -1,5 +1,10 @@
+// Packages
 import { v4 as uuid } from "uuid";
+
+// Components
 import Dialog from "./story";
+
+// Types
 import type { Meta, StoryObj } from "storybook-solidjs";
 
 const meta = {
