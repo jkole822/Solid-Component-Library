@@ -10,14 +10,14 @@ export type CheckboxValidationState =
   | CheckboxValidationStateEnum.Valid;
 
 export interface Props {
-  checked?: Accessor<boolean | undefined>;
+  checked: Accessor<boolean>;
   className?: string;
   defaultChecked?: boolean;
   description?: string;
   disabled?: boolean;
   errorMessage?: string;
   name: string;
-  onChange?: Setter<boolean | undefined>;
+  onChange: Setter<boolean>;
   readOnly?: boolean;
   required?: boolean;
   validationState: CheckboxValidationState;

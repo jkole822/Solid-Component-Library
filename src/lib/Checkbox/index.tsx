@@ -29,7 +29,7 @@ export default function Checkbox(initialProps: Props) {
 
   const rootProps = () => ({
     ...rest,
-    ...(props.checked !== undefined ? { checked: props.checked() } : {}),
+    checked: props.checked(),
     class: ContainerStyles,
     name: props.name,
   });

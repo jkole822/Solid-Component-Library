@@ -9,7 +9,7 @@ import Collapsible from ".";
 import type { Props } from "./types";
 
 export default function CollapsibleStory(props: Props) {
-  const [open, setOpen] = createSignal<boolean | undefined>();
+  const [open, setOpen] = createSignal(false);
 
   return (
     <Collapsible {...props} open={open} onOpenChange={setOpen}>
