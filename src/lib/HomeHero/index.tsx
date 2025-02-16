@@ -44,17 +44,7 @@ import { handleCursor, handleParallax, handleScrollToTop } from "./utils";
 import type { Props } from "./types";
 import { ButtonVariantsEnum } from "../Button/types";
 
-export default function HomeHero({
-  bottomLinkCTA,
-  eyebrow,
-  floatingCTA,
-  floatingCTAChildren,
-  heading,
-  headingSecondLine,
-  items,
-  parallaxBackgroundImages,
-  shadowTitle,
-}: Props) {
+export default function HomeHero(props: Props) {
   const [activeItem, setActiveItem] = createSignal(0);
 
   const handleMouseEnter = (index: number) => {
@@ -62,7 +52,7 @@ export default function HomeHero({
   };
 
   const handleNext = () => {
-    if (activeItem() === items.length - 1) {
+    if (activeItem() === props.items.length - 1) {
       setActiveItem(0);
     } else {
       setActiveItem(activeItem() + 1);
@@ -71,7 +61,7 @@ export default function HomeHero({
 
   const handlePrevious = () => {
     if (activeItem() === 0) {
-      setActiveItem(items.length - 1);
+      setActiveItem(props.items.length - 1);
     } else {
       setActiveItem(activeItem() - 1);
     }
@@ -79,15 +69,15 @@ export default function HomeHero({
 
   onMount(() => {
     handleCursor();
-    handleParallax(parallaxBackgroundImages);
+    handleParallax(props.parallaxBackgroundImages);
     handleScrollToTop();
   });
 
   return (
     <div class={ContainerStyles}>
-      <div class={ShadowTitleStyles}>{shadowTitle}</div>
+      <div class={ShadowTitleStyles}>{props.shadowTitle}</div>
 
-      <For each={parallaxBackgroundImages}>
+      <For each={props.parallaxBackgroundImages}>
         {(image, index) => (
           <div
             class={`${SectionParallaxStyles} parallax-image-${index()}`}
@@ -101,12 +91,12 @@ export default function HomeHero({
           <div class={SectionInnerContainerStyles}>
             <div class={SectionFlexRowStyles}>
               <div class="basis-full max-w-full text-center parallax-fade-top">
-                <p class={SectionDescriptionStyles}>{eyebrow}</p>
+                <p class={SectionDescriptionStyles}>{props.eyebrow}</p>
                 <h2 class={SectionHeadingStyles}>
-                  {heading}
-                  <Show when={headingSecondLine}>
+                  {props.heading}
+                  <Show when={props.headingSecondLine}>
                     <br />
-                    {headingSecondLine}
+                    {props.headingSecondLine}
                   </Show>
                 </h2>
               </div>
@@ -117,7 +107,7 @@ export default function HomeHero({
 
       <div class={`${SectionStyles} h-screen z-[100]`}>
         <ul class={CarouselLinksContainerStyles}>
-          <For each={items}>
+          <For each={props.items}>
             {({ cta }, index) => (
               <li
                 class={CarouselLinkStyles}
@@ -135,7 +125,7 @@ export default function HomeHero({
         </ul>
 
         <ul class={CarouselImagesContainerStyles}>
-          <For each={items}>
+          <For each={props.items}>
             {({ image, title }, index) => (
               <li class={index() === activeItem() ? "show" : ""}>
                 <div class={CarouselBackgroundImageStyles}>
@@ -162,7 +152,9 @@ export default function HomeHero({
                 </div>
                 <div class={CarouselNumberBackStyles}>0{index() + 1}</div>
                 <div class={CarouselNumberStyles}>0{index() + 1}</div>
-                <div class={CarouselNumberFixedStyles}>0{items.length}</div>
+                <div class={CarouselNumberFixedStyles}>
+                  0{props.items.length}
+                </div>
                 <div class={CarouselTitleStyles}>{title}</div>
               </li>
             )}
@@ -170,16 +162,18 @@ export default function HomeHero({
         </ul>
       </div>
 
-      <Show when={bottomLinkCTA}>
+      <Show when={props.bottomLinkCTA}>
         <div
           class={`${SectionStyles} bg-neutral-secondary-900 py-[100px] overflow-hidden z-[200]`}
         >
           <div class={SectionInnerContainerStyles}>
             <div class={`${SectionFlexRowStyles} justify-center`}>
               <div class="text-center md:basis-[58.3333%] md:max-w-[58.3333%]">
-                <a {...bottomLinkCTA} class="hover-target">
+                <a {...props.bottomLinkCTA} class="hover-target">
                   <div class={BottomCTAContainerStyles}>
-                    <p class={BottomCTATextStyles}>{bottomLinkCTA?.title}</p>
+                    <p class={BottomCTATextStyles}>
+                      {props.bottomLinkCTA?.title}
+                    </p>
                   </div>
                 </a>
               </div>
@@ -196,13 +190,13 @@ export default function HomeHero({
       <div class={CursorTwoStyles} id="cursor-two"></div>
       <div class={CursorThreeStyles} id="cursor-three"></div>
 
-      <Show when={floatingCTA && floatingCTAChildren}>
+      <Show when={props.floatingCTA && props.floatingCTAChildren}>
         <Tooltip
-          text={`Navigate to ${floatingCTA?.title}`}
+          text={`Navigate to ${props.floatingCTA?.title}`}
           triggerClass={FloatingLinkStyles}
         >
-          <Button {...floatingCTA} className={FloatingLinkTriggerStyles}>
-            {floatingCTAChildren}
+          <Button {...props.floatingCTA} className={FloatingLinkTriggerStyles}>
+            {props.floatingCTAChildren}
           </Button>
         </Tooltip>
       </Show>
