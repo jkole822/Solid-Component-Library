@@ -10,11 +10,7 @@ import { PararaphStyles, SubHeadingStyles } from "../../styles";
 // Types
 import type { Props, SelectItem } from "./types";
 
-export default function SelectStory({
-  value: _,
-  onChange: __,
-  ...rest
-}: Props) {
+export default function SelectStory(props: Props) {
   const [value, setValue] = createSignal<
     SelectItem | SelectItem[] | undefined
   >();
@@ -38,7 +34,7 @@ export default function SelectStory({
 
   return (
     <>
-      <Select {...rest} onChange={setValue} value={value} />
+      <Select {...props} onChange={setValue} value={value} />
       <p class={SubHeadingStyles}>Binding Check</p>
       <Show when={Array.isArray(value())} fallback={<BindingCheck />}>
         {/*@ts-ignore*/}

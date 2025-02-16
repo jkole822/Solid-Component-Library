@@ -42,7 +42,6 @@ export interface Props {
   id: string;
   onChange: Setter<SelectItem | SelectItem[] | undefined>;
   options: SelectItem[];
-  optionsAccessor?: Accessor<SelectItem[]>;
   modal?: boolean;
   multiple?: boolean;
   name: string;
@@ -52,8 +51,7 @@ export interface Props {
   required?: boolean;
   selectionBehavior?: SelectSelectionBehavior;
   triggerClass?: string;
-  useInternalAndExternalValidation?: boolean;
-  validationStateAccessor?: Accessor<SelectValidationState>;
+  validationState?: SelectValidationState;
   value: Accessor<SelectItem | SelectItem[] | undefined>;
   virtualized?: boolean;
 }

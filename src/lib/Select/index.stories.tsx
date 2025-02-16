@@ -1,8 +1,16 @@
+// Packages
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
+
+// Components
 import Select from "./story";
+
+// Types
 import type { Meta, StoryObj } from "storybook-solidjs";
-import { SelectSelectionBehaviorEnum } from "./types";
+import {
+  SelectSelectionBehaviorEnum,
+  SelectValidationStateEnum,
+} from "./types";
 
 const meta = {
   title: "Select",
@@ -15,6 +23,14 @@ const meta = {
       options: [
         SelectSelectionBehaviorEnum.Toggle,
         SelectSelectionBehaviorEnum.Replace,
+      ],
+    },
+    triggerClass: { control: "text" },
+    validationState: {
+      control: "select",
+      options: [
+        SelectValidationStateEnum.Valid,
+        SelectValidationStateEnum.Invalid,
       ],
     },
   },
@@ -51,7 +67,6 @@ const args = {
   readOnly: false,
   required: true,
   selectionBehavior: SelectSelectionBehaviorEnum.Toggle,
-  useInternalAndExternalValidation: false,
   virtualized: false,
 };
 
@@ -64,12 +79,5 @@ export const Multiple: Story = {
     ...args,
     closeOnSelection: false,
     multiple: true,
-  },
-};
-
-export const WithTriggerClass: Story = {
-  args: {
-    ...args,
-    triggerClass: "sm:w-72",
   },
 };

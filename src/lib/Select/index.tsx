@@ -1,5 +1,12 @@
 // Packages
-import { createEffect, createSignal, For, Show } from "solid-js";
+import {
+  createEffect,
+  createSignal,
+  For,
+  mergeProps,
+  Show,
+  splitProps,
+} from "solid-js";
 import { Select as KobalteSelect } from "@kobalte/core/select";
 
 // Styles
@@ -27,37 +34,43 @@ import { AutoCompleteEnum } from "../Input/types";
 import type { Props, SelectValidationState } from "./types";
 import { SelectValidationStateEnum } from "./types";
 
-export default function Select({
-  ariaLabel,
-  autoComplete = AutoCompleteEnum.off,
-  className = "",
-  description,
-  errorMessage,
-  id,
-  multiple,
-  name,
-  options,
-  optionsAccessor,
-  required,
-  triggerClass = "",
-  useInternalAndExternalValidation,
-  validationStateAccessor,
-  value,
-  ...rest
-}: Props) {
+export default function Select(initialProps: Props) {
+  const mergedProps = mergeProps(
+    {
+      autoComplete: AutoCompleteEnum.off,
+      className: "",
+      triggerClass: "",
+      validationState: SelectValidationStateEnum.Valid,
+    },
+    initialProps,
+  );
+
+  const [props, rest] = splitProps(mergedProps, [
+    "ariaLabel",
+    "autoComplete",
+    "className",
+    "description",
+    "errorMessage",
+    "id",
+    "multiple",
+    "name",
+    "required",
+    "triggerClass",
+    "validationState",
+    "value",
+  ]);
+
   const [open, setOpen] = createSignal(false);
   const [receivedFocus, setReceivedFocus] = createSignal(false);
-  const [validationState, setValidationState] =
-    createSignal<SelectValidationState>(SelectValidationStateEnum.Valid);
+  const [validation, setValidation] = createSignal<SelectValidationState>(
+    SelectValidationStateEnum.Valid,
+  );
 
   const derivedValidationState = () =>
-    useInternalAndExternalValidation &&
-    validationStateAccessor &&
-    validationStateAccessor() === SelectValidationStateEnum.Valid
+    validation() === SelectValidationStateEnum.Valid &&
+    props.validationState === SelectValidationStateEnum.Valid
       ? SelectValidationStateEnum.Valid
-      : validationStateAccessor
-        ? validationStateAccessor()
-        : validationState();
+      : SelectValidationStateEnum.Invalid;
 
   const handleOpenChange = (value: boolean) => {
     if (!value) {
@@ -68,18 +81,18 @@ export default function Select({
   };
 
   createEffect(() => {
-    if (multiple) {
+    if (props.multiple) {
       //@ts-ignore
-      if (receivedFocus() && required && (!value() || value()?.length === 0)) {
-        setValidationState(SelectValidationStateEnum.Invalid);
+      if (receivedFocus() && props.required && (!props.value() || props.value()?.length === 0)) {
+        setValidation(SelectValidationStateEnum.Invalid);
       } else {
-        setValidationState(SelectValidationStateEnum.Valid);
+        setValidation(SelectValidationStateEnum.Valid);
       }
     } else {
-      if (receivedFocus() && required && !value()) {
-        setValidationState(SelectValidationStateEnum.Invalid);
+      if (receivedFocus() && props.required && !props.value()) {
+        setValidation(SelectValidationStateEnum.Invalid);
       } else {
-        setValidationState(SelectValidationStateEnum.Valid);
+        setValidation(SelectValidationStateEnum.Valid);
       }
     }
   });
@@ -87,8 +100,8 @@ export default function Select({
   return (
     <KobalteSelect
       {...rest}
-      class={className}
-      multiple={multiple}
+      class={props.className}
+      multiple={props.multiple}
       //@ts-ignore
       optionDisabled="disabled"
       //@ts-ignore
@@ -98,11 +111,10 @@ export default function Select({
       //@ts-ignore
       optionValue="id"
       open={open()}
-      options={optionsAccessor ? optionsAccessor() : options}
       onOpenChange={handleOpenChange}
-      name={name}
-      required={required}
-      value={value()}
+      name={props.name}
+      required={props.required}
+      value={props.value()}
       validationState={derivedValidationState()}
       itemComponent={(props) => (
         <KobalteSelect.Item item={props.item} class={ListItemStyles}>
@@ -123,20 +135,20 @@ export default function Select({
         </KobalteSelect.Item>
       )}
     >
-      <KobalteSelect.HiddenSelect id={id} />
-      <div class={`${triggerClass} ${ContainerStyles}`}>
-        <label class={LabelStyles} for={id}>
-          {name}
+      <KobalteSelect.HiddenSelect id={props.id} />
+      <div class={`${props.triggerClass} ${ContainerStyles}`}>
+        <label class={LabelStyles} for={props.id}>
+          {props.name}
         </label>
         <KobalteSelect.Trigger
-          aria-label={ariaLabel}
+          aria-label={props.ariaLabel}
           class={TriggerStyles({
             receivedFocus: receivedFocus(),
-            validationState: validationState(),
+            validationState: validation(),
           })}
         >
           <Show
-            when={multiple}
+            when={props.multiple}
             fallback={
               <KobalteSelect.Value>
                 {/*@ts-ignore*/}
@@ -167,7 +179,7 @@ export default function Select({
                     </For>
                   </div>
                   {/*@ts-ignore*/}
-                  <Show when={value()?.length > 0}>
+                  <Show when={props.value()?.length > 0}>
                     <button
                       class={MultiSelectionCloseButtonStyles}
                       onPointerDown={(e) => e.stopPropagation()}
@@ -191,16 +203,16 @@ export default function Select({
           </KobalteSelect.Icon>
         </KobalteSelect.Trigger>
       </div>
-      <Show when={description || errorMessage}>
+      <Show when={props.description || props.errorMessage}>
         <div class="mt-2">
-          <Show when={description}>
+          <Show when={props.description}>
             <KobalteSelect.Description class={DescriptionStyles}>
-              {description}
+              {props.description}
             </KobalteSelect.Description>
           </Show>
-          <Show when={errorMessage}>
+          <Show when={props.errorMessage}>
             <KobalteSelect.ErrorMessage class={ErrorMessageStyles}>
-              {errorMessage}
+              {props.errorMessage}
             </KobalteSelect.ErrorMessage>
           </Show>
         </div>
