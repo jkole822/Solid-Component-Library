@@ -216,15 +216,17 @@ overflow-y-scroll
 `;
 
 export const MobilePopoverStyles = oneLine`
-!ring-0
 duration-300
 ease-in-out
 group
 navigation-menu-mobile-popover
+outline-none!
+ring-0!
+rounded-lg
 transition-all
 sm:hidden
 
-focus:!ring-2
+focus:ring-2!
 
 [&:hover_.navigation-menu-line]:stroke-primary-500
 `;
